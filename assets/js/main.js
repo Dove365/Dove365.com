@@ -1,6 +1,7 @@
 // Highlight active nav link based on current page
 document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const normalizedCurrentPage = currentPage.endsWith('.html') ? currentPage : `${currentPage}.html`;
   const navLinks = document.querySelectorAll('.nav-links a');
   const nav = document.querySelector('nav');
   const navToggle = document.querySelector('.nav-toggle');
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage) {
+    if (href === currentPage || href === normalizedCurrentPage) {
       link.style.color = 'var(--white)';
       link.style.background = 'rgba(255,255,255,0.06)';
     }
@@ -51,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
       '.scope-box',
       '.pricing-card',
       '.support-card',
+      '.ai-flow-card',
+      '.ai-service-card',
+      '.ai-offer-card',
       '.case-card-full',
       '.about-photo-placeholder',
       '.about-content p',

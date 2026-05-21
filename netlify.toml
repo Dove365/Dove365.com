@@ -1,2 +1,7 @@
 [build]
   publish = "."
+
+[[redirects]]
+  from = "/ai-enablement"
+  to = "/ai-enablement.html"
+  status = 200

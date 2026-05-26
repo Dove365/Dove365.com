@@ -1333,6 +1333,39 @@ footer {
 }
 
 /* ══════════════════════════════════════════
+   WORKSHOP SIGNUP PAGE
+══════════════════════════════════════════ */
+
+.workshop-page-hero {
+  height: 440px;
+}
+.workshop-intro-section,
+.workshop-agenda-section { background: white; }
+.workshop-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.workshop-detail-card p {
+  min-height: 3.2rem;
+}
+.workshop-emoji-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.workshop-agenda-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 3rem;
+}
+.workshop-agenda-grid .feature-check {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+/* ══════════════════════════════════════════
    CASE STUDIES PAGE
 ══════════════════════════════════════════ */
 
@@ -1739,6 +1772,28 @@ footer {
   border-color: var(--teal);
 }
 .form-group textarea { resize: vertical; min-height: 120px; }
+.form-checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: start;
+  margin-bottom: 1rem;
+  color: var(--mid);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.form-checkbox input {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.12rem;
+  accent-color: var(--teal);
+}
+.form-checkbox a {
+  color: var(--teal-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+.form-checkbox a:hover { color: var(--teal); }
 .form-recaptcha { min-height: 78px; overflow-x: auto; }
 
 /* ── RESPONSIVE ── */
@@ -1893,7 +1948,9 @@ footer {
   .service-block-left { position: static; }
   .pain-grid, .proof-grid, .values-grid, .pricing-grid,
   .cases-grid-full { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .ai-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ai-service-grid,
+  .workshop-detail-grid,
+  .workshop-agenda-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ai-offer-card { grid-template-columns: 1fr; gap: 1.25rem; }
   .case-meta-grid, .case-solution-grid, .case-outcomes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .case-detail-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -2007,7 +2064,10 @@ footer {
   .pain-grid, .proof-grid, .values-grid, .pricing-grid,
   .cases-grid-full, .process-steps, .form-row,
   .credentials, .footer-top { grid-template-columns: 1fr; }
-  .ai-service-grid, .ai-offer-features { grid-template-columns: 1fr; }
+  .ai-service-grid,
+  .ai-offer-features,
+  .workshop-detail-grid,
+  .workshop-agenda-grid { grid-template-columns: 1fr; }
   .case-meta-grid, .case-solution-grid, .case-outcomes-grid { grid-template-columns: 1fr; }
   .case-detail-hero { padding: 3.5rem 1rem 3rem; }
   .case-detail-actions .btn { width: 100%; justify-content: center; }

@@ -949,6 +949,10 @@ footer {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
   margin-top: 3rem;
 }
+.pain-grid-2 {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
+  margin-top: 3rem;
+}
 .pain-card {
   background: white; border-radius: 14px; padding: 2rem;
   border: 1px solid var(--border); transition: all 0.25s;

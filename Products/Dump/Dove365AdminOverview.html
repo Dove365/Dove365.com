@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dove365 Admin - Overview</title>
+  <style>
+    :root {
+      --navy: #233644;
+      --navy-deep: #0f1e28;
+      --teal: #078396;
+      --teal-dark: #056281;
+      --teal-light: #53b1cd;
+      --teal-pale: #e4f2f5;
+      --slate: #cad9dd;
+      --near-black: #171b1b;
+      --off-white: #f4f7f6;
+      --white: #ffffff;
+      --mid: #5a6a72;
+      --border: #dde6e8;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --shadow: 0 22px 70px rgba(15, 30, 40, 0.16);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+      color: var(--near-black);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 1100;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--gold-light));
+      transform: scaleX(var(--scroll-progress, 0));
+      transform-origin: left;
+      box-shadow: 0 0 18px rgba(83,177,205,0.35);
+      pointer-events: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      background: var(--white);
+    }
+
+    .eyebrow, .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--teal-light);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before, .section-tag::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 18px rgba(232, 201, 122, 0.7);
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.05; }
+
+    h1 {
+      margin-top: 1rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3.4vw, 2.55rem);
+      font-weight: 500;
+      max-width: 760px;
+    }
+
+    h1 em, h2 em {
+      color: var(--teal);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .container {
+      width: min(1240px, calc(100% - 1.25rem));
+      margin: 0 auto;
+      padding: clamp(0.9rem, 2vw, 1.6rem) 0;
+    }
+
+    .app-shell {
+      width: min(1240px, calc(100% - 1.25rem));
+      margin: 0 auto;
+      padding: clamp(0.8rem, 1.8vw, 1.25rem) 0 1.5rem;
+    }
+
+    .page-title {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .version-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--mid);
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .page-title h1 {
+      margin-top: 0.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3.4vw, 2.55rem);
+      line-height: 1.05;
+      font-weight: 500;
+      color: var(--near-black);
+      max-width: 760px;
+    }
+
+    .page-title h1 em {
+      color: var(--teal);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .page-title p {
+      margin: 0.55rem 0 0;
+      max-width: 900px;
+      color: var(--mid);
+      font-size: 0.98rem;
+    }
+
+    .start-panel {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem;
+      width: min(1240px, calc(100% - 1.25rem));
+      margin: 0.75rem auto 0;
+    }
+
+    .start-panel h2 {
+      font-size: 0.95rem;
+      margin-bottom: 0.55rem;
+      color: var(--navy-deep);
+    }
+
+    .start-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .start-list li {
+      display: grid;
+      grid-template-columns: 1.65rem 1fr;
+      gap: 0.55rem;
+      align-items: start;
+      color: var(--mid);
+      font-size: 0.86rem;
+      margin: 0;
+      padding: 0;
+      line-height: 1.35;
+    }
+
+    .start-list li::before,
+    .start-list li::after { content: none; }
+
+    .step-no {
+      display: inline-grid;
+      place-items: center;
+      width: 1.65rem;
+      height: 1.65rem;
+      min-width: 1.65rem;
+      border-radius: 999px;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      font-weight: 800;
+      font-size: 0.78rem;
+      line-height: 1;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .display {
+      margin-top: 0.7rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+      font-weight: 500;
+      color: var(--navy-deep);
+    }
+
+    .lead {
+      color: var(--mid);
+      font-size: 1.08rem;
+      margin: 0;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .module-card, .path-card, .note-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      box-shadow: 0 12px 36px rgba(15, 30, 40, 0.06);
+    }
+
+    .module-card h3, .path-card h3, .note-card h3 {
+      color: var(--navy-deep);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-card p, .path-card p, .note-card p {
+      margin: 0;
+      color: var(--mid);
+      font-size: 0.95rem;
+    }
+
+    .module-tag {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .process {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .process span {
+      min-height: 3.4rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(15, 30, 40, 0.1);
+    }
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .path-card ol {
+      margin: 1rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--mid);
+    }
+
+    .path-card li { margin: 0.45rem 0; }
+
+    .cta-band {
+      background: var(--navy-deep);
+      color: var(--white);
+      margin-top: 2rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+    }
+
+    .cta-band .container {
+      padding-left: clamp(1.25rem, 3vw, 2.5rem);
+      padding-right: clamp(1.25rem, 3vw, 2.5rem);
+    }
+
+    .cta-band .display { color: var(--white); }
+
+    .note-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .note-card {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: none;
+    }
+
+    .note-card h3 { color: var(--white); }
+    .note-card p { color: rgba(255,255,255,0.74); }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(7, 131, 150, 0.15);
+      border: 1px solid rgba(83, 177, 205, 0.3);
+      color: var(--teal-light);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .role-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-light);
+    }
+
+    .footer {
+      padding: 1.5rem clamp(1.25rem, 3vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--mid);
+      font-size: 0.86rem;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid, .path-grid { grid-template-columns: 1fr; }
+      .start-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .module-grid, .note-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .process { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .start-list { grid-template-columns: 1fr; }
+      .module-grid, .note-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress"></div>
+  <main class="page app-shell">
+
+    <section class="page-title" aria-labelledby="page-title">
+      <span class="version-badge">v1.0</span>
+      <div class="eyebrow">Dove365 Admin overview</div>
+      <h1 id="page-title">Manage your Dove365 <em>environment</em></h1>
+      <p>The Dove365 Admin app is the central administration hub for your Power Platform environment. Use it to manage users, assign security roles, configure email, set up SharePoint document integration, and maintain the service catalogue.</p>
+      <div class="role-badge">Requires: Dove365 Global Admin role</div>
+    </section>
+
+    <section class="start-panel" aria-label="Where to begin">
+      <h2>Admin first steps</h2>
+      <ol class="start-list">
+        <li><span class="step-no">1</span><span>Assign the Dove365 Global Admin role to your administrator account before anything else.</span></li>
+        <li><span class="step-no">2</span><span>Add users, assign Dove365 security roles, and create teams and positions.</span></li>
+        <li><span class="step-no">3</span><span>Enable and test user mailboxes for email tracking and server-side synchronisation.</span></li>
+        <li><span class="step-no">4</span><span>Create Service Offerings and confirm SharePoint document integration is working.</span></li>
+      </ol>
+    </section>
+
+    <section class="container">
+      <div class="intro-grid">
+        <div>
+          <div class="section-tag">Purpose of the app</div>
+          <h2 class="display">One place for environment administration</h2>
+        </div>
+        <p class="lead">The Dove365 Admin app brings together user management, mailbox configuration, SharePoint document settings, and data configuration into a single focused app. Admins with the Dove365 Global Admin role use it to set up and maintain the environment so CRM users can work effectively.</p>
+      </div>
+
+      <div class="module-grid" aria-label="Admin app areas">
+        <article class="module-card">
+          <span class="module-tag">User Management</span>
+          <h3>Users</h3>
+          <p>Create and manage user records, job titles, business units, manager relationships, and security role assignments using the built-in Security Role Manager control.</p>
+        </article>
+        <article class="module-card">
+          <span class="module-tag">User Management</span>
+          <h3>Teams</h3>
+          <p>Create and manage teams, assign members, and apply security roles at the team level using the Security Role Manager control.</p>
+        </article>
+        <article class="module-card">
+          <span class="module-tag">User Management</span>
+          <h3>Positions</h3>
+          <p>Define reporting hierarchy positions for your organisation so users can be placed in the correct part of the structure.</p>
+        </article>
+        <article class="module-card">
+          <span class="module-tag">User Management</span>
+          <h3>Mailboxes</h3>
+          <p>Review, approve, test, and enable mailboxes for CRM users and the service account. Required for email tracking and Dynamics 365 App for Outlook.</p>
+        </article>
+        <article class="module-card">
+          <span class="module-tag">SharePoint Settings</span>
+          <h3>Document Locations</h3>
+          <p>Configure SharePoint document library locations linked to Dataverse records, enabling document management across accounts, contacts, and cases.</p>
+        </article>
+        <article class="module-card">
+          <span class="module-tag">Data Configuration</span>
+          <h3>Service Offerings</h3>
+          <p>Maintain the service catalogue used by CRM users when adding services to opportunities and cases. Keep names, codes, categories, and pricing consistent.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-tag">Admin workflow</div>
+      <h2 class="display">Typical environment setup sequence</h2>
+      <div class="process" aria-label="Admin setup sequence">
+        <span>Add users and assign roles</span>
+        <span>Create teams and positions</span>
+        <span>Enable mailboxes</span>
+        <span>Configure SharePoint</span>
+        <span>Manage service offerings</span>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-tag">Admin paths</div>
+      <h2 class="display">Common starting points</h2>
+      <div class="path-grid">
+        <article class="path-card">
+          <h3>New environment setup</h3>
+          <p>Follow this sequence when setting up a fresh Dove365 deployment.</p>
+          <ol>
+            <li>Confirm Dove365 Common and CRM Starter are imported.</li>
+            <li>Assign Dove365 Global Admin role to the admin account.</li>
+            <li>Add CRM users and assign Dove365 CRM User or CRM Admin roles.</li>
+            <li>Create teams where relevant and assign roles at team level.</li>
+            <li>Set up positions for reporting hierarchy.</li>
+            <li>Approve and test mailboxes for server-side sync.</li>
+            <li>Confirm SharePoint document locations are configured.</li>
+            <li>Create the standard Service Offerings catalogue.</li>
+            <li>Optionally deploy Dynamics 365 App for Outlook to users.</li>
+          </ol>
+        </article>
+        <article class="path-card">
+          <h3>Ongoing admin tasks</h3>
+          <p>Day-to-day tasks to keep the environment healthy.</p>
+          <ol>
+            <li>Add or deactivate users as the team changes.</li>
+            <li>Adjust role assignments using the Security Role Manager.</li>
+            <li>Review mailbox sync status and resolve errors.</li>
+            <li>Update or add Service Offerings as the business evolves.</li>
+            <li>Check Power Automate flow health and connection references.</li>
+            <li>Review SharePoint document locations if integration issues arise.</li>
+            <li>Assign or remove Dynamics 365 for Outlook roles as needed.</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="section-tag">Key admin reminders</div>
+        <h2 class="display">What every Dove365 admin should know</h2>
+        <div class="note-list">
+          <article class="note-card">
+            <h3>Global Admin role is the gateway</h3>
+            <p>The Dove365 Global Admin role is required to access the Admin app. Assign it before attempting to use any admin functions, and protect it carefully.</p>
+          </article>
+          <article class="note-card">
+            <h3>Security Role Manager is the role tool</h3>
+            <p>Use the Security Role Manager control on User and Team forms to assign and remove Dove365 roles. Changes take effect immediately without a form save.</p>
+          </article>
+          <article class="note-card">
+            <h3>Mailboxes need approval and testing</h3>
+            <p>Approving a mailbox email address and then running Test &amp; Enable are both required steps. Skipping either one will prevent email tracking from working.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <script>document.write(new Date().getFullYear())</script> Dove365. Admin overview. Built for Microsoft Power Platform and Dataverse.</span>
+    </footer>
+  </main>
+
+  <script>
+    const bar = document.querySelector(".scroll-progress");
+    function updateScroll() {
+      const h = document.documentElement;
+      const prog = h.scrollTop / (h.scrollHeight - h.clientHeight) || 0;
+      bar.style.setProperty("--scroll-progress", prog);
+    }
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+  </script>
+</body>
+</html>

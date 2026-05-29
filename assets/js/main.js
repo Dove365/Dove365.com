@@ -387,6 +387,23 @@ document.addEventListener('DOMContentLoaded', function () {
     navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
   });
 
+  // Mobile dropdown toggle — registered before closeMenu so stopImmediatePropagation
+  // can prevent closeMenu from firing when a dropdown trigger is tapped.
+  document.querySelectorAll('.nav-links .has-dropdown > a').forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      if (window.innerWidth <= 980) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        const li = trigger.closest('.has-dropdown');
+        const wasOpen = li.classList.contains('open');
+        document.querySelectorAll('.nav-links .has-dropdown').forEach(function (el) {
+          el.classList.remove('open');
+        });
+        if (!wasOpen) li.classList.add('open');
+      }
+    });
+  });
+
   navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });

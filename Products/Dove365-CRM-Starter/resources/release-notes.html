@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release Notes — Dove365 CRM — Starter</title>
+  <meta name="description" content="Release notes for Dove365 CRM — Starter. Covers new features, deployment notes, known limitations, and post-deployment checks for the initial release.">
+  <meta property="og:title" content="Release Notes — Dove365 CRM — Starter">
+  <meta property="og:description" content="New features, deployment notes, known limitations, and post-deployment checks for Dove365 CRM — Starter.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.dove365.com/assets/images/logo/Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=36">
+  <link rel="icon" type="image/png" href="../../../assets/images/logo/Logo.png">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="mouse-aura" aria-hidden="true"></div>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-logo" href="../../../index.html" aria-label="Dove365 home">
+    <img class="nav-logo-mark" src="../../../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true">
+    <span class="nav-logo-text">Dove365</span>
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="primary-navigation">
+    <li><a href="../../../index.html">Home</a></li>
+    <li class="has-dropdown">
+      <a href="../../../services.html">Services</a>
+      <div class="dropdown">
+        <div class="dropdown-label">Services</div>
+        <a href="../../../ai-enablement.html">AI Enablement</a>
+        <a href="../../../services.html#custom-solutions">Operational Systems &amp; Custom Solutions</a>
+        <a href="../../../services.html#solution-architecture">Consultancy &amp; Architecture</a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <a href="#">Products</a>
+      <div class="dropdown">
+        <div class="dropdown-label">Products</div>
+        <a href="../../../Products/Dove365-CRM-Starter.html">Dove365 CRM &#8212; Starter</a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <a href="../../../docs.html">Resources</a>
+      <div class="dropdown">
+        <div class="dropdown-label">Resources</div>
+        <a href="../../../docs.html">Documentation Library</a>
+        <a href="../../../case-studies.html">Case Studies</a>
+        <a href="https://www.nati-turtledove.com/" target="_blank" rel="noopener">Insights</a>
+      </div>
+    </li>
+    <li><a href="../../../about.html">About</a></li>
+    <li><a href="../../../contact.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<div class="page-offset">
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="../crm-docs.html">Documentation</a>
+        <span>/</span>
+        Release Notes
+      </div>
+      <h1>Release <em>Notes</em></h1>
+      <p>What changed, what&rsquo;s included, and what to verify after deployment. Covers the initial release of Dove365 CRM — Starter.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:white;">
+    <div class="container">
+      <div style="max-width:860px;">
+
+        <div class="release-version-badge">
+          Dove365 CRM - Starter &nbsp;&middot;&nbsp; Version 1.1.0 &nbsp;&middot;&nbsp; Initial Release
+        </div>
+
+        <p class="lead" style="margin-bottom:3rem;">Initial Dove365 CRM — Starter release for small to medium-sized businesses needing a lightweight CRM built on Microsoft Power Platform and Dataverse. Solution versions: Dove365 Common <code style="background:var(--teal-pale);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.88em;">1.1.0.0</code> &nbsp;&middot;&nbsp; Dove365 CRM — Starter <code style="background:var(--teal-pale);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.88em;">1.1.0.0</code></p>
+
+        <!-- New Features -->
+        <div class="release-block">
+          <div class="release-block-header">
+            <div class="release-block-icon teal" aria-hidden="true">+</div>
+            <h3>New Features</h3>
+          </div>
+          <ul class="release-list">
+            <li>Model-driven app <strong>Dove365 CRM — Starter</strong> with navigation for Dashboard, Relationships, Pipeline, and Service.</li>
+            <li>Account and Contact forms and views — the core customer relationship record.</li>
+            <li>Lead table, lead process, and conversion and deactivation workflows.</li>
+            <li>Opportunity process with service offering relationship and pipeline management.</li>
+            <li>Case process with escalation and resolution fields for structured support handling.</li>
+            <li>Service Offering catalogue for consistent case and opportunity categorisation.</li>
+            <li>Dove365 CRM User and Dove365 CRM Admin security roles for role-based access control.</li>
+            <li>Flow failure notification child flow included in Dove365 Common.</li>
+            <li>Outlook service account connection reference (<code style="background:var(--off-white);padding:0.1rem 0.4rem;border-radius:3px;font-size:0.85em;">dove365_OutlookConnectServiceAccount</code>).</li>
+            <li>Dataverse service account connection reference (<code style="background:var(--off-white);padding:0.1rem 0.4rem;border-radius:3px;font-size:0.85em;">dove365_DataverseConnectionServiceAccount</code>).</li>
+            <li>Power Automate flow <strong>Opportunity &mdash; Close</strong>, replacing classic on-exit Opportunity Won/Lost workflows.</li>
+            <li>Power Automate flow <strong>Case &mdash; Resolve</strong>, replacing classic on-exit Case Resolve workflow.</li>
+            <li>Power Automate flow <strong>Lead &mdash; Convert</strong>, replacing classic on-exit Lead Convert workflow.</li>
+            <li>LinkedIn Badge PCF control and Dove365 theme with app icons.</li>
+          </ul>
+        </div>
+
+        <!-- Deployment Notes -->
+        <div class="release-block">
+          <div class="release-block-header">
+            <div class="release-block-icon navy" aria-hidden="true">&#8595;</div>
+            <h3>Deployment Notes</h3>
+          </div>
+          <div class="case-outcome-box">Install <strong>Dove365 Common</strong> first, then install <strong>Dove365 CRM — Starter</strong>. The Common solution provides shared infrastructure that Dove365 CRM — Starter depends on — including the flow failure notification flow and shared connection references.</div>
+          <p style="margin-top:1.5rem;font-size:0.95rem;line-height:1.7;color:var(--near-black);">For full deployment prerequisites, environment requirements, and step-by-step setup instructions, see the <a href="environment-setup.html" style="color:var(--teal-dark);font-weight:600;">Environment Setup guide</a>.</p>
+        </div>
+
+        <!-- Known Limitations -->
+        <div class="release-block">
+          <div class="release-block-header">
+            <div class="release-block-icon amber" aria-hidden="true">!</div>
+            <h3>Known Limitations</h3>
+          </div>
+          <ul class="release-list">
+            <li>The generative page may require further work or removal if dependent configuration files cause deployment issues in certain environment configurations.</li>
+            <li>AI features are not included in the base release. AI extensions are available as a separate engagement. <a href="../../Dove365-CRM-Starter.html" style="color:var(--teal-dark);font-weight:600;">View the product page.</a></li>
+            <li>Service Offering pricing fields are not a full product catalogue, quote, order, or invoicing module. They are reference fields for categorisation only.</li>
+            <li>SLA and entitlement automation is not included in the base support module.</li>
+          </ul>
+        </div>
+
+        <!-- Post-Deployment Checks -->
+        <div class="release-block">
+          <div class="release-block-header">
+            <div class="release-block-icon teal" aria-hidden="true">&#10003;</div>
+            <h3>Post-Deployment Checks</h3>
+          </div>
+          <p style="font-size:0.9rem;color:var(--mid);margin-bottom:1.25rem;line-height:1.6;">Verify the following after each deployment to confirm the system is correctly configured and ready for users.</p>
+          <div class="release-check-grid">
+            <div class="release-check-item">App opens without errors</div>
+            <div class="release-check-item">Security roles exist and are assigned</div>
+            <div class="release-check-item">Business Process Flows render on records</div>
+            <div class="release-check-item">Environment variables are populated</div>
+            <div class="release-check-item">Outlook connection reference is connected</div>
+            <div class="release-check-item">Dataverse Intelligence is enabled</div>
+            <div class="release-check-item">Dataverse Model Context Protocol is enabled</div>
+            <div class="release-check-item">SharePoint document management works for Contacts</div>
+            <div class="release-check-item">Mailboxes and email tracking work for pilot users</div>
+          </div>
+        </div>
+
+        <div class="case-note">Questions about this release or the deployment process? <a href="../../../contact.html" style="color:var(--teal-dark);font-weight:600;">Contact Dove365</a> &mdash; we handle every deployment directly and will walk you through any issues.</div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--off-white);">
+    <div class="container">
+      <div class="section-tag">Related</div>
+      <h2 class="display">Continue <em>reading</em></h2>
+      <div class="pain-grid" style="margin-top:3rem;">
+        <div class="pain-card">
+          <div class="pain-number">&rarr;</div>
+          <h3>Environment Setup</h3>
+          <p>Licensing requirements, Power Platform prerequisites, and configuration steps needed before Dove365 CRM — Starter can be deployed.</p>
+          <div style="margin-top:1.5rem;"><a href="environment-setup.html" class="btn btn-outline">Read Guide &rarr;</a></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-number">&rarr;</div>
+          <h3>User Management</h3>
+          <p>Add users, configure teams, and assign security roles after deployment.</p>
+          <div style="margin-top:1.5rem;"><a href="user-management.html" class="btn btn-outline">Read Guide &rarr;</a></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-number">&rarr;</div>
+          <h3>Documentation Hub</h3>
+          <p>Browse the full Dove365 CRM — Starter documentation — user guides, admin guides, FAQ, and more.</p>
+          <div style="margin-top:1.5rem;"><a href="../crm-docs.html" class="btn btn-outline">Browse Docs &rarr;</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section-sm">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 class="display display-light">Need help with <em>deployment?</em></h2>
+        <p>Every Dove365 CRM — Starter deployment is handled end-to-end by Dove365. Book a call and we&rsquo;ll take care of the full setup.</p>
+        <div class="cta-actions">
+          <a href="../../../contact.html" class="btn btn-primary">Book a Call &rarr;</a>
+          <a href="../crm-docs.html" class="btn btn-ghost-light">Back to Documentation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-top footer-5col">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="../../../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true"><span class="footer-logo-text">Dove365<small>Microsoft Partner</small></span></div>
+        <p>Microsoft-focused consultancy delivering practical CRM and operational systems for small and medium businesses.</p>
+        <div class="ms-partner-badge"><img src="../../../assets/images/icons/Microsoft Partner Logo.png" width="300" height="70" loading="lazy" decoding="async" alt="Microsoft Partner"></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../../../ai-enablement.html">AI Enablement</a></li>
+          <li><a href="../../../services.html#custom-solutions">Custom Solutions</a></li>
+          <li><a href="../../../services.html#solution-architecture">Solution Architecture</a></li>
+          <li><a href="../../../services.html#support-packages">Support Packages</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../../../Products/Dove365-CRM-Starter.html">Dove365 CRM &#8212; Starter</a></li>
+          <li><a href="../../../docs.html">Product Documentation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../../../case-studies.html">Case Studies</a></li>
+          <li><a href="../../../about.html">About</a></li>
+          <li><a href="https://www.nati-turtledove.com/" target="_blank" rel="noopener">Insights</a></li>
+          <li><a href="../../../contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+441618841812">+44 (0)161 884 1812</a></li>
+          <li><a href="mailto:hello@dove365.com">hello@dove365.com</a></li>
+          <li><a href="https://www.dove365.com">dove365.com</a></li>
+          <li><a href="https://www.linkedin.com/company/dove365/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Dove365 Ltd. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="../../../privacy-policy.html">Privacy Policy</a>
+        <a href="../../../cookie-policy.html">Cookie Policy</a>
+        <a href="../../../terms-and-conditions.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script defer src="../../../assets/js/main.js?v=42"></script>
+<script>
+  // Add <wbr> after underscores in code identifiers so long names break
+  // at natural boundaries (dove365_Outlook → dove365_<wbr>Outlook) rather than mid-character.
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.release-list code').forEach(function (el) {
+      el.innerHTML = el.textContent.replace(/_/g, '_<wbr>');
+    });
+  });
+</script>
+</body>
+</html>

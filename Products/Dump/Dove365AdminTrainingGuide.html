@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dove365 Admin - Training Guide</title>
+  <style>
+    :root {
+      --navy: #233644;
+      --navy-deep: #0f1e28;
+      --teal: #078396;
+      --teal-dark: #056281;
+      --teal-light: #53b1cd;
+      --teal-pale: #e4f2f5;
+      --slate: #cad9dd;
+      --near-black: #171b1b;
+      --off-white: #f4f7f6;
+      --white: #ffffff;
+      --mid: #5a6a72;
+      --border: #dde6e8;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --shadow: 0 22px 70px rgba(15, 30, 40, 0.16);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+      color: var(--near-black);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 1100;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--gold-light));
+      transform: scaleX(var(--scroll-progress, 0));
+      transform-origin: left;
+      box-shadow: 0 0 18px rgba(83,177,205,0.35);
+      pointer-events: none;
+    }
+
+    .eyebrow, .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--teal-light);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before, .section-tag::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 18px rgba(232, 201, 122, 0.7);
+    }
+
+    h1, h2, h3, h4 { margin: 0; line-height: 1.08; }
+
+    h1 {
+      margin-top: 0.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3.4vw, 2.55rem);
+      font-weight: 500;
+    }
+
+    h1 em, h2 em {
+      color: var(--teal);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .app-shell {
+      width: min(1240px, calc(100% - 1.25rem));
+      margin: 0 auto;
+      padding: clamp(0.8rem, 1.8vw, 1.25rem) 0 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(13rem, 17rem);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .content-column { min-width: 0; }
+
+    .page-title {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .page-title h1 {
+      margin-top: 0.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3.4vw, 2.55rem);
+      line-height: 1.05;
+      font-weight: 500;
+      color: var(--near-black);
+    }
+
+    .page-title h1 em {
+      color: var(--teal);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .page-title p {
+      margin: 0.55rem 0 0;
+      max-width: 900px;
+      color: var(--mid);
+      font-size: 0.98rem;
+    }
+
+    .side-nav {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem;
+      position: sticky;
+      top: 1rem;
+    }
+
+    .side-nav h2 {
+      margin: 0;
+      color: var(--navy-deep);
+      font-size: 1rem;
+    }
+
+    .side-nav p {
+      margin: 0.35rem 0 0.75rem;
+      color: var(--mid);
+      font-size: 0.86rem;
+    }
+
+    .side-nav a {
+      display: block;
+      color: var(--teal-dark);
+      text-decoration: none;
+      padding: 0.48rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .side-nav a:hover { color: var(--navy-deep); }
+
+    main section[id] { scroll-margin-top: 1.25rem; }
+
+    .container {
+      width: min(1240px, calc(100% - 1.25rem));
+      margin: 0 auto;
+      padding: clamp(0.9rem, 2vw, 1.6rem) 0;
+    }
+
+    .display {
+      margin-top: 0.7rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+      font-weight: 500;
+      color: var(--navy-deep);
+    }
+
+    .lead {
+      color: var(--mid);
+      max-width: 780px;
+      font-size: 1.04rem;
+    }
+
+    .guide {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 0.7rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .guide-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+      gap: 1.2rem;
+      background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+      color: var(--white);
+      padding: clamp(0.9rem, 2vw, 1.35rem);
+    }
+
+    .guide-header h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+      font-weight: 500;
+    }
+
+    .guide-header p {
+      margin: 0;
+      color: rgba(255,255,255,0.76);
+    }
+
+    .guide-body {
+      display: grid;
+      grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 1fr);
+      gap: 1.25rem;
+      padding: clamp(0.85rem, 2vw, 1.35rem);
+    }
+
+    .summary-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      align-self: start;
+    }
+
+    .summary-card h3 {
+      color: var(--navy-deep);
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .summary-list {
+      margin: 0;
+      padding: 0 0 0 1.1rem;
+      list-style: none;
+      color: var(--mid);
+      font-size: 0.94rem;
+    }
+
+    .summary-list li {
+      position: relative;
+      padding: 0.4rem 0;
+    }
+
+    .summary-list li::before {
+      content: "";
+      position: absolute;
+      left: -1.1rem;
+      top: 0.72rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .practice .summary-list { color: rgba(255,255,255,0.75); }
+
+    .steps { display: grid; gap: 1rem; }
+
+    .step {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      background: var(--white);
+    }
+
+    .step h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--navy-deep);
+      font-size: 1.04rem;
+    }
+
+    .step-no {
+      display: inline-grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .step p {
+      margin: 0.7rem 0 0;
+      color: var(--mid);
+    }
+
+    .process-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+    }
+
+    .process-strip span {
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      border: 1px solid rgba(7, 131, 150, 0.16);
+      border-radius: 999px;
+      padding: 0.28rem 0.62rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .note {
+      margin-top: 0.85rem;
+      border-left: 3px solid var(--gold);
+      background: rgba(232, 201, 122, 0.14);
+      padding: 0.75rem 0.9rem;
+      color: #5e4d1a;
+      font-size: 0.92rem;
+    }
+
+    .warning {
+      margin-top: 0.85rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      padding: 0.75rem 0.9rem;
+      color: #7b1e1e;
+      font-size: 0.92rem;
+    }
+
+    .practice {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background: var(--navy-deep);
+      color: var(--white);
+    }
+
+    .practice h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .practice p { margin: 0; color: rgba(255,255,255,0.75); }
+
+    .field-list {
+      margin: 0.75rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .field-list li {
+      display: grid;
+      grid-template-columns: minmax(9rem, 0.4fr) 1fr;
+      gap: 0.75rem;
+      align-items: start;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .field-list li:last-child { border-bottom: none; }
+
+    .field-name {
+      color: var(--navy-deep);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .field-desc { color: var(--mid); }
+
+    .step-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .step-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.55rem 0.75rem;
+      text-align: left;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .step-table td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--mid);
+      vertical-align: top;
+    }
+
+    .step-table tr:last-child td { border-bottom: none; }
+    .step-table tr:nth-child(even) td { background: var(--off-white); }
+
+    .footer {
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--mid);
+      font-size: 0.86rem;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 920px) {
+      .guide-header, .guide-body { grid-template-columns: 1fr; }
+      .app-shell { grid-template-columns: 1fr; }
+      .side-nav { order: -1; position: static; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 0.75rem, 1180px); }
+      .guide-body { padding: 0.8rem; }
+      .field-list li { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress"></div>
+  <main class="app-shell">
+    <div class="content-column">
+
+      <section class="page-title" aria-labelledby="page-title">
+        <div class="eyebrow">Admin training guides</div>
+        <h1 id="page-title">Administer Dove365 <em>CRM</em></h1>
+        <p>Use this guide to set up and manage the Dove365 environment. It covers user and role management, mailbox configuration, SharePoint document integration, service offerings, and Dynamics 365 App for Outlook deployment and usage.</p>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section class="container" id="overview">
+        <div class="section-tag">Admin overview</div>
+        <h2 class="display">What the Dove365 Admin app does</h2>
+        <p class="lead">The Dove365 Admin app is part of Dove365 Common and provides the administration layer for the Power Platform environment. It is separate from the CRM Starter app and requires the Dove365 Global Admin security role to access.</p>
+
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Overview</h2>
+            <p>Start here if you are setting up the environment for the first time or taking over administration.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Admin app areas</h3>
+              <ul class="summary-list">
+                <li>User Management</li>
+                <li>SharePoint Settings</li>
+                <li>Data Configuration</li>
+                <li>Support / Training</li>
+              </ul>
+              <h3 style="margin-top:1rem;">Required role</h3>
+              <ul class="summary-list">
+                <li>Dove365 Global Admin</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Assign Dove365 Global Admin</h3><p>Before accessing the Admin app, ensure your account has the Dove365 Global Admin security role assigned in the Dataverse environment. This is done from Settings &gt; Security &gt; Users in the Power Platform admin centre or classic advanced settings.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Open the Dove365 Admin app</h3><p>Navigate to the Dove365 Admin model-driven app from the app picker. The navigation shows User Management, SharePoint Settings, Data Configuration, and Support.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>Follow the setup sequence</h3><p>Work through Users, Teams, Positions, Mailboxes, SharePoint Settings, and Service Offerings in that order for a clean first-time setup.</p></div>
+              <div class="note">Dove365 Common must be installed before the Admin app is available. CRM Starter is a separate solution installed after Common.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- USER MANAGEMENT: USERS -->
+      <section class="container" id="users">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Users</h2>
+            <p>Manage user records, assign security roles, and configure organisation details. Users must already exist in the Dataverse environment before appearing here.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Key fields</h3>
+              <ul class="summary-list">
+                <li>Full Name and User Name</li>
+                <li>Job Title and Primary Email</li>
+                <li>Mobile and Main Phone</li>
+                <li>Business Unit and Manager</li>
+                <li>Position</li>
+                <li>Security roles (via PCF control)</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Locate the user</h3><p>Open User Management &gt; Users. Users are provisioned through the Microsoft 365 admin centre and appear in Dataverse after licensing and environment access is granted. Use search or the active users view to find the user.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Update profile details</h3><p>Open the user record and complete Job Title, Primary Email, Mobile Phone, and Main Phone. These fields populate CRM views and activity tracking.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>Set Business Unit, Manager, and Position</h3><p>Assign the correct Business Unit, Manager lookup, and Position to place the user in the right part of the reporting hierarchy.</p></div>
+              <div class="step"><h3><span class="step-no">4</span>Assign Dove365 security roles using the Security Role Manager</h3><p>Scroll to the Security section on the user form. The Security Role Manager PCF control shows all available Dove365 security roles as checkboxes. Check the roles you want to assign. Changes apply immediately — no form save is needed for role changes.</p>
+                <div class="note">If the environment has Dynamics 365 enabled, the <strong>Dynamics 365 for Outlook User</strong> role will also appear in the Security Role Manager. Check it to enable App for Outlook access for that user.</div>
+              </div>
+              <div class="step"><h3><span class="step-no">5</span>Check the Mailbox record</h3><p>After setting up the user, go to User Management &gt; Mailboxes and confirm the user's mailbox is listed. Follow the Mailboxes guide to approve and enable it.</p></div>
+              <div class="practice"><h3>Standard roles to know</h3>
+                <ul class="summary-list" style="margin-top:0.5rem;">
+                  <li><strong>Dove365 CRM User</strong> — standard CRM access for day-to-day users</li>
+                  <li><strong>Dove365 CRM Admin</strong> — administrative CRM access including service offering maintenance</li>
+                  <li><strong>Dove365 Global Admin</strong> — full admin app access</li>
+                  <li><strong>Dynamics 365 for Outlook User</strong> — enables the Outlook add-in where applicable</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- USER MANAGEMENT: TEAMS -->
+      <section class="container" id="teams">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Teams</h2>
+            <p>Teams group users for role assignment, record ownership, and hierarchy. Security roles assigned to a team apply to all members of that team.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Key fields</h3>
+              <ul class="summary-list">
+                <li>Team Name</li>
+                <li>Business Unit</li>
+                <li>Administrator</li>
+                <li>Team Type</li>
+                <li>Membership Type</li>
+                <li>Members (subgrid)</li>
+                <li>Security roles (via PCF control)</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Create a team</h3><p>Open User Management &gt; Teams and select New. Enter the Team Name, assign a Business Unit, and choose an Administrator. Set Team Type to Owner for standard teams.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Add team members</h3><p>Use the Team Members subgrid on the team form to add users. Members inherit the roles assigned to the team.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>Assign security roles to the team</h3><p>Scroll to the Security section on the team form. The Security Role Manager PCF control lists all available Dove365 roles. Check the roles you want all team members to have.</p>
+                <div class="warning">Assigning a role to a team does not automatically propagate it to individual user records. Users will have the role through team membership, but it will not appear checked on their individual user Security Role Manager unless also directly assigned.</div>
+              </div>
+              <div class="step"><h3><span class="step-no">4</span>Use Microsoft Entra ID (AAD) groups if applicable</h3><p>If your organisation uses Azure Active Directory groups, you can create AAD group teams in Dataverse. Set the Team Type to AAD Security Group and provide the Object ID from Entra ID. Membership is managed through the group rather than manually.</p></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- USER MANAGEMENT: POSITIONS -->
+      <section class="container" id="positions">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Positions</h2>
+            <p>Positions define the reporting hierarchy for your organisation. They are assigned to users to reflect their place in the structure.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Use positions for</h3>
+              <ul class="summary-list">
+                <li>Defining seniority levels</li>
+                <li>Structuring reporting lines</li>
+                <li>Supporting hierarchy-based record access</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Create positions</h3><p>Open User Management &gt; Positions and select New. Enter a descriptive name for each position in your hierarchy, such as Account Manager, Senior Consultant, or Operations Director.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Set parent positions</h3><p>Where positions have a reporting line, set the Parent Position lookup to reflect the hierarchy. This allows Dataverse to apply position-based record access rules if configured in security role definitions.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>Assign positions to users</h3><p>Return to the User form and set the Position field for each user to the appropriate position in the hierarchy.</p></div>
+              <div class="note">Positions are used by Dataverse hierarchy-based access rules. If your security roles do not use hierarchy-based access, positions are still useful for organisation reporting and directory purposes.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- USER MANAGEMENT: MAILBOXES -->
+      <section class="container" id="mailboxes">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Mailboxes</h2>
+            <p>Mailboxes must be approved and tested before email tracking, server-side synchronisation, and Dynamics 365 App for Outlook will work for a user.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Mailbox status fields</h3>
+              <ul class="summary-list">
+                <li>Incoming Email Status</li>
+                <li>Outgoing Email Status</li>
+                <li>Appointments, Contacts, and Tasks Status</li>
+                <li>Email Address Approved By</li>
+                <li>Email Address Approved On</li>
+                <li>Test Completed On</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Open User Management &gt; Mailboxes</h3><p>Use the Active Mailboxes view to see all mailboxes in the environment. Each user and the service account should have a mailbox record.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Check the server profile</h3><p>Open a mailbox record and confirm the Server Profile is set to the correct Exchange/Microsoft 365 email server profile. Incoming Email, Outgoing Email, and Appointments, Contacts, and Tasks synchronisation methods should all be set to Server-Side Synchronization.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>Approve the email address</h3><p>Select the mailbox record, then from the command bar select <strong>Approve Email</strong> and confirm. This approves the email address for use with server-side sync. An O365 admin approval may also be required depending on your Exchange configuration.</p></div>
+              <div class="step"><h3><span class="step-no">4</span>Test and enable the mailbox</h3><p>After approval, select <strong>Test &amp; Enable Mailbox</strong> from the command bar. The system will run a configuration test. Wait for the test to complete and check the Configuration Status section — Incoming Email Status, Outgoing Email Status, and ACT Status should all show Success.</p></div>
+              <div class="step"><h3><span class="step-no">5</span>Resolve errors</h3><p>If any status shows Failure, check the error message on the mailbox record. Common causes include the email not being approved, the server profile missing, or OAuth not being enabled on Exchange. Correct the issue and re-run Test &amp; Enable.</p></div>
+              <div class="step"><h3><span class="step-no">6</span>Enable the service account mailbox</h3><p>The Dove365 service account used by Power Automate connection references must also have its mailbox approved and tested. Ensure the <strong>Outlook Connect Service Account</strong> connection reference uses this account and is connected.</p></div>
+              <div class="note">A mailbox can only be synchronised with one Dataverse environment at a time. If a user's mailbox was previously connected to another environment, the setting in Exchange must be overwritten before it will work in this one.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- SHAREPOINT SETTINGS -->
+      <section class="container" id="sharepoint">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>SharePoint Settings</h2>
+            <p>SharePoint Settings lets admins configure and review document locations linked to Dataverse records, and browse documents stored in those locations.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>SharePoint Settings includes</h3>
+              <ul class="summary-list">
+                <li>Document Locations</li>
+                <li>Documents (browse view)</li>
+              </ul>
+              <h3 style="margin-top:1rem;">Prerequisites</h3>
+              <ul class="summary-list">
+                <li>Server-based SharePoint integration enabled</li>
+                <li>SharePoint site URL configured</li>
+                <li>Document Management Settings set for required tables</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Enable server-based SharePoint integration</h3><p>Before document locations will work, SharePoint integration must be enabled from the Power Platform admin centre or from Settings &gt; Document Management in Advanced Settings. Provide the SharePoint site URL and complete the wizard.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Configure Document Management Settings</h3><p>In Advanced Settings &gt; Document Management &gt; Document Management Settings, select the tables (such as Account, Contact, Opportunity, Case) for which SharePoint document folders should be created. Save the settings.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>Review Document Locations</h3><p>Open SharePoint Settings &gt; Document Locations in the Admin app. This view shows all configured document locations linked to Dataverse records. Each record with document management enabled gets a document location pointing to its SharePoint folder.</p></div>
+              <div class="step"><h3><span class="step-no">4</span>Browse Documents</h3><p>Open SharePoint Settings &gt; Documents to browse files stored in managed document locations. This is a read-only review view for admins to confirm integration is working and files are being stored correctly.</p></div>
+              <div class="step"><h3><span class="step-no">5</span>Troubleshoot document issues</h3><p>If document tabs are not showing on records, confirm: server-based SharePoint integration is enabled; Document Management Settings include that table; the SharePoint site is reachable; and the user has sufficient SharePoint permissions to the document library.</p></div>
+              <div class="note">Contact records require SharePoint document management specifically enabled for the Contact table in Document Management Settings. Check this first if contact documents are not appearing.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- DATA CONFIGURATION: SERVICE OFFERINGS -->
+      <section class="container" id="service-offerings">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Service Offerings</h2>
+            <p>Service Offerings are the central service catalogue used by CRM users when attaching services to opportunities and cases. Admins own and maintain this catalogue.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Key fields</h3>
+              <ul class="summary-list">
+                <li>Service Name and Code</li>
+                <li>Service Category</li>
+                <li>Service Type</li>
+                <li>Billing Type</li>
+                <li>Default Price, Cost, Duration</li>
+                <li>Currency</li>
+                <li>Description</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Open Data Configuration &gt; Service Offerings</h3><p>Navigate to this area in the Admin app. This is the same Service Offering table used across the CRM, but managed here by admins rather than users.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Create a service offering</h3><p>Select New and complete the required fields. At minimum, provide a Service Name, Service Category, and Service Type. A meaningful Service Code helps with reporting and filtering.</p>
+                <ul class="field-list">
+                  <li><span class="field-name">Service Name</span><span class="field-desc">Clear, consistent name visible to all CRM users when selecting services.</span></li>
+                  <li><span class="field-name">Service Code</span><span class="field-desc">Short reference code for internal reporting and categorisation.</span></li>
+                  <li><span class="field-name">Service Category</span><span class="field-desc">Category from the global choice — e.g. Consulting, IT &amp; Technology, Sales, Support.</span></li>
+                  <li><span class="field-name">Service Type</span><span class="field-desc">Type of service — One-Time, Recurring, Project, or Subscription.</span></li>
+                  <li><span class="field-name">Billing Type</span><span class="field-desc">How the service is billed — Fixed, Time &amp; Materials, Retainer, etc.</span></li>
+                  <li><span class="field-name">Default Price / Cost</span><span class="field-desc">Reference values for pipeline context and reporting. Not a full invoicing module.</span></li>
+                  <li><span class="field-name">Duration</span><span class="field-desc">Expected service duration and unit (hours, days, weeks, months).</span></li>
+                </ul>
+              </div>
+              <div class="step"><h3><span class="step-no">3</span>Keep the catalogue consistent</h3><p>Agree on naming conventions before creating records. Inconsistent names lead to fragmented reporting. Avoid duplicates by searching before creating new offerings.</p></div>
+              <div class="step"><h3><span class="step-no">4</span>Deactivate rather than delete</h3><p>If a service offering is no longer used, deactivate it rather than deleting it. Deleting will break existing opportunity and case records that reference the offering.</p></div>
+              <div class="note">Service Offering pricing fields are for CRM reference and pipeline context only. They are not part of a quoting, ordering, or invoicing module.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- D365 FOR OUTLOOK: ADMIN DEPLOYMENT -->
+      <section class="container" id="outlook-deploy">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Dynamics 365 App for Outlook — Admin Setup</h2>
+            <p>Deploy Dynamics 365 App for Outlook so users can track emails, view CRM data, and create records directly from Outlook on desktop and web.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Prerequisites</h3>
+              <ul class="summary-list">
+                <li>Server-side synchronisation configured</li>
+                <li>Mailboxes approved and tested</li>
+                <li>OAuth enabled on Exchange</li>
+                <li>Dynamics 365 for Outlook User role assigned</li>
+              </ul>
+              <h3 style="margin-top:1rem;">Supported clients</h3>
+              <ul class="summary-list">
+                <li>Outlook desktop (Windows)</li>
+                <li>Outlook Web Access</li>
+                <li>Outlook mobile (iOS / Android)</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Confirm prerequisites</h3><p>Before deploying, ensure server-side synchronisation is enabled and mailboxes are approved and tested for the target users. The add-in requires Exchange Web Services (EWS) and OAuth to function. Refer to the Mailboxes section of this guide for setup steps.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Assign the Dynamics 365 for Outlook User role</h3><p>In the Dove365 Admin app, open User Management &gt; Users and locate the target user. In the Security section, use the Security Role Manager control to check <strong>Dynamics 365 for Outlook User</strong>. This grants the privileges needed to access the add-in.</p>
+                <div class="warning">Assigning the role to a team does not automatically grant App for Outlook privileges to team members. Assign the role directly to individual user records for App for Outlook deployment.</div>
+              </div>
+              <div class="step"><h3><span class="step-no">3</span>Deploy the app to users</h3><p>From Advanced Settings in the CRM or Power Platform, go to Settings &gt; Dynamics 365 App for Outlook. The Getting Started page lists all eligible users. You have three deployment options:</p>
+                <ul class="summary-list" style="margin-top:0.5rem;">
+                  <li><strong>Auto deploy to all eligible users</strong> — enable the checkbox at the top. Users with server-side sync configured are added automatically.</li>
+                  <li><strong>Add for all eligible users now</strong> — select Add App for Eligible Users to push immediately.</li>
+                  <li><strong>Add for selected users</strong> — select specific users in the list and choose Add App to Outlook.</li>
+                </ul>
+                <p style="margin-top:0.6rem;">Status changes from Pending to <strong>Added to Outlook</strong> when successful. The add-in then appears in the Outlook ribbon for those users.</p>
+              </div>
+              <div class="step"><h3><span class="step-no">4</span>Allow self-install (optional)</h3><p>Users can also install the add-in themselves. Direct them to Settings &gt; Apps for Dynamics 365 apps in their CRM environment, where they can select Add app to Outlook without admin intervention — provided they have the security role and a working mailbox.</p></div>
+              <div class="step"><h3><span class="step-no">5</span>Troubleshoot installation issues</h3><p>If a user cannot install the add-in, check: the Dynamics 365 for Outlook User role is assigned directly to the user; their mailbox is approved and tested; their Exchange mailbox is not already linked to a different Dataverse environment. An Exchange mailbox can only synchronise with one Dataverse environment at a time.</p></div>
+              <div class="note">Both steps are required — assigning the security role alone does not make the add-in available. The role plus a working mailbox and either admin deployment or self-install are all needed.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- D365 FOR OUTLOOK: USER GUIDE -->
+      <section class="container" id="outlook-users">
+        <article class="guide">
+          <div class="guide-header">
+            <h2>Dynamics 365 App for Outlook — User Guide</h2>
+            <p>Once deployed, users can open the Dynamics 365 pane in Outlook to track emails, link records, view CRM data, and create records without leaving Outlook.</p>
+          </div>
+          <div class="guide-body">
+            <aside class="summary-card">
+              <h3>Key actions</h3>
+              <ul class="summary-list">
+                <li>Open the Dynamics 365 pane</li>
+                <li>Sign in to your environment</li>
+                <li>Track an email</li>
+                <li>Set Regarding to link a record</li>
+                <li>View contact and account details</li>
+                <li>Create a new record</li>
+                <li>Pin the pane open</li>
+              </ul>
+              <h3 style="margin-top:1rem;">Terminology</h3>
+              <ul class="summary-list">
+                <li><strong>Track</strong> — copy the email into Dataverse</li>
+                <li><strong>Set Regarding</strong> — link the email to a specific record</li>
+                <li><strong>Untrack</strong> — remove the copy from Dataverse</li>
+              </ul>
+            </aside>
+            <div class="steps">
+              <div class="step"><h3><span class="step-no">1</span>Open the Dynamics 365 pane</h3><p>In <strong>Outlook desktop</strong>, select an email and choose <strong>Dynamics 365</strong> from the ribbon. In <strong>Outlook on the web</strong>, open an email and select More (...) &gt; Dynamics 365. Sign in to your Dataverse environment when prompted and select Allow.</p></div>
+              <div class="step"><h3><span class="step-no">2</span>Pin the pane open</h3><p>Select the pin icon in the Dynamics 365 pane to keep it open as you navigate between emails. Unpin to close it. Pinning is supported in both Outlook desktop and Outlook Web Access.</p></div>
+              <div class="step"><h3><span class="step-no">3</span>View contact and account information</h3><p>When you open an email, the Dynamics 365 pane shows information about the sender and recipients if they exist as contacts or leads in the CRM. Select a recipient to view their details, and expand to see their related account, opportunities, and other data.</p></div>
+              <div class="step"><h3><span class="step-no">4</span>Track an email</h3><p>To save a copy of the email in Dataverse, select <strong>Track</strong> in the Dynamics 365 pane. The email appears on the timeline of any linked records. The status changes to Track Successful when complete. Track Pending means the sync is in progress.</p></div>
+              <div class="step"><h3><span class="step-no">5</span>Set Regarding to link to a record</h3><p>Select <strong>Set Regarding</strong> in the pane to link the email to a specific CRM record — such as an opportunity, case, lead, account, or contact. This links the tracked email to that record's timeline. You can change or remove the regarding link at any time.</p></div>
+              <div class="step"><h3><span class="step-no">6</span>Create a new CRM record</h3><p>Use the navigation bar at the top of the pane and select the quick create (plus) icon to create a new record — such as a contact, lead, task, or phone call — without leaving Outlook. The new record is created in Dataverse immediately.</p></div>
+              <div class="step"><h3><span class="step-no">7</span>Navigate using the site map</h3><p>Select the site map (grid) icon in the navigation bar to access Home, Recent, Pinned, and Dashboards within the pane. Use Recent to find recently viewed CRM records. Use Pinned to bookmark records you check frequently.</p></div>
+              <div class="note">Tracked emails appear on CRM timelines when server-side synchronisation is correctly configured and the mailbox has been approved and tested. If emails are not appearing, the admin should check the mailbox status for that user.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+    </div><!-- /.content-column -->
+
+    <aside class="side-nav" aria-label="Admin training sections">
+      <h2>Admin sections</h2>
+      <p>Jump to a guide area.</p>
+      <a href="#overview">Overview</a>
+      <a href="#users">Users</a>
+      <a href="#teams">Teams</a>
+      <a href="#positions">Positions</a>
+      <a href="#mailboxes">Mailboxes</a>
+      <a href="#sharepoint">SharePoint Settings</a>
+      <a href="#service-offerings">Service Offerings</a>
+      <a href="#outlook-deploy">Outlook App — Admin</a>
+      <a href="#outlook-users">Outlook App — Users</a>
+    </aside>
+  </main>
+
+  <footer class="footer">© <script>document.write(new Date().getFullYear())</script> Dove365. Admin training guide. Built for Microsoft Power Platform and Dataverse.</footer>
+
+  <script>
+    const bar = document.querySelector(".scroll-progress");
+    function updateScroll() {
+      const h = document.documentElement;
+      const prog = h.scrollTop / (h.scrollHeight - h.clientHeight) || 0;
+      bar.style.setProperty("--scroll-progress", prog);
+    }
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+  </script>
+</body>
+</html>

@@ -2137,3 +2137,901 @@ footer {
   .strip-item { width: 100%; justify-content: flex-start; }
   .footer-logo img { height: 36px; }
 }
+
+
+/* ══════════════════════════════════════════
+   DROPDOWN NAV — hover gap fix
+   Replaces margin-top with padding-top so
+   the hover zone is unbroken on all pages
+   that use dropdowns.
+══════════════════════════════════════════ */
+
+.nav-links .has-dropdown .dropdown {
+  margin-top: 0 !important;
+  padding-top: 0.75rem;
+}
+
+
+/* ══════════════════════════════════════════
+   DOCS INDEX PAGE  (docs.html)
+══════════════════════════════════════════ */
+
+.docs-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.docs-product-card {
+  background: #fff;
+  border: 1px solid #e2e6ea;
+  border-radius: 14px;
+  padding: 2rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.docs-product-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  border-color: #c9d3dc;
+}
+.docs-product-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.docs-product-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #056281 0%, #0f1e28 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.docs-product-meta { flex: 1; }
+.docs-product-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  background: rgba(7,131,150,0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-top: 0.35rem;
+}
+.docs-product-meta h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+  color: var(--navy-deep);
+}
+.docs-product-description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--mid);
+  margin: 0 0 1.5rem;
+  flex: 1;
+}
+.docs-product-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #f0f2f5;
+}
+.docs-product-stat { text-align: center; }
+.docs-product-stat-val {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+.docs-product-stat-label {
+  font-size: 0.78rem;
+  color: var(--mid);
+}
+.docs-product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.docs-product-actions .btn { text-align: center; display: block; }
+.docs-product-actions .btn-link-small {
+  font-size: 0.875rem;
+  color: var(--mid);
+  text-decoration: none;
+  text-align: center;
+  padding: 0.4rem;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+.docs-product-actions .btn-link-small:hover { color: var(--teal-dark); }
+.docs-intro-strip {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.docs-intro-strip-stat {
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+.docs-intro-strip-stat strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+}
+.docs-intro-strip-stat span {
+  font-size: 0.875rem;
+  color: var(--mid);
+}
+.docs-coming-soon {
+  opacity: 0.55;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .docs-product-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ══════════════════════════════════════════
+   CRM PRODUCT PAGE  (Dove365-CRM-Starter.html)
+══════════════════════════════════════════ */
+
+.product-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.pricing-note-box {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+}
+.pricing-note-box strong { color: #fff; }
+.faq-accordion {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+}
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.4rem 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--near-black);
+  gap: 1.25rem;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--teal-dark); }
+.faq-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--teal-dark);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  display: none;
+  padding: 0 0 1.5rem 0;
+  color: var(--mid);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+.faq-item.open .faq-answer { display: block; }
+.feature-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.kb-cta-box {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.5rem 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.kb-cta-box-text { flex: 1; min-width: 200px; }
+.kb-cta-box-text h3 { margin: 0 0 0.5rem; font-size: 1.3rem; }
+.kb-cta-box-text p { margin: 0 0 1.25rem; color: var(--mid); line-height: 1.65; }
+@media (max-width: 700px) {
+  .feature-grid-2col { grid-template-columns: 1fr; }
+  .product-hero-actions { flex-direction: column; }
+}
+
+
+/* ══════════════════════════════════════════
+   CRM DOCUMENTATION HUB  (crm-docs.html)
+══════════════════════════════════════════ */
+
+.docs-page {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  align-items: start;
+}
+.docs-sidebar {
+  position: sticky;
+  top: 88px;
+  padding: 2.5rem 1.5rem 2.5rem 0;
+  border-right: 1px solid var(--border);
+  min-height: 300px;
+}
+.docs-sidebar-product {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.docs-sidebar-product-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--teal-dark), var(--navy-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.docs-sidebar-product-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy-deep);
+  line-height: 1.25;
+}
+.docs-sidebar-product-sub { font-size: 0.75rem; color: var(--mid); }
+.docs-sidebar-section { margin-bottom: 1.75rem; }
+.docs-sidebar-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding: 0 0.5rem;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.docs-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.875rem;
+  color: var(--navy);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+.docs-sidebar-link:hover { background: rgba(7,131,150,0.07); color: var(--teal); }
+.docs-sidebar-link.active { background: rgba(7,131,150,0.1); color: var(--teal); font-weight: 600; }
+.docs-sidebar-divider { height: 1px; background: var(--border); margin: 1rem 0; }
+.docs-main { padding: 2.5rem 0 2.5rem 3rem; }
+.docs-section { scroll-margin-top: 100px; }
+.docs-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+.docs-section-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.docs-section-icon.green { background: rgba(7,131,150,0.1); color: var(--teal); }
+.docs-section-icon.blue  { background: rgba(35,54,68,0.08); color: var(--navy); }
+.docs-section-icon.amber { background: rgba(201,168,76,0.12); color: #9a7a20; }
+.docs-section-icon.slate { background: rgba(100,116,139,0.1); color: var(--mid); }
+.docs-section-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--navy-deep); margin: 0; }
+.docs-section-desc { font-size: 0.95rem; color: var(--mid); margin: -0.5rem 0 1.5rem; line-height: 1.6; }
+.docs-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.docs-guide-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+}
+.docs-guide-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  border-color: var(--slate);
+  transform: translateY(-1px);
+}
+.docs-guide-card-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.docs-guide-card-type.user  { color: var(--teal); }
+.docs-guide-card-type.admin { color: var(--navy); }
+.docs-guide-card-type.ref   { color: #9a7a20; }
+.docs-guide-card-title { font-size: 0.975rem; font-weight: 600; color: var(--navy-deep); margin-bottom: 0.4rem; line-height: 1.35; }
+.docs-guide-card-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.55; flex: 1; margin-bottom: 1rem; }
+.docs-guide-card-cta { font-size: 0.8rem; font-weight: 600; color: var(--teal); display: flex; align-items: center; gap: 0.25rem; }
+.docs-start-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.docs-start-card {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--navy-deep) 100%);
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: opacity 0.2s;
+}
+.docs-start-card:hover { opacity: 0.9; }
+.docs-start-card .step-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+.docs-start-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin: 0; }
+.docs-start-card p { font-size: 0.8rem; opacity: 0.8; line-height: 1.5; margin: 0; }
+.docs-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 2.5rem;
+  color: var(--slate);
+  font-size: 0.9rem;
+}
+.docs-search-bar svg { flex-shrink: 0; opacity: 0.6; }
+@media (max-width: 860px) {
+  .docs-page { grid-template-columns: 1fr; padding: 0 1.25rem 3rem; }
+  .docs-sidebar {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .docs-sidebar-section { margin-bottom: 0; }
+  .docs-sidebar-section-label { display: none; }
+  .docs-sidebar-product { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .docs-sidebar-divider { display: none; }
+  .docs-main { padding: 2rem 0 0; }
+  .docs-start-strip { grid-template-columns: 1fr; }
+  .docs-guide-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .docs-guide-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ══════════════════════════════════════════
+   RELEASE NOTES PAGE
+══════════════════════════════════════════ */
+
+.release-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(7,131,150,0.08);
+  border: 1px solid rgba(7,131,150,0.2);
+  border-radius: 100px;
+  padding: 0.35rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+  margin-bottom: 1.5rem;
+}
+.release-block {
+  margin-bottom: 3rem;
+}
+.release-block-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+.release-block-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy-deep); margin: 0; }
+.release-block-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.release-block-icon.teal  { background: rgba(7,131,150,0.1); color: var(--teal); }
+.release-block-icon.navy  { background: rgba(35,54,68,0.08); color: var(--navy); }
+.release-block-icon.amber { background: rgba(201,168,76,0.12); color: #9a7a20; }
+.release-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.release-list li {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--near-black);
+}
+.release-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+  margin-top: 0.6rem;
+}
+.release-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 2rem;
+}
+.release-check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--near-black);
+}
+.release-check-item::before {
+  content: '✓';
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .release-check-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE LAYOUT UTILITIES
+   Replaces inline style grids so layouts
+   collapse correctly on mobile.
+══════════════════════════════════════════ */
+
+/* 1.1fr / 0.9fr two-column feature layout */
+.layout-2col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+/* equal two-column layout */
+.layout-2col-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+/* 5-step process override */
+.process-steps-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  margin-top: 3.5rem;
+}
+
+/* 5-column footer (docs.html) */
+.footer-5col {
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr !important;
+  gap: 2rem !important;
+}
+
+@media (max-width: 1100px) {
+  .footer-5col { grid-template-columns: 1.4fr 1fr 1fr 1fr !important; }
+}
+
+@media (max-width: 900px) {
+  .layout-2col,
+  .layout-2col-equal { grid-template-columns: 1fr !important; gap: 2rem; }
+  .process-steps-5 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .footer-5col { grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important; }
+}
+
+@media (max-width: 640px) {
+  .footer-5col { grid-template-columns: 1fr !important; }
+  .process-steps-5 { grid-template-columns: 1fr !important; }
+}
+
+
+/* ══════════════════════════════════════════
+   MOBILE NAV DROPDOWNS
+   Makes .has-dropdown work on touch devices
+   inside the collapsed mobile nav (≤980px).
+══════════════════════════════════════════ */
+
+@media (max-width: 980px) {
+  .nav-links .has-dropdown .dropdown {
+    position: static !important;
+    display: none;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+    padding: 0.25rem 0 0.5rem 0.75rem;
+    margin: 0.25rem 0 0.25rem;
+    min-width: 0;
+  }
+  .nav-links .has-dropdown.open .dropdown { display: block; }
+  .nav-links .has-dropdown > a::after {
+    content: ' ▾';
+    font-size: 0.7em;
+    opacity: 0.5;
+  }
+  .nav-links .has-dropdown.open > a::after { content: ' ▴'; }
+}
+
+
+/* ══════════════════════════════════════════
+   CRM DOCS SIDEBAR — MOBILE
+   Collapses to a horizontal scrollable
+   pill-strip below 860px.
+══════════════════════════════════════════ */
+
+@media (max-width: 860px) {
+  .docs-page { grid-template-columns: 1fr !important; padding: 0 1rem 3rem; }
+  .docs-sidebar {
+    position: static !important;
+    top: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .docs-sidebar::-webkit-scrollbar { display: none; }
+  .docs-sidebar-product { display: none; }
+  .docs-sidebar-divider { display: none; }
+  .docs-sidebar-section {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: top;
+  }
+  .docs-sidebar-section-label { display: none; }
+  .docs-sidebar-link {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0 0.25rem 0.35rem 0;
+    background: rgba(7,131,150,0.06);
+    border: 1px solid rgba(7,131,150,0.18);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  .docs-sidebar-link:hover { background: rgba(7,131,150,0.12); color: var(--teal); }
+  .docs-main { padding: 1.5rem 0 0 !important; }
+  .docs-start-strip { grid-template-columns: 1fr !important; }
+  .docs-guide-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .docs-guide-grid { grid-template-columns: 1fr !important; }
+  .docs-sidebar { padding: 0.5rem 0; }
+}
+
+
+/* ══════════════════════════════════════════
+   MOBILE — COLLAPSIBLE DOCS SIDEBAR (v2)
+   Replaces the horizontal scrollable strip
+   with a <details> collapsible TOC.
+══════════════════════════════════════════ */
+
+/* Desktop: hide the <details> toggle, always show */
+.docs-toc-summary { display: none; }
+
+@media (max-width: 860px) {
+  /* Reset the scrollable strip entirely */
+  .docs-sidebar {
+    position: static !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    display: block !important;
+    padding: 0 !important;
+    border-bottom: 1px solid var(--border);
+    border-right: none;
+  }
+
+  /* <details> wraps all sidebar content */
+  .docs-toc { margin: 0; }
+  .docs-toc-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .docs-toc-summary::-webkit-details-marker { display: none; }
+  .docs-toc-summary::marker { display: none; }
+  .docs-toc-icon {
+    font-size: 0.65rem;
+    color: var(--mid);
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .docs-toc[open] .docs-toc-icon { transform: rotate(180deg); }
+
+  /* Sidebar items when open */
+  .docs-sidebar-product {
+    display: flex !important;
+    padding: 0.75rem 1.25rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .docs-sidebar-section {
+    display: block !important;
+    padding: 0.1rem 1.25rem;
+    margin-bottom: 0;
+  }
+  .docs-sidebar-section-label {
+    display: block;
+    padding: 0.6rem 0.5rem 0.2rem;
+    font-size: 0.65rem;
+  }
+  .docs-sidebar-link {
+    display: flex !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 0.875rem;
+    padding: 0.35rem 0.5rem !important;
+    white-space: normal !important;
+    margin: 0 !important;
+    color: var(--navy);
+  }
+  .docs-sidebar-link:hover { background: rgba(7,131,150,0.06) !important; color: var(--teal) !important; }
+  .docs-sidebar-divider {
+    display: block !important;
+    margin: 0.35rem 1.25rem !important;
+  }
+  .docs-toc[open] > *:not(summary):last-child { padding-bottom: 0.75rem; }
+  .docs-main { padding: 1.5rem 0 0 !important; }
+}
+
+
+/* ══════════════════════════════════════════
+   MOBILE — NAV DROPDOWN FIX (v2)
+   Fixes visual overlap of parent + sub items,
+   and removes the annoying ▾/▴ pseudo-content
+   since JS controls open/close.
+══════════════════════════════════════════ */
+
+@media (max-width: 980px) {
+  /* Dropdown container: static, hidden by default */
+  .nav-links .has-dropdown .dropdown {
+    position: static !important;
+    display: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-left: 2px solid rgba(83,177,205,0.22) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0.1rem 0 0.35rem !important;
+    margin: 0 0 0.35rem 1rem !important;
+    min-width: 0 !important;
+  }
+  .nav-links .has-dropdown.open .dropdown { display: block !important; }
+
+  /* Dropdown links: subordinate styling, no overlap with parent */
+  .nav-links .has-dropdown .dropdown a {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.83rem !important;
+    color: rgba(255,255,255,0.55) !important;
+    background: transparent !important;
+    border-radius: 4px !important;
+  }
+  .nav-links .has-dropdown .dropdown a:hover {
+    background: rgba(83,177,205,0.1) !important;
+    color: rgba(255,255,255,0.9) !important;
+  }
+  .nav-links .has-dropdown .dropdown .dropdown-label { display: none !important; }
+
+  /* Parent trigger: small arrow via CSS, no layout shift */
+  .nav-links .has-dropdown > a::after {
+    content: ' ▾';
+    font-size: 0.65em;
+    opacity: 0.45;
+    margin-left: 0.2em;
+  }
+  .nav-links .has-dropdown.open > a::after { content: ' ▴'; }
+}
+
+
+/* ══════════════════════════════════════════
+   MOBILE — MISC LAYOUT FIXES
+══════════════════════════════════════════ */
+
+/* Breadcrumb: prevent wrapping, allow horizontal scroll */
+.breadcrumb {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.breadcrumb::-webkit-scrollbar { display: none; }
+.breadcrumb a, .breadcrumb span { white-space: nowrap; flex-shrink: 0; }
+
+/* Pricing featured badge: never wrap */
+.featured-badge { white-space: nowrap; }
+
+/* KB box: reduce padding on mobile */
+@media (max-width: 640px) {
+  .kb-cta-box { padding: 1.5rem 1.25rem; gap: 1.25rem; }
+}
+
+/* Wide guide cards (FAQ, Release Notes): stack on mobile */
+.docs-guide-card-wide {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .docs-guide-card-wide { flex-direction: column !important; align-items: flex-start !important; }
+  .docs-guide-card-wide .docs-guide-card-cta { margin-top: 0.5rem; }
+}
+
+/* Release notes mobile */
+@media (max-width: 640px) {
+  .release-version-badge { font-size: 0.78rem; padding: 0.3rem 0.75rem; flex-wrap: wrap; gap: 0.25rem; }
+  .release-block { margin-bottom: 2rem; }
+  .release-check-grid { grid-template-columns: 1fr; }
+  code { word-break: break-all; }
+}
+
+
+/* ══════════════════════════════════════════
+   RELEASE NOTES — MOBILE FIXES
+══════════════════════════════════════════ */
+
+.release-list li {
+  /* Ensure text doesn't escape the flex container */
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.release-list code {
+  display: inline;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.release-block p { overflow-wrap: break-word; word-break: break-word; }
+
+@media (max-width: 640px) {
+  /* Hide logo image in kb-cta-box on mobile — it creates too much left indent */
+  .kb-cta-box > img { display: none; }
+  /* Release notes */
+  .release-version-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .release-block-header h3 { font-size: 1rem; }
+  .release-list li { font-size: 0.9rem; }
+}
+
+
+/* ══════════════════════════════════════════
+   RELEASE LIST — fix layout (v2)
+   Replaces display:flex with block + absolute
+   dot so text fills the full available width
+   and wraps naturally on mobile.
+══════════════════════════════════════════ */
+
+.release-list li {
+  display: block !important;
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--near-black);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  gap: unset;
+  min-width: unset;
+}
+.release-list li::before {
+  content: '';
+  position: absolute !important;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: unset;
+  margin-top: 0;
+}
+.release-list code {
+  font-size: 0.85em;
+  word-break: normal;
+  overflow-wrap: break-word;
+}

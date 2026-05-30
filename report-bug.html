@@ -276,6 +276,19 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 28px rgba(7,131,150,0.28);
     }
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: progress;
+      transform: none;
+      box-shadow: none;
+    }
+    .form-status {
+      display: none;
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      text-align: center;
+    }
 
     /* ── COPYRIGHT ── */
     .page-copyright {
@@ -302,7 +315,7 @@
     </div>
     <div class="card-body">
     <h1>Report a <em>Bug</em></h1>
-    <p>All fields are required. Screenshots are optional but helpful — PNG, JPG, or JPEG, up to 3 files, 10 MB each.</p>
+    <p>All fields are required. Screenshots are optional but helpful — PNG, JPG, or JPEG, up to 1 file, 7 MB max.</p>
 
     <form
       id="bug-report-form"
@@ -345,21 +358,22 @@
         <textarea id="bug-description" name="description" placeholder="Describe the bug, what you expected to happen, and the steps to reproduce it..." required></textarea>
       </div>
 
-      <!-- Hidden real file input -->
-      <input type="file" id="file-input" name="screenshots" accept=".png,.jpg,.jpeg,image/png,image/jpeg" multiple style="display:none">
+      <!-- Hidden real file input. Netlify supports one file per field, so no `multiple`. -->
+      <input type="file" id="file-input" name="screenshot" accept=".png,.jpg,.jpeg,image/png,image/jpeg" style="display:none">
 
       <div>
-        <span class="upload-label">Screenshots <span style="color:var(--mid);font-weight:400;">(optional)</span></span>
+        <span class="upload-label">Screenshot <span style="color:var(--mid);font-weight:400;">(optional)</span></span>
         <div class="drop-zone" id="drop-zone">
-          <p>Drag and drop your screenshots here</p>
-          <button type="button" class="drop-zone-btn" id="select-files-btn">Select Files</button>
+          <p>Drag and drop your screenshot here</p>
+          <button type="button" class="drop-zone-btn" id="select-files-btn">Select File</button>
           <ul class="file-list" id="file-list"></ul>
-          <p class="upload-hint">PNG, JPG or JPEG &nbsp;·&nbsp; Up to 3 files &nbsp;·&nbsp; Max 10 MB each</p>
+          <p class="upload-hint">PNG, JPG or JPEG &nbsp;·&nbsp; Up to 1 file &nbsp;·&nbsp; Max 7 MB</p>
           <p class="upload-error" id="upload-error"></p>
         </div>
       </div>
 
       <button type="submit" class="btn-submit">Submit Bug Report →</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
     </div>
   </div>
@@ -372,8 +386,8 @@
 
 <script>
 (function () {
-  var MAX_FILES = 3;
-  var MAX_BYTES = 10 * 1024 * 1024;
+  var MAX_FILES = 1;
+  var MAX_BYTES = 7 * 1024 * 1024;   // keep the whole request under Netlify's 8 MB limit
   var ALLOWED_TYPES = ['image/png', 'image/jpeg'];
   var ALLOWED_EXT = /\.(png|jpe?g)$/i;
 
@@ -383,6 +397,7 @@
   var selectBtn   = document.getElementById('select-files-btn');
   var errorEl     = document.getElementById('upload-error');
   var form        = document.getElementById('bug-report-form');
+  var statusEl    = document.getElementById('form-status');
 
   var selectedFiles = [];
 
@@ -445,7 +460,7 @@
     var rejected = [];
     Array.from(newFiles).forEach(function (f) {
       if (selectedFiles.length >= MAX_FILES) {
-        rejected.push(f.name + ' (max 3 files)');
+        rejected.push(f.name + ' (max 1 file)');
         return;
       }
       if (!ALLOWED_TYPES.includes(f.type) && !ALLOWED_EXT.test(f.name)) {
@@ -453,7 +468,7 @@
         return;
       }
       if (f.size > MAX_BYTES) {
-        rejected.push(f.name + ' (exceeds 10 MB)');
+        rejected.push(f.name + ' (exceeds 7 MB)');
         return;
       }
       var dupe = selectedFiles.some(function (s) { return s.name === f.name && s.size === f.size; });
@@ -464,8 +479,38 @@
     syncInput();
   }
 
-  form.addEventListener('submit', function () {
+  function setStatus(msg, isError) {
+    if (!statusEl) return;
+    statusEl.textContent = msg || '';
+    statusEl.style.display = msg ? 'block' : 'none';
+    statusEl.style.color = isError ? '#c0392b' : 'var(--mid)';
+  }
+
+  // Submit with AJAX (Netlify's recommended path for file uploads).
+  // We deliberately do NOT set a Content-Type header — the browser sets
+  // multipart/form-data with the correct boundary automatically.
+  // The form keeps method/action/data-netlify so it still works as a plain
+  // Netlify POST if fetch/FormData aren't available (progressive enhancement).
+  form.addEventListener('submit', function (e) {
     syncInput();
+    if (!window.fetch || !window.FormData) return;   // fall back to native POST
+    e.preventDefault();
+    showError('');
+
+    var submitBtn = form.querySelector('.btn-submit');
+    var originalText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting…'; }
+    setStatus('Submitting your report…', false);
+
+    fetch('/', { method: 'POST', body: new FormData(form) })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        window.location.href = form.getAttribute('action') || '/thank-you.html';
+      })
+      .catch(function (err) {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+        setStatus('Sorry — your report couldn’t be sent (' + err.message + '). Please try again.', true);
+      });
   });
 })();
 </script>

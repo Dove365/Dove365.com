@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=31">
+  <link rel="stylesheet" href="assets/css/style.css?v=41">
   <link rel="icon" type="image/png" href="assets/images/logo/Logo.png">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
 </head>
@@ -25,11 +25,11 @@
   </button>
   <ul class="nav-links" id="primary-navigation">
     <li><a href="index.html">Home</a></li>
+    <li><a href="ai-enablement.html">AI Enablement</a></li>
     <li class="has-dropdown">
       <a href="services.html">Services</a>
       <div class="dropdown">
         <div class="dropdown-label">Services</div>
-        <a href="ai-enablement.html">AI Enablement</a>
         <a href="services.html#custom-solutions">Operational Systems &amp; Custom Solutions</a>
         <a href="services.html#solution-architecture">Consultancy &amp; Architecture</a>
       </div>
@@ -57,18 +57,64 @@
 
 <div class="page-offset">
 
-  <div class="page-hero ai-page-hero">
-    <div class="page-hero-inner">
-      <h1>AI Enablement for<br><em>Microsoft-Focused Businesses</em></h1>
-      <p>AI adoption should not start with tools. It should start with business value, governance, data security, and clear use cases.</p>
-      <div class="case-detail-actions">
-        <a href="contact.html" class="btn btn-primary">Book a Call →</a>
-        <a href="#get-ai-ready-workshop" class="btn btn-ghost-light">Get AI Ready</a>
+  <!-- ✦ NEURAL FOUNDRY HERO — interactive neural-network canvas + live AI console -->
+  <section class="ai-neural-hero" data-neural-host aria-label="AI Enablement">
+    <canvas class="neural-canvas" data-neural aria-hidden="true"></canvas>
+    <div class="neural-veil" aria-hidden="true"></div>
+
+    <div class="neural-hero-inner">
+      <div class="neural-copy">
+        <!-- <span class="neural-eyebrow"><span class="live-dot" aria-hidden="true"></span>AI Enablement · Microsoft-Native</span> -->
+        <h1 class="neural-headline">
+          <span class="line">Put AI to work</span>
+          <span class="line grad">without losing control.</span>
+        </h1>
+        <p class="neural-sub">
+          We help Microsoft-focused businesses adopt AI where it actually pays off — grounded in your own data, wrapped in governance, and built around the workflows you already run.
+        </p>
+        <div class="neural-actions">
+          <a href="contact.html" class="btn btn-primary">Book an AI Readiness Call →</a>
+          <a href="#get-ai-ready-workshop" class="btn btn-ghost-light">Explore the offers</a>
+        </div>
+        <div class="neural-metrics">
+          <div class="neural-metric">
+            <strong data-countup="100" data-suffix="%">0%</strong>
+            <span>On your governed M365 data</span>
+          </div>
+          <div class="neural-metric">
+            <strong data-countup="4">0</strong>
+            <span>Productised AI offers</span>
+          </div>
+          <div class="neural-metric">
+            <strong data-countup="30" data-suffix="-day">0</strong>
+            <span>Roadmap to first value</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="neural-console-wrap">
+        <div class="ai-console" data-ai-console data-tilt="5" role="img" aria-label="Demonstration of a governed Dove365 Copilot assistant answering business questions">
+          <div class="ai-console-head">
+            <div class="ai-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="ai-title">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2z" fill="#53B1CD"/><path d="M19 14l.9 2.6L22.5 17.5l-2.6.9L19 21l-.9-2.6L15.5 17.5l2.6-.9L19 14z" fill="#e8c97a"/></svg>
+            Copilot
+            </span>
+            <span class="ai-live"><span class="live-dot" aria-hidden="true"></span>Live</span>
+          </div>
+          <div class="ai-feed" data-ai-feed aria-hidden="true"></div>
+          <div class="ai-console-foot">
+            <svg class="shield" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5l8-3z"/></svg>
+            Grounded on your Microsoft 365 data · Governed by design
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <section class="section ai-intro-section">
+    <a class="neural-cue" href="#ai-intro" aria-label="Scroll to content">Scroll</a>
+  </section>
+
+  <section class="section ai-intro-section" id="ai-intro">
     <div class="container ai-intro-grid">
       <div>
         <div class="section-tag">Practical AI Enablement</div>
@@ -267,6 +313,7 @@
   </footer>
 
 </div>
-<script defer src="assets/js/main.js?v=42"></script>
+<script defer src="assets/js/main.js?v=43"></script>
+<script defer src="assets/js/lab.js?v=1"></script>
 </body>
 </html>

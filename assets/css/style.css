@@ -3039,3 +3039,489 @@ footer {
   word-break: normal;
   overflow-wrap: break-word;
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   ✦ LAB — CUTTING-EDGE INTERACTION LAYER
+   Styles for the interactive neural-network hero, the live
+   "Dove365 Copilot" console, cursor spotlight, magnetic CTAs,
+   3D tilt and count-up. Paired with assets/js/lab.js.
+══════════════════════════════════════════════════════════════ */
+
+/* ── motion keyframes ── */
+@keyframes auroraDrift {
+  0%   { transform: translate3d(-6%, -3%, 0) rotate(0deg) scale(1.05); }
+  50%  { transform: translate3d(6%, 4%, 0) rotate(8deg) scale(1.18); }
+  100% { transform: translate3d(-6%, -3%, 0) rotate(0deg) scale(1.05); }
+}
+@keyframes aiSpin { to { transform: rotate(360deg); } }
+@keyframes aiBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(83,177,205,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(83,177,205,0); }
+  100% { box-shadow: 0 0 0 0 rgba(83,177,205,0); }
+}
+@keyframes cueFloat { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 7px); } }
+
+/* ══ NEURAL HERO ══ */
+.ai-neural-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100svh - 72px);
+  display: flex;
+  align-items: center;
+  padding: 5.5rem 4rem 6rem;
+  background:
+    radial-gradient(circle at 78% 30%, rgba(7,131,150,0.20), transparent 46%),
+    radial-gradient(circle at 12% 80%, rgba(201,168,76,0.10), transparent 44%),
+    linear-gradient(150deg, #0c1a23 0%, #112634 52%, #0a161e 100%);
+  overflow: hidden;
+}
+.neural-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+/* animated aurora wash */
+.ai-neural-hero::before {
+  content: '';
+  position: absolute; inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 44% at 70% 28%, rgba(83,177,205,0.22), transparent 70%),
+    radial-gradient(34% 40% at 26% 72%, rgba(7,131,150,0.20), transparent 70%),
+    radial-gradient(30% 36% at 50% 50%, rgba(201,168,76,0.10), transparent 72%);
+  filter: blur(36px);
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  animation: auroraDrift 22s ease-in-out infinite;
+}
+/* readability veil so left copy stays crisp over the canvas */
+.neural-veil {
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(105deg, rgba(10,22,30,0.78) 0%, rgba(10,22,30,0.32) 42%, transparent 70%),
+    linear-gradient(0deg, rgba(10,22,30,0.55), transparent 32%);
+}
+.neural-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  align-items: center;
+  gap: 4rem;
+}
+.neural-copy { max-width: 580px; }
+.neural-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  background: rgba(83,177,205,0.12);
+  border: 1px solid rgba(83,177,205,0.28);
+  color: var(--teal-light);
+  font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+  padding: 0.4rem 0.95rem; border-radius: 100px;
+  margin-bottom: 1.6rem;
+}
+.neural-eyebrow .live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--teal-light);
+  animation: livePulse 2.2s ease-out infinite;
+}
+.neural-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.6rem, 5.4vw, 4.5rem);
+  line-height: 1.03;
+  letter-spacing: -0.012em;
+  color: #fff;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+.neural-headline .line { display: block; }
+.neural-headline .grad {
+  background: linear-gradient(100deg, var(--teal-light) 0%, #8fe3c6 46%, var(--gold-light) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+.neural-headline .is-scrambling { color: var(--teal-light); }
+.neural-sub {
+  color: rgba(255,255,255,0.68);
+  font-size: 1.06rem; line-height: 1.72;
+  max-width: 484px; margin-bottom: 2.1rem;
+}
+.neural-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.4rem; }
+.neural-metrics {
+  display: flex; gap: 2.4rem; flex-wrap: wrap;
+  padding-top: 1.7rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.neural-metric strong {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.05rem; line-height: 1; color: #fff;
+  margin-bottom: 0.35rem;
+}
+.neural-metric span {
+  font-size: 0.74rem; color: rgba(255,255,255,0.52);
+  letter-spacing: 0.04em;
+}
+
+/* ══ LIVE AI CONSOLE ══ */
+.neural-console-wrap { perspective: 1100px; }
+.ai-console {
+  position: relative;
+  width: 100%; max-width: 470px; margin-left: auto;
+  border-radius: 18px;
+  background: linear-gradient(165deg, rgba(22,40,52,0.94), rgba(11,22,30,0.9));
+  border: 1px solid rgba(83,177,205,0.22);
+  box-shadow: 0 44px 100px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+  backdrop-filter: blur(16px) saturate(1.25);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.2,0.7,0.2,1);
+  will-change: transform;
+}
+.ai-console-head {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.02);
+}
+.ai-dots { display: flex; gap: 6px; }
+.ai-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.16); }
+.ai-dots span:nth-child(1) { background: rgba(83,177,205,0.7); }
+.ai-title {
+  display: flex; align-items: center; gap: 0.45rem;
+  font-size: 0.82rem; font-weight: 600; color: #fff;
+  margin-left: 0.2rem;
+}
+.ai-title svg { width: 15px; height: 15px; }
+.ai-live {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--teal-light);
+  background: rgba(83,177,205,0.1);
+  border: 1px solid rgba(83,177,205,0.22);
+  padding: 0.2rem 0.55rem; border-radius: 100px;
+}
+.ai-live .live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal-light);
+  animation: livePulse 2s ease-out infinite;
+}
+.ai-feed {
+  height: 326px;
+  padding: 1.1rem;
+  display: flex; flex-direction: column; gap: 0.85rem;
+  overflow: hidden;
+  transition: opacity 0.45s ease;
+  -webkit-mask-image: linear-gradient(transparent, #000 11%, #000 90%, transparent);
+  mask-image: linear-gradient(transparent, #000 11%, #000 90%, transparent);
+}
+.ai-feed.ai-feed-clear { opacity: 0; }
+.ai-row { display: flex; gap: 0.6rem; align-items: flex-start; }
+.ai-row-user { flex-direction: row-reverse; }
+.ai-avatar {
+  width: 27px; height: 27px; border-radius: 8px;
+  display: grid; place-items: center; flex-shrink: 0;
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.02em;
+}
+.ai-row-user .ai-avatar { background: rgba(83,177,205,0.16); color: var(--teal-light); }
+.ai-row-assistant .ai-avatar {
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: #fff; font-size: 0.8rem;
+  box-shadow: 0 6px 16px rgba(7,131,150,0.4);
+}
+.ai-bubble {
+  font-size: 0.83rem; line-height: 1.55;
+  padding: 0.62rem 0.82rem; border-radius: 13px;
+  max-width: 85%;
+}
+.ai-row-user .ai-bubble {
+  background: rgba(83,177,205,0.15); color: #ecf7fb;
+  border-radius: 13px 13px 4px 13px;
+}
+.ai-row-assistant .ai-bubble {
+  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.84);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 13px 13px 13px 4px;
+}
+.ai-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.55rem; }
+.ai-tool {
+  display: inline-flex; align-items: center; gap: 0.42rem;
+  font-size: 0.68rem;
+  padding: 0.26rem 0.58rem; border-radius: 100px;
+  background: rgba(7,131,150,0.12);
+  border: 1px solid rgba(83,177,205,0.22);
+  color: var(--teal-light);
+}
+.ai-tool-spin {
+  width: 11px; height: 11px; border-radius: 50%;
+  border: 2px solid rgba(83,177,205,0.3);
+  border-top-color: var(--teal-light);
+  animation: aiSpin 0.7s linear infinite;
+}
+.ai-tool-check { color: var(--teal-light); font-size: 0.72rem; line-height: 1; }
+.ai-caret {
+  display: inline-block; width: 7px; height: 0.95em;
+  vertical-align: -0.12em;
+  background: var(--teal-light); margin-left: 2px; border-radius: 1px;
+  animation: aiBlink 1.05s steps(1) infinite;
+}
+.ai-console-foot {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.72rem 1.1rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.68rem; color: rgba(255,255,255,0.42);
+  background: rgba(255,255,255,0.015);
+}
+.ai-console-foot .shield { color: var(--teal-light); }
+
+/* scroll cue for the neural hero */
+.neural-cue {
+  position: absolute; left: 50%; bottom: 1.7rem; z-index: 3;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none;
+  animation: cueFloat 2.4s ease-in-out infinite;
+}
+.neural-cue::after {
+  content: ''; display: block; width: 1px; height: 34px;
+  margin: 0.65rem auto 0;
+  background: linear-gradient(transparent, var(--teal-light), transparent);
+}
+
+/* ══ CURSOR SPOTLIGHT (injected overlay) ══ */
+.has-spotlight { position: relative; isolation: isolate; }
+.has-spotlight > *:not(.card-spotlight) { position: relative; z-index: 1; }
+.card-spotlight {
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(210px circle at var(--mx, -300px) var(--my, -300px),
+              rgba(83,177,205,0.16), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.has-spotlight:hover .card-spotlight { opacity: 1; }
+
+/* magnetic CTAs — smooth spring back */
+.btn-primary, .nav-cta { transition: transform 0.18s cubic-bezier(0.2,0.7,0.2,1), background 0.2s, box-shadow 0.2s; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 980px) {
+  .ai-neural-hero { min-height: auto; padding: 4.5rem 1.5rem 5rem; }
+  .neural-hero-inner { grid-template-columns: 1fr; gap: 2.6rem; }
+  .neural-copy { max-width: 640px; }
+  .ai-console { max-width: 100%; margin-left: 0; }
+  .neural-veil {
+    background:
+      linear-gradient(180deg, rgba(10,22,30,0.5), rgba(10,22,30,0.2) 40%, transparent 65%),
+      linear-gradient(0deg, rgba(10,22,30,0.55), transparent 30%);
+  }
+  /* tilt is pointer-driven only; reset any inline transform on touch */
+  .ai-console[style] { transform: none !important; }
+}
+@media (max-width: 640px) {
+  .ai-neural-hero { padding: 3.5rem 1rem 4rem; }
+  .ai-neural-hero::before { opacity: 0.6; filter: blur(28px); }
+  .neural-headline { font-size: clamp(2.15rem, 11vw, 3.1rem); }
+  .neural-sub { font-size: 0.96rem; }
+  .neural-actions { flex-direction: column; align-items: stretch; }
+  .neural-actions .btn { justify-content: center; width: 100%; }
+  .neural-metrics { gap: 1.4rem; }
+  .neural-metric strong { font-size: 1.7rem; }
+  .ai-feed { height: 300px; }
+  .neural-cue { display: none; }
+}
+
+/* reduced-motion: kill aurora + cue drift, keep everything legible */
+@media (prefers-reduced-motion: reduce) {
+  .ai-neural-hero::before { animation: none; }
+  .neural-cue { animation: none; }
+  .ai-tool-spin { animation: none; }
+  .ai-caret { animation: none; opacity: 1; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   ✦ HOMEPAGE SHOWCASE — device frame that switches between the
+   real CRM app screenshots and the live Copilot console.
+══════════════════════════════════════════════════════════════ */
+@keyframes showcaseFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* favour the showcase column slightly on the home hero */
+.ai-neural-hero.home-showcase .neural-hero-inner { grid-template-columns: 0.9fr 1.1fr; }
+
+.hero-trust { display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; margin-top: 2rem; }
+.hero-trust span {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.74rem; color: rgba(255,255,255,0.62);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.36rem 0.72rem; border-radius: 100px;
+}
+.hero-trust span::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--teal-light);
+}
+
+/* the showcase = a 3D deck where whole app windows tumble in and out,
+   a persistent progress bar, and the tab switcher below. */
+.showcase {
+  position: relative;
+  width: 100%; max-width: 660px; margin-left: auto;
+}
+.showcase-deck {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #08121a;
+  perspective: 1700px;
+}
+
+/* ── wild whole-window flip ── each window tumbles in from one side with a
+   3D spin + scale overshoot + motion blur, while the outgoing window whips
+   out the opposite side, so they collide across the deck. */
+@keyframes frameSlam {
+  0%   { opacity: 0; transform: translateX(64%) rotateY(-94deg) rotateX(12deg) rotateZ(-10deg) scale(0.42); filter: blur(26px); }
+  40%  { opacity: 1; }
+  62%  { transform: translateX(-7%) rotateY(15deg) rotateX(-5deg) rotateZ(3deg) scale(1.12); filter: blur(0); }
+  82%  { transform: translateX(3%) rotateY(-6deg) rotateX(2deg) rotateZ(-1.5deg) scale(0.97); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes frameSlamAlt {
+  0%   { opacity: 0; transform: translateX(-64%) rotateY(94deg) rotateX(12deg) rotateZ(10deg) scale(0.42); filter: blur(26px); }
+  40%  { opacity: 1; }
+  62%  { transform: translateX(7%) rotateY(-15deg) rotateX(-5deg) rotateZ(-3deg) scale(1.12); filter: blur(0); }
+  82%  { transform: translateX(-3%) rotateY(6deg) rotateX(2deg) rotateZ(1.5deg) scale(0.97); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+.showcase-window {
+  position: absolute; inset: 0; margin: 0;
+  display: flex; flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0c1a23;
+  border: 1px solid rgba(83,177,205,0.22);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.07);
+  opacity: 0; pointer-events: none;
+  transform-origin: 50% 50%;
+  transform: translateX(-66%) rotateY(88deg) rotateX(-10deg) rotateZ(9deg) scale(0.44);
+  filter: blur(18px);
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.62,-0.34,0.3,1.45), filter 0.5s ease;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+}
+.showcase-window:nth-child(even) {
+  transform: translateX(66%) rotateY(-88deg) rotateX(-10deg) rotateZ(-9deg) scale(0.44);
+}
+.showcase-window.is-active {
+  opacity: 1; pointer-events: auto; z-index: 3;
+  transform: none; filter: none;
+  animation: frameSlam 0.98s cubic-bezier(0.2,0.84,0.26,1.04) both;
+}
+.showcase-window:nth-child(even).is-active { animation-name: frameSlamAlt; }
+
+/* window chrome (screenshot windows only — the AI window uses the console header) */
+.showcase-bar {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.025);
+}
+.showcase-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.showcase-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.16); }
+.showcase-dots span:first-child { background: rgba(83,177,205,0.7); }
+.showcase-urlbar {
+  flex: 1; min-width: 0;
+  display: flex; align-items: center; gap: 0.45rem;
+  font-size: 0.72rem; color: rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px; padding: 0.28rem 0.8rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.showcase-urlbar svg { flex-shrink: 0; opacity: 0.7; }
+.showcase-shot { position: relative; flex: 1; min-height: 0; overflow: hidden; background: #0a161e; }
+.showcase-shot img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+
+/* AI window — console fills it edge to edge; its header is the chrome */
+.showcase-window-ai { background: linear-gradient(165deg, rgba(18,34,45,0.98), rgba(10,20,28,0.98)); }
+.showcase-window-ai .ai-console {
+  width: 100%; height: 100%; max-width: none; margin: 0;
+  border: 0; border-radius: 0; box-shadow: none;
+  background: transparent;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  display: flex; flex-direction: column;
+}
+.showcase-window-ai .ai-feed { height: auto; flex: 1; min-height: 0; }
+
+/* auto-advance progress (persistent, below the deck) */
+.showcase-progress {
+  position: relative; height: 2px; margin-top: 0.7rem;
+  background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden;
+}
+.showcase-progress i {
+  display: block; height: 100%; width: 100%;
+  transform-origin: left; transform: scaleX(0);
+  background: linear-gradient(90deg, var(--teal), var(--teal-light));
+}
+
+.showcase-tabs {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.4rem; margin-top: 1rem;
+}
+.showcase-tab {
+  display: inline-flex; align-items: center; gap: 0.42rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.42rem 0.85rem; border-radius: 100px;
+  cursor: pointer; transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.showcase-tab:hover { color: #fff; border-color: rgba(83,177,205,0.45); transform: translateY(-1px); }
+.showcase-tab.is-active {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  box-shadow: 0 8px 20px rgba(7,131,150,0.4);
+}
+.showcase-tab .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.65; }
+.showcase-tab svg { width: 13px; height: 13px; }
+
+@media (max-width: 980px) {
+  .ai-neural-hero.home-showcase .neural-hero-inner { grid-template-columns: 1fr; }
+  .showcase { max-width: 100%; margin-left: 0; }
+}
+@media (max-width: 640px) {
+  .showcase-urlbar { display: none; }
+  .showcase-tabs { gap: 0.3rem; }
+  .showcase-tab { font-size: 0.7rem; padding: 0.36rem 0.7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .showcase-window,
+  .showcase-window:nth-child(even) {
+    transition: opacity 0.25s ease;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+  .showcase-progress i { display: none; }
+}

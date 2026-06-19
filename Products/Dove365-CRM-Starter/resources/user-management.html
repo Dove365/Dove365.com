@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../assets/css/style.css?v=41">
+  <style>.doc-figure{margin:2rem auto 0;max-width:1050px}.doc-figure img{display:block;width:100%;height:auto;border:1px solid rgba(9,31,55,.12);border-radius:12px;box-shadow:0 16px 36px rgba(9,31,55,.1)}.teams-layout{gap:1.5rem;align-items:stretch}.teams-layout>.scope-box{height:100%;margin-top:0}.teams-layout .case-point-list{margin:0}</style>
   <link rel="icon" type="image/png" href="../../../assets/images/logo/Logo.png">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
 </head>
@@ -107,6 +108,7 @@
       <div class="section-tag">Managing Users</div>
       <h2 class="display">Provisioning and <em>maintaining users</em></h2>
       <p class="lead">User management is handled through the Dove365 Admin app, which gives CRM administrators a central place to configure users, assign roles, and manage mailboxes and team memberships.</p>
+      <figure class="doc-figure"><img src="../images/Dove365%20Admin%20Screenshots/Dove365%20Admin%20User%20View.png" alt="Dove365 Admin active users view" loading="lazy" decoding="async"></figure>
       <div class="service-features" style="margin-top:2.5rem;">
         <div class="feature-item">
           <span class="feature-check">✓</span>
@@ -114,7 +116,7 @@
         </div>
         <div class="feature-item">
           <span class="feature-check">✓</span>
-          <div><h4>Role assign the Dove365 CRM User provides standard access for day-to-day work. Dove365 CRM Admin provides additional access for administration and configuration tasks.</p></div>
+          <div><h4>Role assignment</h4><p>Dove365 CRM User provides standard access for day-to-day work. Dove365 CRM Admin provides additional access for administration and configuration tasks.</p></div>
         </div>
         <div class="feature-item">
           <span class="feature-check">✓</span>
@@ -129,6 +131,7 @@
           <div><h4>Outlook add-in deployment</h4><p>Users who need the Dynamics 365 App for Outlook require an additional step: the app must be deployed to their Outlook account by the CRM administrator through the Microsoft admin centre.</p></div>
         </div>
       </div>
+      <figure class="doc-figure"><img src="../images/Dove365%20Admin%20Screenshots/Dove365%20Admin%20User%20Form.png" alt="Dove365 Admin user form with security role manager" loading="lazy" decoding="async"></figure>
       <div class="case-note" style="margin-top:2.5rem;">Users must exist in Microsoft 365 and have a Power Apps Premium licence before they appear in the CRM. If a user isn&rsquo;t appearing after being provisioned, speak to your Microsoft 365 administrator to confirm the licence and environment access are correctly configured.</div>
     </div>
   </section>
@@ -139,7 +142,8 @@
       <div class="section-tag">Teams</div>
       <h2 class="display">Grouping users <em>with teams</em></h2>
       <p class="lead">Teams group users together for role assignment and record ownership. Roles assigned to a team apply to all members, making it easier to manage access at scale without configuring each user individually.</p>
-      <div class="layout-2col-equal">
+      <figure class="doc-figure"><img src="../images/Dove365%20Admin%20Screenshots/Dove365%20Admin%20Team%20View.png" alt="Dove365 Admin teams view" loading="lazy" decoding="async"></figure>
+      <div class="layout-2col-equal teams-layout">
         <div class="scope-box">
           <h4>When to use teams</h4>
           <div class="scope-col">
@@ -150,21 +154,25 @@
             <div class="scope-item scope-yes">Grouping users by region, department, or function</div>
           </div>
         </div>
-        <div class="case-point-list">
-          <div class="case-point">
-            <strong>Creating a team</strong>
-            <span>Teams are created in the Admin app. Give the team a name, assign a business unit, and designate an administrator. Then add members using the team membership area on the team record.</span>
-          </div>
-          <div class="case-point">
-            <strong>Roles on teams versus individuals</strong>
-            <span>A role assigned to a team applies to all members through their team membership. Roles can also be assigned directly to individual users. Both apply simultaneously — they are additive, not exclusive.</span>
-          </div>
-          <div class="case-point">
-            <strong>Outlook add-in and teams</strong>
-            <span>The Dynamics 365 for Outlook role must be assigned directly to individual users. Team membership does not automatically grant this specific access — it must be assigned on the user record directly.</span>
+        <div class="scope-box">
+          <h4>How teams work</h4>
+          <div class="case-point-list">
+            <div class="case-point">
+              <strong>Creating a team</strong>
+              <span>Teams are created in the Admin app. Give the team a name, assign a business unit, and designate an administrator. Then add members using the team membership area on the team record.</span>
+            </div>
+            <div class="case-point">
+              <strong>Roles on teams versus individuals</strong>
+              <span>A role assigned to a team applies to all members through their team membership. Roles can also be assigned directly to individual users. Both apply simultaneously — they are additive, not exclusive.</span>
+            </div>
+            <div class="case-point">
+              <strong>Outlook add-in and teams</strong>
+              <span>The Dynamics 365 for Outlook role must be assigned directly to individual users. Team membership does not automatically grant this specific access — it must be assigned on the user record directly.</span>
+            </div>
           </div>
         </div>
       </div>
+      <figure class="doc-figure"><img src="../images/Dove365%20Admin%20Screenshots/Dove365%20Admin%20Team%20Form.png" alt="Dove365 Admin team form with members and Security Role Manager" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
@@ -291,5 +299,6 @@
 </div>
 <script defer src="../../../assets/js/main.js?v=42"></script>
 <script defer src="../../../assets/js/lab.js?v=1"></script>
+<script defer src="screenshot-lightbox.js"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css?v=41">
+  <style>.product-shot{margin:2.5rem 0 0}.product-shot img{display:block;width:100%;height:auto;border:1px solid rgba(9,31,55,.12);border-radius:14px;box-shadow:0 18px 42px rgba(9,31,55,.12)}</style>
   <link rel="icon" type="image/png" href="../assets/images/logo/Logo.png">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
 </head>
@@ -191,6 +192,16 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:white;">
+    <div class="container">
+      <div class="section-tag">Dashboards</div>
+      <h2 class="display">Start each day with <em>My Work</em></h2>
+      <p class="lead">The personal dashboard brings together owned leads, opportunities, cases, upcoming work, and overdue activities alongside CRM-wide dashboards and expanded in-app guidance.</p>
+      <figure class="product-shot"><img src="Dove365-CRM-Starter/images/Dove365%20CRM%20Screenshots/Dove365%20CRM%20My%20Work.png" alt="Dove365 CRM Starter My Work Dashboard showing personal KPIs and work lists" loading="lazy" decoding="async"></figure>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem;"><a href="Dove365-CRM-Starter/resources/dashboards.html" class="btn btn-primary">Dashboard Guide &rarr;</a><a href="Dove365-CRM-Starter/resources/release-notes.html" class="btn btn-outline">Release Notes &rarr;</a></div>
     </div>
   </section>
 
@@ -403,10 +414,13 @@
         <img src="../assets/images/logo/Dove365Transparent.png" width="80" height="80" alt="" aria-hidden="true" style="flex-shrink:0;object-fit:contain;opacity:0.85;">
         <div class="kb-cta-box-text">
           <h3>Dove365 CRM — Starter Documentation</h3>
-          <p>Step-by-step guides for everyday users, administrators, and new team members. Covering lead management, opportunity management, case handling, Outlook integration, SharePoint documents, security roles, and more.</p>
+          <p>Step-by-step guides for everyday users, administrators, and new team members. Covering dashboards, lead and opportunity management, case handling, Outlook, SharePoint, security, and environment health.</p>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;">
             <a href="Dove365-CRM-Starter/crm-docs.html#user-guides" class="btn btn-primary">Browse User Guides →</a>
-            <a href="Dove365-CRM-Starter/crm-docs.html#admin-guides" class="btn btn-outline">Admin Guides →</a>
+            <a href="Dove365-CRM-Starter/resources/dashboards.html" class="btn btn-outline">CRM Dashboard Guide →</a>
+            <a href="Dove365-CRM-Starter/resources/environment-health-dashboard.html" class="btn btn-outline">Environment Health Guide →</a>
+            <a href="Dove365-CRM-Starter/resources/advanced-settings.html" class="btn btn-outline">Advanced Settings Guide →</a>
+            <a href="Dove365-CRM-Starter/resources/release-notes.html" class="btn btn-outline">Release Notes →</a>
           </div>
         </div>
       </div>
@@ -481,6 +495,7 @@
 
 <script defer src="../assets/js/main.js?v=42"></script>
 <script defer src="../assets/js/lab.js?v=1"></script>
+<script defer src="Dove365-CRM-Starter/resources/screenshot-lightbox.js"></script>
 <script>
   document.querySelectorAll('.faq-question').forEach(function(btn) {
     btn.addEventListener('click', function() {

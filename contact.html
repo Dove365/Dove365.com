@@ -94,13 +94,13 @@
           <p>Prefer to write? Fill in the form and we'll get back to you within one working day.</p>
           <div class="form-row">
             <div class="form-group"><label for="first-name">First Name</label><input id="first-name" name="first-name" type="text" placeholder="First name" required></div>
-            <div class="form-group"><label for="last-name">Last Name</label><input id="last-name" name="last-name" type="text" placeholder="Last name" required></div>
+            <div class="form-group"><label for="last-name">Last Name</label><input id="last-name" name="last-name" type="text" placeholder="Last name"></div>
           </div>
           <div class="form-group"><label for="business-email">Business Email</label><input id="business-email" name="email" type="email" placeholder="hello@yourbusiness.com" required></div>
-          <div class="form-group"><label for="company-name">Company Name</label><input id="company-name" name="company-name" type="text" placeholder="Your Business Ltd"></div>
+          <div class="form-group"><label for="company-name">Company Name</label><input id="company-name" name="company-name" type="text" placeholder="Your Business Ltd" required></div>
           <div class="form-group">
             <label for="enquiry-type">What are you looking for?</label>
-            <select id="enquiry-type" name="enquiry-type" required>
+            <select id="enquiry-type" name="enquiry-type">
               <option value="" disabled selected>Select an option</option>
               <option>AI Enablement / AI Readiness Workshop</option>
               <option>Microsoft Copilot Governance</option>
@@ -114,7 +114,11 @@
               <option>Not sure yet / Something else</option>
             </select>
           </div>
-          <div class="form-group"><label for="message">Tell us more</label><textarea id="message" name="message" placeholder="Briefly describe your current situation and what you're hoping to improve..." required></textarea></div>
+          <div class="form-group"><label for="message">Tell us more</label><textarea id="message" name="message" placeholder="Briefly describe your current situation and what you're hoping to improve..."></textarea></div>
+          <div class="form-checkbox">
+            <input id="terms-agree" name="terms-agree" type="checkbox" value="Agreed" required>
+            <label for="terms-agree">I agree to the <a href="terms-and-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and understand how Dove365 handles my information under the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</label>
+          </div>
           <div data-netlify-recaptcha="true"></div>
           <button type="submit" class="btn btn-primary">Send Message →</button>
         </form>

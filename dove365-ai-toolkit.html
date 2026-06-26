@@ -163,7 +163,9 @@
             name="dove365-ai-toolkit"
             method="POST"
             data-netlify="true"
+            data-netlify-recaptcha="true"
             netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
             data-endpoint="/"
             novalidate
           >
@@ -217,6 +219,7 @@
               <label for="consent">I agree to receive the requested Dove365 AI Toolkit and occasional Microsoft-related insights from Dove365. I understand that I can unsubscribe at any time. See our <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</label>
             </div>
 
+            <div data-netlify-recaptcha="true"></div>
             <div class="case-outcome-box" id="form-error" role="alert" hidden></div>
             <div class="case-detail-actions">
               <button class="btn btn-primary" id="submit-button" type="submit">Get My Free AI Toolkit →</button>

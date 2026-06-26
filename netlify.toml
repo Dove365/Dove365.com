@@ -5,3 +5,8 @@
   from = "/ai-enablement"
   to = "/ai-enablement.html"
   status = 200
+
+[[redirects]]
+  from = "/ai-toolkit"
+  to = "/dove365-ai-toolkit.html"
+  status = 200

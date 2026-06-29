@@ -206,7 +206,7 @@
           </div>
         </div>
 
-        <form class="booking-embed" name="workshop-signup" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" data-netlify-honeypot="bot-field" action="/thank-you.html">
+        <form class="booking-embed" id="workshop-signup-form" name="workshop-signup" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" data-netlify-honeypot="bot-field" data-endpoint="/" novalidate>
           <input type="hidden" name="form-name" value="workshop-signup">
           <input type="hidden" name="workshop" value="AI Without the Hype">
           <p hidden>
@@ -232,8 +232,13 @@
             <span>I consent to receiving marketing emails from Dove365 about relevant events, services, and updates.</span>
           </label>
           <div data-netlify-recaptcha="true"></div>
-          <button type="submit" class="btn btn-primary">Sign Up &rarr;</button>
+          <div class="case-outcome-box" id="workshop-form-error" role="alert" hidden></div>
+          <button type="submit" class="btn btn-primary" id="workshop-submit-button">Sign Up &rarr;</button>
         </form>
+        <div class="booking-embed" id="workshop-form-success" role="status" tabindex="-1" hidden>
+          <h3>Interest registered</h3>
+          <p>Thank you. We have received your details and will follow up with confirmed workshop information once it is available.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -303,5 +308,54 @@
 </div>
 <script defer src="assets/js/main.js?v=42"></script>
 <script defer src="assets/js/lab.js?v=1"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('workshop-signup-form');
+    const submitButton = document.getElementById('workshop-submit-button');
+    const errorMessage = document.getElementById('workshop-form-error');
+    const successMessage = document.getElementById('workshop-form-success');
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      errorMessage.hidden = true;
+      errorMessage.textContent = '';
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      const endpoint = form.dataset.endpoint.trim() || '/';
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        if (!response.ok) throw new Error('Submission failed');
+
+        form.reset();
+        form.hidden = true;
+        successMessage.hidden = false;
+        successMessage.focus();
+      } catch (error) {
+        const isLocalPreview = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+        errorMessage.textContent = isLocalPreview
+          ? 'Netlify Forms cannot process this request from a standard local preview. Test the form on the deployed Netlify site.'
+          : 'We could not submit your registration just now. Please try again, or contact Dove365 if the problem continues.';
+        errorMessage.hidden = false;
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Sign Up →';
+      }
+    });
+  });
+</script>
 </body>
 </html>

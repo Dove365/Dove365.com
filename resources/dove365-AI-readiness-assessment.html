@@ -637,7 +637,7 @@
       renderDistributionChart(total);
     }
 
-    function showStep(index) {
+    function showStep(index, shouldScroll) {
       currentStep = Math.max(0, Math.min(index, steps.length - 1));
       steps.forEach(function (step, stepIndex) { step.classList.toggle('is-active', stepIndex === currentStep); });
       prevButton.disabled = currentStep === 0;
@@ -654,21 +654,35 @@
         nextButton.textContent = 'Next \u2192';
       }
       updateScores();
+
+      if (shouldScroll) {
+        window.requestAnimationFrame(function () {
+          const activeStep = steps[currentStep];
+          const heading = activeStep.querySelector('.assessment-step-heading') || activeStep;
+          const headerOffset = 120;
+          const targetTop = heading.getBoundingClientRect().top + window.scrollY - headerOffset;
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({
+            top: Math.max(targetTop, 0),
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+          });
+        });
+      }
     }
 
     form.addEventListener('change', updateScores);
     form.addEventListener('input', function (event) {
       if (event.target.matches('#report-name, #report-email')) updateScores();
     });
-    prevButton.addEventListener('click', function () { showStep(currentStep - 1); });
-    nextButton.addEventListener('click', function () { showStep(currentStep === steps.length - 1 ? 0 : currentStep + 1); });
+    prevButton.addEventListener('click', function () { showStep(currentStep - 1, true); });
+    nextButton.addEventListener('click', function () { showStep(currentStep === steps.length - 1 ? 0 : currentStep + 1, true); });
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       reportError.hidden = true;
       reportError.textContent = '';
 
       if (currentStep !== steps.length - 1) {
-        showStep(steps.length - 1);
+        showStep(steps.length - 1, true);
         return;
       }
 

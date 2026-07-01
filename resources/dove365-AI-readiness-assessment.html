@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dove365 AI Readiness Assessment</title>
+  <meta name="description" content="A practical Dove365 self-assessment to help your organisation understand its AI readiness across strategy, leadership, people, Microsoft 365, data, governance, processes and opportunities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=42">
+  <link rel="icon" type="image/png" href="../assets/images/logo/Logo.png">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html" aria-label="Dove365 home">
+    <img class="nav-logo-mark" src="../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true">
+    <span class="nav-logo-text">Dove365</span>
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="primary-navigation">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../ai-enablement.html">AI Enablement</a></li>
+    <li class="has-dropdown"><a href="../services.html">Services</a><div class="dropdown"><div class="dropdown-label">Services</div><a href="../services.html#custom-solutions">Operational Systems &amp; Custom Solutions</a><a href="../services.html#solution-architecture">Consultancy &amp; Architecture</a></div></li>
+    <li class="has-dropdown"><a href="#">Products</a><div class="dropdown"><div class="dropdown-label">Products</div><a href="../Products/Dove365-CRM-Starter.html">Dove365 CRM &#8212; Starter</a></div></li>
+    <li class="has-dropdown"><a href="../docs.html">Resources</a><div class="dropdown"><div class="dropdown-label">Resources</div><a href="../docs.html">Documentation Library</a><a href="../case-studies.html">Case Studies</a><a href="dove365-AI-readiness-assessment.html">AI Readiness Assessment</a><a href="https://www.nati-turtledove.com/" target="_blank" rel="noopener">Insights</a></div></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../contact.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<div class="page-offset">
+  <section class="page-hero ai-page-hero assessment-hero">
+    <div class="page-hero-inner">
+      <h1>Dove365 <em>AI Readiness Assessment</em></h1>
+      <p>A practical self-assessment for your organisation. Review your foundations across strategy, people, Microsoft 365, data, governance, processes and useful AI opportunities.</p>
+    </div>
+  </section>
+
+  <section class="section assessment-section">
+    <div class="container">
+      <div class="assessment-intro">
+        <div class="section-tag">Self-assessment</div>
+        <h2 class="display">Your AI readiness <em>score</em></h2>
+        <p class="lead">Complete each section with a small group representing leadership, operations, IT or Microsoft 365 administration, and the people who perform the work being considered for AI.</p>
+      </div>
+
+      <section class="ai-summary" aria-label="AI readiness score summary">
+        <div class="score-list" id="leftMetrics">
+          <div class="metric"><div class="metric-label">Business Strategy</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+          <div class="metric"><div class="metric-label">Leadership</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+          <div class="metric"><div class="metric-label">People and Skills</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+          <div class="metric"><div class="metric-label">Existing Microsoft 365 Usage</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+        </div>
+        <div class="score-list" id="rightMetrics">
+          <div class="metric"><div class="metric-label">Data Quality</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+          <div class="metric"><div class="metric-label">Security and Governance</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+          <div class="metric"><div class="metric-label">Business Processes</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+          <div class="metric"><div class="metric-label">AI Opportunities</div><div class="track"><div class="fill" style="--value:0%"></div></div></div>
+        </div>
+        <div class="result-area">
+          <div class="result-label">
+            <span class="spark" aria-hidden="true">✣</span>
+            <span class="title">Your AI Readiness is</span>
+          </div>
+          <div class="result-card">
+            <div class="result-score" id="readinessPercent">0%</div>
+          </div>
+          <div class="result-status" id="scoreStatus">AI Readiness</div>
+        </div>
+      </section>
+
+      <div class="booking-embed assessment-panel">
+          <form
+            id="ai-readiness-assessment"
+            name="ai-readiness-report"
+            method="POST"
+            data-netlify="true"
+            data-netlify-recaptcha="true"
+            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
+            data-endpoint="/"
+            novalidate
+          >
+            <input type="hidden" name="form-name" value="ai-readiness-report">
+            <input type="hidden" name="subject" value="Dove365 AI Readiness report request">
+            <input type="hidden" name="totalScore" id="report-total-score" value="0">
+            <input type="hidden" name="readinessPercentage" id="report-readiness-percentage" value="0">
+            <input type="hidden" name="readinessLevel" id="report-readiness-level" value="AI Readiness">
+            <input type="hidden" name="sectionScores" id="report-section-scores" value="">
+            <input type="hidden" name="assessmentJson" id="report-assessment-json" value="">
+            <p hidden><label>Do not fill this in: <input name="bot-field" autocomplete="off"></label></p>
+            <section class="assessment-step is-active" data-step="0">
+              <div class="assessment-step-heading"><span>Start</span><h3>A practical self-assessment for your organisation</h3></div>
+              <p>Artificial intelligence can support productivity, service delivery and better decision-making, but successful adoption involves more than choosing a tool. Organisations also need clear goals, capable people, reliable information and appropriate safeguards.</p>
+              <p>This checklist helps UK small and medium-sized businesses, charities and schools assess their current position. It is a practical conversation starter, not a technical audit or a formal compliance assessment.</p>
+              <div class="assessment-note"><strong>How to use this checklist:</strong> Complete it with a small group representing leadership, operations, IT or Microsoft 365 administration, and the people who perform the work being considered for AI.</div>
+            </section>
+
+            <section class="assessment-step" data-step="1">
+              <div class="assessment-step-heading"><span>Scoring</span><h3>How your answers are scored</h3></div>
+              <div class="assessment-scoring-grid">
+                <div><strong>Yes</strong><span>2 points</span><p>This is in place and works consistently.</p></div>
+                <div><strong>Unsure</strong><span>1 point</span><p>It may be partly in place or needs confirmation.</p></div>
+                <div><strong>No</strong><span>0 points</span><p>It is not currently in place.</p></div>
+              </div>
+              <p>Record the score for every question, then review your total and section scores. A low score in Security and Governance or Data Quality may be more significant than a high overall score.</p>
+            </section>
+
+            <section class="assessment-step" data-step="2" data-section-name="Business Strategy" data-section-max="10">
+              <div class="assessment-step-heading"><span>Section 1</span><h3>Business Strategy</h3></div>
+              <fieldset class="assessment-question" data-question><legend>We can describe the business outcomes we want AI to support.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Our possible AI uses relate to genuine organisational priorities.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have identified where AI could save time, improve quality or support service users.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have realistic expectations about what AI can and cannot do.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We can define how we would measure the success of an AI trial.</legend></fieldset>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 10</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="3" data-section-name="Leadership" data-section-max="10">
+              <div class="assessment-step-heading"><span>Section 2</span><h3>Leadership</h3></div>
+              <fieldset class="assessment-question" data-question><legend>A senior leader is willing to sponsor responsible AI adoption.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Leaders understand that AI requires oversight, not only software.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>There is a clear route for approving AI trials and related changes.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Leaders are prepared to involve employees in the adoption process.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Responsibility for AI-related decisions can be clearly assigned.</legend></fieldset>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 10</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="4" data-section-name="People and Skills" data-section-max="10">
+              <div class="assessment-step-heading"><span>Section 3</span><h3>People and Skills</h3></div>
+              <fieldset class="assessment-question" data-question><legend>Employees understand the basic purpose and limitations of generative AI.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Employees know that AI-generated content must be reviewed.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have people who can help colleagues learn safe and effective ways of working.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Employees have opportunities to raise questions or concerns about AI.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We can provide role-relevant guidance rather than relying on general awareness alone.</legend></fieldset>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 10</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="5" data-section-name="Existing Microsoft 365 Usage" data-section-max="10">
+              <div class="assessment-step-heading"><span>Section 4</span><h3>Existing Microsoft 365 Usage</h3></div>
+              <fieldset class="assessment-question" data-question><legend>Microsoft 365 is used consistently across the organisation.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Teams, SharePoint and OneDrive have clear and understood purposes.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Important documents are stored in managed organisational locations.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>User accounts and access permissions are reviewed regularly.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We understand which Microsoft 365 services and Copilot capabilities are available to us.</legend></fieldset>
+              <div class="assessment-note">AI can expose weaknesses in existing information management. If documents are duplicated, outdated or shared too widely, improve those foundations before extending access to AI tools.</div>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 10</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="6" data-section-name="Data Quality" data-section-max="10">
+              <div class="assessment-step-heading"><span>Section 5</span><h3>Data Quality</h3></div>
+              <fieldset class="assessment-question" data-question><legend>Important information is accurate enough to support day-to-day decisions.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We know where authoritative versions of key documents and records are held.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Duplicate, outdated and incomplete information is managed.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Business records have clear owners who are responsible for their quality.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We understand which information is personal, sensitive or confidential.</legend></fieldset>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 10</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="7" data-section-name="Security and Governance" data-section-max="16">
+              <div class="assessment-step-heading"><span>Section 6</span><h3>Security and Governance</h3></div>
+              <fieldset class="assessment-question" data-question><legend>Multi-factor authentication is used where appropriate.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Access to files, sites and systems follows people's job requirements.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have policies covering acceptable technology and data use.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Employees know what information they may and may not enter into AI tools.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Employees know they must not enter organisational data into personal or unapproved AI accounts.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have reviewed how approved AI tools use prompts, uploaded files and chat history, including any settings relating to model training or product improvement.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We can assess privacy, security, legal and sector-specific requirements before an AI trial.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have a process for reporting incorrect, harmful or inappropriate AI results.</legend></fieldset>
+              <div class="assessment-note"><strong>Important:</strong> This checklist does not replace advice from your data protection, safeguarding, legal, HR, IT or information security specialists.</div>
+              <div class="assessment-note"><strong>Watch for shadow AI:</strong> Employees may use personal ChatGPT accounts or other consumer AI services when an approved business tool or clear guidance is not available. Identify which tools are being used, provide a safe route for legitimate needs and explain why organisational information must not be entered into unapproved services.</div>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 16</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="8" data-section-name="Business Processes" data-section-max="10">
+              <div class="assessment-step-heading"><span>Section 7</span><h3>Business Processes</h3></div>
+              <fieldset class="assessment-question" data-question><legend>Our important processes are understood and have clear owners.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We know which repetitive tasks consume the most employee time.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We have identified common delays, duplication or manual re-entry of information.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We can distinguish between tasks that AI may assist and decisions that require human judgement.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We are willing to improve a process before attempting to automate it.</legend></fieldset>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 10</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="9" data-section-name="AI Opportunities" data-section-max="12">
+              <div class="assessment-step-heading"><span>Section 8</span><h3>AI Opportunities</h3></div>
+              <fieldset class="assessment-question" data-question><legend>We have identified at least one low-risk, useful AI opportunity.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>The people who perform the relevant work have helped define the opportunity.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>Suitable source information is available and can be used appropriately.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>A person will remain responsible for reviewing the output.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We can run a limited trial before making a wider change.</legend></fieldset>
+              <fieldset class="assessment-question" data-question><legend>We can measure time saved, quality, user experience or another relevant outcome.</legend></fieldset>
+              <div class="assessment-section-score">Section score: <strong data-section-score>0 / 12</strong></div>
+            </section>
+
+            <section class="assessment-step" data-step="10">
+              <div class="assessment-step-heading"><span>Your result</span><h3>Interpreting your answers</h3></div>
+              <div class="assessment-result-card">
+                <span>Readiness score</span><strong id="result-score">0%</strong>
+                <h4 id="result-level">Assessment in progress</h4>
+                <p id="result-copy">Complete the assessment sections to see your readiness level.</p>
+              </div>
+
+              <div class="assessment-result-graphs">
+                <div class="ai-card radar-card">
+                  <h4 class="graph-title">Radar / Spider Chart</h4>
+                  <div class="radar-wrap">
+                    <svg id="radarChart" viewBox="0 0 380 340" class="radar" role="img" aria-label="AI readiness radar chart">
+                      <g id="radarGrid"></g>
+                      <g id="radarAxes"></g>
+                      <polygon id="radarScoreShape" class="score" points=""></polygon>
+                      <g id="radarPoints"></g>
+                      <g id="radarLabels"></g>
+                      <text id="radarOverallPercent" x="190" y="165" text-anchor="middle" class="percent">0%</text>
+                      <text id="radarOverallStatus" x="190" y="185" text-anchor="middle" class="status">AI Readiness</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="ai-card distribution-card">
+                  <h4 class="graph-title">Score Distribution</h4>
+                  <div class="score-result">
+                    <div class="percentage" id="distScorePercentage">0%</div>
+                    <div class="status" id="distScoreStatus">AI Readiness</div>
+                  </div>
+                  <svg class="chart-svg" viewBox="0 0 560 138" role="img" aria-label="AI readiness score distribution bar">
+                    <g id="distPercentageScale"></g>
+                    <g id="distRawScoreMarkers"></g>
+                    <g id="distThresholdLines"></g>
+                    <g id="distBarSegments"></g>
+                    <g id="distScoreMarker"></g>
+                    <g id="distSegmentLabels"></g>
+                  </svg>
+                  <div class="score-caption">Score: <strong id="distRawScoreText">0%</strong></div>
+                </div>
+              </div>
+
+              <div class="assessment-breakdown">
+                <h4>Assessment Breakdown</h4>
+                <div id="radarBreakdownRows"></div>
+                <div class="score-row total"><span>Total Score</span><span id="radarTotalScore">0%</span></div>
+              </div>
+
+              <div class="case-point-list assessment-guidance">
+                <div class="case-point"><strong>Pay attention to Unsure</strong><span>An Unsure response often identifies an ownership or communication gap. Confirm who can answer the question and what evidence is needed.</span></div>
+                <div class="case-point"><strong>Look for patterns</strong><span>Several No responses in one section indicate a foundation that deserves attention before wider AI adoption.</span></div>
+                <div class="case-point"><strong>Choose manageable opportunities</strong><span>Good early opportunities are useful, measurable and straightforward to review. Avoid high-impact decisions, poorly understood processes or sensitive information without specialist review.</span></div>
+              </div>
+            </section>
+
+            <section class="assessment-step" data-step="11">
+              <div class="assessment-step-heading"><span>Get report</span><h3>Send your AI readiness report</h3></div>
+              <p>Enter your details and we will send a copy of your AI readiness report to your email address.</p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="report-name">Name</label>
+                  <input id="report-name" name="name" type="text" autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="report-email">Email</label>
+                  <input id="report-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                </div>
+              </div>
+              <label class="form-checkbox">
+                <input name="consent" type="checkbox" value="Agreed" required>
+                <span>I agree to receive my Dove365 AI readiness report by email and understand how Dove365 handles my information under the <a href="../privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+              </label>
+              <div data-netlify-recaptcha="true"></div>
+              <div class="case-outcome-box" id="report-form-error" role="alert" hidden></div>
+            </section>
+
+            <div class="assessment-controls">
+              <button class="btn btn-outline" type="button" id="assessment-prev">Back</button>
+              <button class="btn btn-primary" type="button" id="assessment-next">Next &rarr;</button>
+              <button class="btn btn-primary" type="submit" id="report-submit-button" hidden>Get Report &rarr;</button>
+            </div>
+          </form>
+          <div class="case-outcome-box" id="report-form-success" role="status" tabindex="-1" hidden>
+            <h4>Report sent</h4>
+            <p>Thank you. Your AI readiness report has been sent by email. Please check your junk or spam folder if it does not appear in your inbox.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section">
+    <div class="cta-inner">
+      <h2 class="display display-light">Need help reading <em>the results?</em></h2>
+      <p>Book a complimentary AI Readiness Review to discuss your organisation's priorities, foundations and suitable first opportunities.</p>
+      <div class="cta-actions"><a href="../contact.html" class="btn btn-primary">Book an AI Readiness Review &rarr;</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top footer-5col">
+      <div class="footer-brand"><div class="footer-logo"><img src="../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true"><span class="footer-logo-text">Dove365<small>Microsoft Partner</small></span></div><p>Microsoft-focused consultancy delivering practical CRM and operational systems for small and medium businesses.</p><div class="ms-partner-badge"><img src="../assets/images/icons/Microsoft Partner Logo.png" width="300" height="70" loading="lazy" decoding="async" alt="Microsoft Partner"></div></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="../ai-enablement.html">AI Enablement</a></li><li><a href="../services.html#custom-solutions">Custom Solutions</a></li><li><a href="../services.html#solution-architecture">Solution Architecture</a></li><li><a href="../services.html#support-packages">Support Packages</a></li></ul></div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="../Products/Dove365-CRM-Starter.html">Dove365 CRM &#8212; Starter</a></li><li><a href="../docs.html">Product Documentation</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="../case-studies.html">Case Studies</a></li><li><a href="../about.html">About</a></li><li><a href="https://www.nati-turtledove.com/" target="_blank" rel="noopener">Insights</a></li><li><a href="../contact.html">Book a Call</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+441618841812">+44 (0)161 884 1812</a></li><li><a href="mailto:hello@dove365.com">hello@dove365.com</a></li><li><a href="https://www.dove365.com">dove365.com</a></li><li><a href="https://www.linkedin.com/company/dove365/">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Dove365 Ltd. All rights reserved.</p><div class="footer-legal"><a href="../privacy-policy.html">Privacy Policy</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../terms-and-conditions.html">Terms &amp; Conditions</a></div></div>
+  </footer>
+</div>
+
+<script defer src="../assets/js/main.js?v=42"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('ai-readiness-assessment');
+    const steps = Array.from(form.querySelectorAll('.assessment-step'));
+    const prevButton = document.getElementById('assessment-prev');
+    const nextButton = document.getElementById('assessment-next');
+    const reportSubmitButton = document.getElementById('report-submit-button');
+    const reportError = document.getElementById('report-form-error');
+    const reportSuccess = document.getElementById('report-form-success');
+    const resultScore = document.getElementById('result-score');
+    const resultLevel = document.getElementById('result-level');
+    const resultCopy = document.getElementById('result-copy');
+    const maxScore = 88;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const radar = { centerX: 190, centerY: 170, radius: 96, gridLevels: 4 };
+    const distribution = { x: 18, y: 64, width: 524, height: 12 };
+    const thresholds = { beginnerEnd: 34, emergingEnd: 65 };
+    let currentStep = 0;
+
+    steps.forEach(function (step, stepIndex) {
+      step.querySelectorAll('[data-question]').forEach(function (question, questionIndex) {
+        const name = 'section-' + stepIndex + '-question-' + questionIndex;
+        const group = document.createElement('div');
+        group.className = 'assessment-options';
+        [{ label: 'Yes', value: '2' }, { label: 'Unsure', value: '1' }, { label: 'No', value: '0' }].forEach(function (option) {
+          const label = document.createElement('label');
+          label.innerHTML = '<input type="radio" name="' + name + '" value="' + option.value + '"><span>' + option.label + '</span>';
+          group.appendChild(label);
+        });
+        question.appendChild(group);
+      });
+    });
+
+    function getSectionScore(step) {
+      return Array.from(step.querySelectorAll('[data-question]')).reduce(function (total, question) {
+        const checked = question.querySelector('input:checked');
+        return total + (checked ? Number(checked.value) : 0);
+      }, 0);
+    }
+
+    function getQuestionRows() {
+      const rows = [];
+      steps.forEach(function (step) {
+        if (!step.dataset.sectionName) return;
+        step.querySelectorAll('[data-question]').forEach(function (question) {
+          const checked = question.querySelector('input:checked');
+          const score = checked ? Number(checked.value) : 0;
+          const legend = question.querySelector('legend');
+          rows.push({
+            section: step.dataset.sectionName,
+            question: legend ? legend.textContent.trim() : '',
+            questionScoreValue: String(score),
+            questionScorePercent: String(Math.round((score / 2) * 100))
+          });
+        });
+      });
+      return rows;
+    }
+
+    function getResult(score) {
+      if (score <= 34) return { level: 'AI Beginner', copy: 'Your organisation is at an early stage. Focus on business priorities, Microsoft 365 foundations, information management, security and basic awareness before attempting broad adoption.' };
+      if (score <= 65) return { level: 'AI Emerging', copy: 'Some useful foundations are in place, but readiness is uneven. A carefully governed pilot can help you learn while you address gaps in skills, data, processes or governance.' };
+      return { level: 'AI Ready', copy: 'Your organisation has many of the foundations needed for responsible adoption. You can progress with prioritised use cases, controlled trials, measurement and ongoing oversight.' };
+    }
+
+    function createSvgElement(type, attributes) {
+      const element = document.createElementNS(svgNS, type);
+      Object.entries(attributes).forEach(function ([key, value]) {
+        element.setAttribute(key, value);
+      });
+      return element;
+    }
+
+    function getRadarPoint(index, valueRatio, totalAxes, customRadius) {
+      const angle = -Math.PI / 2 + (2 * Math.PI * index) / totalAxes;
+      const radius = customRadius || radar.radius;
+      return {
+        x: radar.centerX + Math.cos(angle) * radius * valueRatio,
+        y: radar.centerY + Math.sin(angle) * radius * valueRatio
+      };
+    }
+
+    function getDistributionPercent(rawValue) {
+      return (rawValue / maxScore) * 100;
+    }
+
+    function getDistributionXFromPercent(percent) {
+      return distribution.x + (percent / 100) * distribution.width;
+    }
+
+    function getDistributionXFromRaw(rawValue) {
+      return getDistributionXFromPercent(getDistributionPercent(rawValue));
+    }
+
+    function createMetric(item) {
+      const percent = item.max ? Math.round((item.score / item.max) * 100) : 0;
+      const metric = document.createElement('div');
+      metric.className = 'metric';
+      metric.innerHTML = '<div class="metric-label">' + item.name + '</div><div class="track"><div class="fill" style="--value:' + percent + '%"></div></div>';
+      return metric;
+    }
+
+    function renderSummary(values, totalScore) {
+      const left = document.getElementById('leftMetrics');
+      const right = document.getElementById('rightMetrics');
+      const readinessPercent = document.getElementById('readinessPercent');
+      const scoreStatus = document.getElementById('scoreStatus');
+      const result = getResult(totalScore);
+      const percent = Math.round((totalScore / maxScore) * 100);
+
+      left.innerHTML = '';
+      right.innerHTML = '';
+      values.slice(0, 4).forEach(function (item) { left.appendChild(createMetric(item)); });
+      values.slice(4).forEach(function (item) { right.appendChild(createMetric(item)); });
+      readinessPercent.textContent = percent + '%';
+      readinessPercent.parentElement.style.setProperty('--value', percent + '%');
+      scoreStatus.textContent = result.level;
+    }
+
+    function renderRadarChart(values, totalScore) {
+      const grid = document.getElementById('radarGrid');
+      const axes = document.getElementById('radarAxes');
+      const points = document.getElementById('radarPoints');
+      const labels = document.getElementById('radarLabels');
+      const scoreShape = document.getElementById('radarScoreShape');
+      const breakdownRows = document.getElementById('radarBreakdownRows');
+      const totalAxes = values.length;
+      const totalPercent = Math.round((totalScore / maxScore) * 100);
+
+      grid.innerHTML = '';
+      axes.innerHTML = '';
+      points.innerHTML = '';
+      labels.innerHTML = '';
+      breakdownRows.innerHTML = '';
+
+      for (let level = 1; level <= radar.gridLevels; level += 1) {
+        const levelRatio = level / radar.gridLevels;
+        const gridPoints = values.map(function (_, index) {
+          const point = getRadarPoint(index, levelRatio, totalAxes);
+          return point.x + ',' + point.y;
+        }).join(' ');
+        grid.appendChild(createSvgElement('polygon', { class: 'grid', points: gridPoints }));
+      }
+
+      values.forEach(function (item, index) {
+        const axisEnd = getRadarPoint(index, 1, totalAxes);
+        const ratio = item.max ? item.score / item.max : 0;
+        const dataPoint = getRadarPoint(index, ratio, totalAxes);
+        const labelPoint = getRadarPoint(index, 1.34, totalAxes);
+        const label = createSvgElement('text', {
+          class: 'axis-label',
+          x: labelPoint.x,
+          y: labelPoint.y,
+          'text-anchor': labelPoint.x < radar.centerX - 10 ? 'end' : labelPoint.x > radar.centerX + 10 ? 'start' : 'middle'
+        });
+
+        axes.appendChild(createSvgElement('line', {
+          class: 'axis',
+          x1: radar.centerX,
+          y1: radar.centerY,
+          x2: axisEnd.x,
+          y2: axisEnd.y
+        }));
+        points.appendChild(createSvgElement('circle', {
+          class: 'data-point',
+          cx: dataPoint.x,
+          cy: dataPoint.y,
+          r: 4
+        }));
+        label.textContent = item.name
+          .replace('Existing Microsoft 365 Usage', 'Microsoft 365')
+          .replace('Security and Governance', 'Security')
+          .replace('Business Processes', 'Processes')
+          .replace('AI Opportunities', 'Opportunities')
+          .replace('Business Strategy', 'Strategy')
+          .replace('People and Skills', 'People');
+        labels.appendChild(label);
+        breakdownRows.insertAdjacentHTML('beforeend', '<div class="score-row"><span>' + item.name + '</span><span>' + Math.round((item.score / item.max) * 100) + '%</span></div>');
+      });
+
+      scoreShape.setAttribute('points', values.map(function (item, index) {
+        const point = getRadarPoint(index, item.max ? item.score / item.max : 0, totalAxes);
+        return point.x + ',' + point.y;
+      }).join(' '));
+
+      document.getElementById('radarOverallPercent').textContent = totalPercent + '%';
+      document.getElementById('radarOverallStatus').textContent = getResult(totalScore).level;
+      document.getElementById('radarTotalScore').textContent = totalPercent + '%';
+    }
+
+    function renderDistributionChart(totalScore) {
+      const percentageScale = document.getElementById('distPercentageScale');
+      const rawScoreMarkers = document.getElementById('distRawScoreMarkers');
+      const thresholdLines = document.getElementById('distThresholdLines');
+      const barSegments = document.getElementById('distBarSegments');
+      const scoreMarker = document.getElementById('distScoreMarker');
+      const segmentLabels = document.getElementById('distSegmentLabels');
+      const status = getResult(totalScore);
+
+      percentageScale.innerHTML = '';
+      rawScoreMarkers.innerHTML = '';
+      thresholdLines.innerHTML = '';
+      barSegments.innerHTML = '';
+      scoreMarker.innerHTML = '';
+      segmentLabels.innerHTML = '';
+
+      [0, 25, 50, 75, 100].forEach(function (value) {
+        const text = createSvgElement('text', {
+          x: getDistributionXFromPercent(value),
+          y: 30,
+          'text-anchor': value === 0 ? 'start' : value === 100 ? 'end' : 'middle',
+          class: 'scale-number'
+        });
+        text.textContent = value + '%';
+        percentageScale.appendChild(text);
+      });
+
+      [
+        { label: 'AI Beginner', startRaw: 0, endRaw: 34, colour: '#f0a400', textClass: 'beginner-text' },
+        { label: 'AI Emerging', startRaw: 35, endRaw: 65, colour: '#1599bc', textClass: 'emerging-text' },
+        { label: 'AI Ready', startRaw: 66, endRaw: 88, colour: '#17324d', textClass: 'ready-text' }
+      ].forEach(function (band) {
+        const start = getDistributionXFromRaw(band.startRaw);
+        const end = getDistributionXFromRaw(band.endRaw);
+        const width = end - start;
+        const label = createSvgElement('text', {
+          x: start + width / 2,
+          y: 104,
+          'text-anchor': 'middle',
+          class: 'segment-label ' + band.textClass
+        });
+        barSegments.appendChild(createSvgElement('rect', {
+          x: start,
+          y: distribution.y,
+          width: width,
+          height: distribution.height,
+          fill: band.colour
+        }));
+        label.textContent = band.label;
+        segmentLabels.appendChild(label);
+      });
+
+      [34, 65, 88].forEach(function (value) {
+        const x = getDistributionXFromRaw(value);
+        const rawLabel = createSvgElement('text', {
+          x: x,
+          y: 44,
+          'text-anchor': value === 88 ? 'end' : 'middle',
+          class: 'raw-score-label'
+        });
+        thresholdLines.appendChild(createSvgElement('line', {
+          x1: x,
+          y1: 46,
+          x2: x,
+          y2: 60,
+          stroke: '#9fb7c2',
+          'stroke-width': '1',
+          opacity: '0.5'
+        }));
+        rawLabel.textContent = value + '/88';
+        rawScoreMarkers.appendChild(rawLabel);
+      });
+
+      const markerX = getDistributionXFromRaw(totalScore);
+      scoreMarker.appendChild(createSvgElement('circle', { cx: markerX, cy: 17, r: 7, fill: '#1599bc' }));
+      scoreMarker.appendChild(createSvgElement('line', {
+        x1: markerX,
+        y1: 27,
+        x2: markerX,
+        y2: distribution.y,
+        stroke: '#1599bc',
+        'stroke-width': '2'
+      }));
+
+      document.getElementById('distScorePercentage').textContent = Math.round(getDistributionPercent(totalScore)) + '%';
+      document.getElementById('distRawScoreText').textContent = Math.round(getDistributionPercent(totalScore)) + '%';
+      document.getElementById('distScoreStatus').textContent = status.level;
+      document.getElementById('distScoreStatus').style.color = totalScore <= thresholds.beginnerEnd ? '#f0a400' : totalScore <= thresholds.emergingEnd ? '#1599bc' : '#17324d';
+    }
+
+    function updateScores() {
+      let total = 0;
+      const resultRows = [];
+      steps.forEach(function (step) {
+        const sectionMax = Number(step.dataset.sectionMax || 0);
+        if (!sectionMax) return;
+        const score = getSectionScore(step);
+        total += score;
+        const scoreEl = step.querySelector('[data-section-score]');
+        if (scoreEl) scoreEl.textContent = score + ' / ' + sectionMax;
+        resultRows.push({ name: step.dataset.sectionName, score: score, max: sectionMax });
+      });
+
+      const result = getResult(total);
+      const totalPercent = Math.round((total / maxScore) * 100);
+      const reportName = document.getElementById('report-name');
+      const reportEmail = document.getElementById('report-email');
+      const assessmentJson = {
+        generalData: {
+          name: reportName ? reportName.value.trim() : '',
+          email: reportEmail ? reportEmail.value.trim() : '',
+          overallScoreValue: String(total),
+          overallScorePercent: String(totalPercent),
+          overallScoreText: result.level
+        },
+        sectionScores: resultRows.map(function (row) {
+          return {
+            sectionName: row.name,
+            sectionScoreValue: String(row.score),
+            sectionScorePercent: String(Math.round((row.score / row.max) * 100))
+          };
+        }),
+        questions: getQuestionRows()
+      };
+      resultScore.textContent = totalPercent + '%';
+      resultLevel.textContent = result.level;
+      resultCopy.textContent = result.copy;
+      document.getElementById('report-total-score').value = String(total);
+      document.getElementById('report-readiness-percentage').value = String(totalPercent);
+      document.getElementById('report-readiness-level').value = result.level;
+      document.getElementById('report-section-scores').value = resultRows.map(function (row) {
+        return row.name + ': ' + row.score + ' (' + Math.round((row.score / row.max) * 100) + ')';
+      }).join('; ');
+      document.getElementById('report-assessment-json').value = JSON.stringify(assessmentJson);
+      renderSummary(resultRows, total);
+      renderRadarChart(resultRows, total);
+      renderDistributionChart(total);
+    }
+
+    function showStep(index) {
+      currentStep = Math.max(0, Math.min(index, steps.length - 1));
+      steps.forEach(function (step, stepIndex) { step.classList.toggle('is-active', stepIndex === currentStep); });
+      prevButton.disabled = currentStep === 0;
+      const isReportStep = currentStep === steps.length - 1;
+      nextButton.hidden = isReportStep;
+      reportSubmitButton.hidden = !isReportStep;
+      nextButton.style.display = isReportStep ? 'none' : '';
+      reportSubmitButton.style.display = isReportStep ? '' : 'none';
+      if (currentStep === 9) {
+        nextButton.textContent = 'Show Results \u2192';
+      } else if (currentStep === 10) {
+        nextButton.textContent = 'Get Report \u2192';
+      } else {
+        nextButton.textContent = 'Next \u2192';
+      }
+      updateScores();
+    }
+
+    form.addEventListener('change', updateScores);
+    form.addEventListener('input', function (event) {
+      if (event.target.matches('#report-name, #report-email')) updateScores();
+    });
+    prevButton.addEventListener('click', function () { showStep(currentStep - 1); });
+    nextButton.addEventListener('click', function () { showStep(currentStep === steps.length - 1 ? 0 : currentStep + 1); });
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      reportError.hidden = true;
+      reportError.textContent = '';
+
+      if (currentStep !== steps.length - 1) {
+        showStep(steps.length - 1);
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      reportSubmitButton.disabled = true;
+      reportSubmitButton.textContent = 'Sending...';
+
+      const endpoint = form.dataset.endpoint.trim() || '/';
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        if (!response.ok) throw new Error('Submission failed');
+
+        form.hidden = true;
+        reportSuccess.hidden = false;
+        reportSuccess.focus();
+      } catch (error) {
+        const isLocalPreview = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+        reportError.textContent = isLocalPreview
+          ? 'Netlify Forms cannot process this request from a standard local preview. Test the form on the deployed Netlify site.'
+          : 'We could not request your report just now. Please try again, or contact Dove365 if the problem continues.';
+        reportError.hidden = false;
+      } finally {
+        reportSubmitButton.disabled = false;
+        reportSubmitButton.textContent = 'Get Report \u2192';
+      }
+    });
+    showStep(0);
+  });
+</script>
+</body>
+</html>

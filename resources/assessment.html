@@ -249,17 +249,6 @@
       padding: 1rem;
     }
 
-    .kiosk-assessment .assessment-result-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      margin: -0.25rem 0 1rem;
-    }
-
-    .kiosk-assessment .assessment-result-actions .btn {
-      min-height: 44px;
-    }
-
     .kiosk-assessment .assessment-controls {
       position: sticky;
       bottom: 0;
@@ -488,11 +477,6 @@
                 <p id="result-copy">Complete the assessment sections to see your readiness level.</p>
               </div>
 
-              <div class="assessment-result-actions">
-                <button class="btn btn-outline" type="button" id="result-retake">Retake Assessment</button>
-                <button class="btn btn-primary" type="button" id="result-report">Get Report &rarr;</button>
-              </div>
-
               <div class="assessment-result-graphs">
                 <div class="ai-card radar-card">
                   <h4 class="graph-title">Radar / Spider Chart</h4>
@@ -587,8 +571,6 @@
     const prevButton = document.getElementById('assessment-prev');
     const nextButton = document.getElementById('assessment-next');
     const retakeButton = document.getElementById('assessment-retake');
-    const resultRetakeButton = document.getElementById('result-retake');
-    const resultReportButton = document.getElementById('result-report');
     const reportSubmitButton = document.getElementById('report-submit-button');
     const reportError = document.getElementById('report-form-error');
     const reportSuccess = document.getElementById('report-form-success');
@@ -968,8 +950,6 @@
     prevButton.addEventListener('click', function () { showStep(currentStep - 1, true); });
     nextButton.addEventListener('click', function () { showStep(currentStep === steps.length - 1 ? 0 : currentStep + 1, true); });
     retakeButton.addEventListener('click', function () { resetAssessment(true); });
-    resultRetakeButton.addEventListener('click', function () { resetAssessment(true); });
-    resultReportButton.addEventListener('click', function () { showStep(steps.length - 1, true); });
     if (newAssessmentButton) {
       newAssessmentButton.addEventListener('click', function () {
         resetAssessment(true);

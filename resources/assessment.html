@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=50">
+  <link rel="stylesheet" href="../assets/css/style.css?v=51">
   <link rel="icon" type="image/png" href="../assets/images/logo/Logo.png">
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
+  <script defer id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
   <style>
     body.kiosk-assessment {
       min-height: 100vh;
@@ -565,7 +565,7 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  (function () {
     const form = document.getElementById('ai-readiness-assessment');
     const steps = Array.from(form.querySelectorAll('.assessment-step'));
     const prevButton = document.getElementById('assessment-prev');
@@ -1000,7 +1000,7 @@
       }
     });
     showStep(0);
-  });
+  })();
 </script>
 </body>
 </html>

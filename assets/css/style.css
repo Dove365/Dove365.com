@@ -2129,17 +2129,26 @@ footer {
   border: 1px solid var(--border);
   border-radius: 10px;
   background: white;
+  box-sizing: border-box;
   margin: 0 0 0.8rem;
+  min-width: 0;
   padding: 1rem;
 }
 .assessment-question legend {
+  box-sizing: border-box;
   color: var(--navy);
+  display: block;
+  float: left;
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.5;
-  padding-right: 0.75rem;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+  width: 100%;
 }
 .assessment-options {
+  clear: both;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;

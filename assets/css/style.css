@@ -493,6 +493,14 @@ footer {
   color: white; line-height: 1.08; margin-bottom: 1.5rem;
 }
 .hero h1 em { font-style: italic; color: var(--teal-light); }
+.hero-title-main,
+.hero-title-sub { display: block; }
+.hero-title-sub {
+  color: var(--teal-light);
+  font-style: italic;
+  font-size: 0.78em;
+  margin-top: 0.25rem;
+}
 .hero-sub {
   font-size: 1.05rem; color: rgba(255,255,255,0.6);
   line-height: 1.75; max-width: 500px; margin-bottom: 2.5rem;
@@ -556,11 +564,35 @@ footer {
 }
 .problem-item:hover { transform: translateX(6px); border-color: rgba(83,177,205,0.24); background: rgba(83,177,205,0.08); }
 .problem-icon { font-size: 0.9rem; flex-shrink: 0; }
+.problem-text { min-width: 0; flex: 1; }
 .solution-tag {
   display: inline-block; margin-left: auto;
   background: rgba(7,131,150,0.2); color: var(--teal-light);
   font-size: 0.65rem; padding: 0.2rem 0.55rem; border-radius: 100px;
   letter-spacing: 0.06em; text-transform: uppercase;
+}
+.hero-help-list { display: grid; gap: 0.65rem; }
+.hero-help-item {
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+.hero-help-item:hover {
+  transform: translateX(6px);
+  border-color: rgba(83,177,205,0.24);
+  background: rgba(83,177,205,0.08);
+}
+.hero-help-item h3 {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+.hero-help-item p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.56);
+  line-height: 1.5;
 }
 
 /* Services strip */
@@ -585,6 +617,20 @@ footer {
 .strip-item:hover { transform: translateY(-3px); background: white; border-color: var(--teal-light); box-shadow: 0 10px 24px rgba(7,131,150,0.1); }
 
 /* What we build section */
+.start-section { background: var(--off-white); }
+.start-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.start-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.start-card .btn { margin-top: auto; }
+.start-card p { margin-bottom: 1.5rem; }
 .build-section { background: white; }
 .build-pills { display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 0.75rem; margin-top: 2rem; }
 
@@ -830,6 +876,12 @@ footer {
 }
 .proof-stat:hover .proof-stat-val { transform: translateY(-4px) scale(1.04); text-shadow: 0 0 24px rgba(83,177,205,0.28); }
 .proof-stat-val span { color: var(--teal-light); }
+.proof-stat-title {
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
 .proof-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
 /* Process */
@@ -2190,7 +2242,7 @@ footer {
   }
   .service-block { padding: 3rem 0; }
   .service-block-left { position: static; }
-  .pain-grid, .proof-grid, .values-grid, .pricing-grid,
+  .start-grid, .pain-grid, .proof-grid, .values-grid, .pricing-grid,
   .cases-grid-full { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ai-service-grid,
   .workshop-detail-grid,
@@ -2257,7 +2309,7 @@ footer {
   .section, .section-sm { padding: 3rem 1rem; }
   .page-offset > .page-hero + .section { padding-top: 2rem; }
   h2.display { font-size: clamp(1.85rem, 10vw, 2.35rem); }
-  .pain-grid, .proof-grid, .values-grid, .pricing-grid,
+  .start-grid, .pain-grid, .proof-grid, .values-grid, .pricing-grid,
   .cases-grid-full, .process-steps, .form-row,
   .credentials, .footer-top { grid-template-columns: 1fr; }
   .ai-service-grid,

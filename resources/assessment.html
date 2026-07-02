@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dove365 AI Readiness Assessment</title>
+  <title>Dove365 AI Readiness Assessment Kiosk</title>
   <meta name="description" content="A practical Dove365 self-assessment to help your organisation understand its AI readiness across strategy, leadership, people, Microsoft 365, data, governance, processes and opportunities.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,39 +11,323 @@
   <link rel="stylesheet" href="../assets/css/style.css?v=50">
   <link rel="icon" type="image/png" href="../assets/images/logo/Logo.png">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
+  <style>
+    body.kiosk-assessment {
+      min-height: 100vh;
+      margin: 0;
+      padding: 1.25rem;
+      background: var(--navy-deep);
+      color: var(--near-black);
+      overflow-x: hidden;
+    }
+
+    body.kiosk-assessment::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(83,177,205,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(83,177,205,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    body.kiosk-assessment::after {
+      content: '';
+      position: fixed;
+      right: -8%;
+      bottom: -24%;
+      width: 58vw;
+      height: 42vh;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(83,177,205,0.18), transparent 68%);
+    }
+
+    .kiosk-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, 100%);
+      min-height: calc(100vh - 2.5rem);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .kiosk-card {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(83,177,205,0.16);
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.34);
+    }
+
+    .kiosk-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--navy-deep);
+      border-bottom: 1px solid rgba(83,177,205,0.18);
+      color: white;
+    }
+
+    .kiosk-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .kiosk-brand img {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+    }
+
+    .kiosk-brand span {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.08rem;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .kiosk-card-header p {
+      margin: 0;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.78rem;
+      text-align: right;
+    }
+
+    .kiosk-assessment-content {
+      padding: 1rem;
+    }
+
+    .kiosk-assessment .assessment-intro {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.34fr) minmax(0, 1.2fr);
+      gap: 1.25rem;
+      align-items: end;
+      margin-bottom: 0.8rem;
+    }
+
+    .kiosk-assessment .assessment-intro h1 {
+      margin: 0;
+      color: var(--navy);
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.03;
+    }
+
+    .kiosk-assessment .assessment-intro h1 em {
+      color: var(--teal);
+      font-style: italic;
+    }
+
+    .kiosk-assessment .assessment-intro p {
+      margin: 0;
+      color: var(--mid);
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .kiosk-assessment .ai-summary {
+      grid-template-columns: minmax(240px, 320px) minmax(240px, 320px) 260px;
+      justify-content: start;
+      column-gap: 0.85rem;
+      row-gap: 0.6rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.9rem;
+      border-radius: 12px;
+      align-items: center;
+    }
+
+    .kiosk-assessment .ai-summary .metric-label {
+      font-size: 0.7rem;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+
+    .kiosk-assessment .ai-summary .track {
+      height: 7px;
+    }
+
+    .kiosk-assessment .ai-summary .score-list {
+      gap: 0.55rem;
+    }
+
+    .kiosk-assessment .ai-summary .result-area {
+      gap: 0.45rem;
+      align-self: center;
+      width: 260px;
+      justify-content: center;
+    }
+
+    .kiosk-assessment .ai-summary .result-label {
+      font-size: 0.7rem;
+      justify-content: flex-start;
+      gap: 0.45rem;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+
+    .kiosk-assessment .ai-summary .spark {
+      font-size: 1rem;
+    }
+
+    .kiosk-assessment .ai-summary .result-card {
+      width: 100%;
+      max-width: none;
+      height: 38px;
+      border-radius: 999px;
+    }
+
+    .kiosk-assessment .ai-summary .result-card::before {
+      border-radius: 999px;
+    }
+
+    .kiosk-assessment .ai-summary .result-score {
+      align-items: center;
+      font-size: 1.35rem;
+      padding-left: 0.95rem;
+    }
+
+    .kiosk-assessment .ai-summary .result-status {
+      margin-top: 0;
+      color: var(--gold-light);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .kiosk-assessment .booking-embed {
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: none;
+    }
+
+    .kiosk-assessment .assessment-panel {
+      margin-top: 0;
+    }
+
+    .kiosk-assessment .assessment-step-heading {
+      margin-bottom: 1rem;
+    }
+
+    .kiosk-assessment .assessment-step-heading h3 {
+      font-size: 1.08rem;
+    }
+
+    .kiosk-assessment .assessment-step p,
+    .kiosk-assessment .assessment-note,
+    .kiosk-assessment .assessment-question legend {
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .kiosk-assessment .assessment-question {
+      padding: 0.85rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .kiosk-assessment .assessment-options span {
+      min-height: 40px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .kiosk-assessment .assessment-result-graphs {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+      gap: 0.9rem;
+    }
+
+    .kiosk-assessment .assessment-result-graphs .ai-card {
+      padding: 1rem;
+    }
+
+    .kiosk-assessment .assessment-result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin: -0.25rem 0 1rem;
+    }
+
+    .kiosk-assessment .assessment-result-actions .btn {
+      min-height: 44px;
+    }
+
+    .kiosk-assessment .assessment-controls {
+      position: sticky;
+      bottom: 0;
+      z-index: 3;
+      margin: 1rem -1rem -1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(255,255,255,0.96);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .kiosk-assessment .case-outcome-box {
+      margin: 1rem 0 0;
+    }
+
+    .new-assessment-actions {
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      body.kiosk-assessment {
+        padding: 0.75rem;
+      }
+
+      .kiosk-shell {
+        min-height: calc(100vh - 1.5rem);
+        align-items: flex-start;
+      }
+
+      .kiosk-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .kiosk-card-header p {
+        text-align: left;
+      }
+
+      .kiosk-assessment .assessment-intro,
+      .kiosk-assessment .ai-summary,
+      .kiosk-assessment .assessment-result-graphs {
+        grid-template-columns: 1fr;
+      }
+
+      .kiosk-assessment .ai-summary .result-area {
+        width: 100%;
+      }
+
+      .kiosk-assessment .ai-summary .result-card {
+        height: 38px;
+      }
+    }
+  </style>
 </head>
-<body class="no-scroll-animations">
+<body class="no-scroll-animations kiosk-assessment">
+<div class="kiosk-shell">
+  <main class="kiosk-card" aria-label="Dove365 AI Readiness Assessment">
+    <header class="kiosk-card-header">
+      <div class="kiosk-brand">
+        <img src="../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true">
+        <span>Dove365</span>
+      </div>
+      <p>AI Readiness Assessment</p>
+    </header>
 
-<nav>
-  <a class="nav-logo" href="../index.html" aria-label="Dove365 home">
-    <img class="nav-logo-mark" src="../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true">
-    <span class="nav-logo-text">Dove365</span>
-  </a>
-  <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
-  <ul class="nav-links" id="primary-navigation">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../ai-enablement.html">AI Enablement</a></li>
-    <li class="has-dropdown"><a href="../services.html">Services</a><div class="dropdown"><div class="dropdown-label">Services</div><a href="../services.html#custom-solutions">Operational Systems &amp; Custom Solutions</a><a href="../services.html#solution-architecture">Consultancy &amp; Architecture</a></div></li>
-    <li class="has-dropdown"><a href="#">Products</a><div class="dropdown"><div class="dropdown-label">Products</div><a href="../Products/Dove365-CRM-Starter.html">Dove365 CRM &#8212; Starter</a></div></li>
-    <li class="has-dropdown"><a href="../docs.html">Resources</a><div class="dropdown"><div class="dropdown-label">Resources</div><a href="../docs.html">Documentation Library</a><a href="../case-studies.html">Case Studies</a><a href="../dove365-ai-toolkit.html">AI Toolkit</a><a href="https://www.nati-turtledove.com/" target="_blank" rel="noopener">Insights</a></div></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../contact.html" class="nav-cta">Book a Call</a></li>
-  </ul>
-</nav>
-
-<div class="page-offset">
-  <section class="page-hero ai-page-hero assessment-hero">
-    <div class="page-hero-inner">
-      <h1>Dove365 <em>AI Readiness Assessment</em></h1>
-      <p>A practical self-assessment for your organisation. Review your foundations across strategy, people, Microsoft 365, data, governance, processes and useful AI opportunities.</p>
-    </div>
-  </section>
-
-  <section class="section assessment-section">
-    <div class="container">
+    <section class="kiosk-assessment-content">
       <div class="assessment-intro">
-        <div class="section-tag">Self-assessment</div>
-        <h2 class="display">Your AI readiness <em>score</em></h2>
+        <h1>Your AI readiness <em>score</em></h1>
         <p class="lead">Complete each section with a small group representing leadership, operations, IT or Microsoft 365 administration, and the people who perform the work being considered for AI.</p>
       </div>
 
@@ -204,6 +488,11 @@
                 <p id="result-copy">Complete the assessment sections to see your readiness level.</p>
               </div>
 
+              <div class="assessment-result-actions">
+                <button class="btn btn-outline" type="button" id="result-retake">Retake Assessment</button>
+                <button class="btn btn-primary" type="button" id="result-report">Get Report &rarr;</button>
+              </div>
+
               <div class="assessment-result-graphs">
                 <div class="ai-card radar-card">
                   <h4 class="graph-title">Radar / Spider Chart</h4>
@@ -249,7 +538,6 @@
                 <div class="case-point"><strong>Look for patterns</strong><span>Several No responses in one section indicate a foundation that deserves attention before wider AI adoption.</span></div>
                 <div class="case-point"><strong>Choose manageable opportunities</strong><span>Good early opportunities are useful, measurable and straightforward to review. Avoid high-impact decisions, poorly understood processes or sensitive information without specialist review.</span></div>
               </div>
-
             </section>
 
             <section class="assessment-step" data-step="11">
@@ -275,6 +563,7 @@
 
             <div class="assessment-controls">
               <button class="btn btn-outline" type="button" id="assessment-prev">Back</button>
+              <button class="btn btn-outline" type="button" id="assessment-retake" hidden>Retake Assessment</button>
               <button class="btn btn-primary" type="button" id="assessment-next">Next &rarr;</button>
               <button class="btn btn-primary" type="submit" id="report-submit-button" hidden>Get Report &rarr;</button>
             </div>
@@ -282,42 +571,28 @@
           <div class="case-outcome-box" id="report-form-success" role="status" tabindex="-1" hidden>
             <h4>Report sent</h4>
             <p>Thank you. Your AI readiness report has been sent by email. Please check your junk or spam folder if it does not appear in your inbox.</p>
+            <div class="new-assessment-actions">
+              <button class="btn btn-primary" type="button" id="new-assessment-button">New Assessment</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section section">
-    <div class="cta-inner">
-      <h2 class="display display-light">Need help reading <em>the results?</em></h2>
-      <p>Book a complimentary AI Readiness Review to discuss your organisation's priorities, foundations and suitable first opportunities.</p>
-      <div class="cta-actions"><a href="../contact.html" class="btn btn-primary">Book an AI Readiness Review &rarr;</a></div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-top footer-5col">
-      <div class="footer-brand"><div class="footer-logo"><img src="../assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true"><span class="footer-logo-text">Dove365<small>Microsoft Partner</small></span></div><p>Microsoft-focused consultancy delivering practical CRM and operational systems for small and medium businesses.</p><div class="ms-partner-badge"><img src="../assets/images/icons/Microsoft Partner Logo.png" width="300" height="70" loading="lazy" decoding="async" alt="Microsoft Partner"></div></div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="../ai-enablement.html">AI Enablement</a></li><li><a href="../services.html#custom-solutions">Custom Solutions</a></li><li><a href="../services.html#solution-architecture">Solution Architecture</a></li><li><a href="../services.html#support-packages">Support Packages</a></li></ul></div>
-      <div class="footer-col"><h4>Products</h4><ul><li><a href="../Products/Dove365-CRM-Starter.html">Dove365 CRM &#8212; Starter</a></li><li><a href="../docs.html">Product Documentation</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="../case-studies.html">Case Studies</a></li><li><a href="../about.html">About</a></li><li><a href="https://www.nati-turtledove.com/" target="_blank" rel="noopener">Insights</a></li><li><a href="../contact.html">Book a Call</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+441618841812">+44 (0)161 884 1812</a></li><li><a href="mailto:hello@dove365.com">hello@dove365.com</a></li><li><a href="https://www.dove365.com">dove365.com</a></li><li><a href="https://www.linkedin.com/company/dove365/">LinkedIn</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 Dove365 Ltd. All rights reserved.</p><div class="footer-legal"><a href="../privacy-policy.html">Privacy Policy</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../terms-and-conditions.html">Terms &amp; Conditions</a></div></div>
-  </footer>
+      </section>
+    </main>
 </div>
 
-<script defer src="../assets/js/main.js?v=43"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('ai-readiness-assessment');
     const steps = Array.from(form.querySelectorAll('.assessment-step'));
     const prevButton = document.getElementById('assessment-prev');
     const nextButton = document.getElementById('assessment-next');
+    const retakeButton = document.getElementById('assessment-retake');
+    const resultRetakeButton = document.getElementById('result-retake');
+    const resultReportButton = document.getElementById('result-report');
     const reportSubmitButton = document.getElementById('report-submit-button');
     const reportError = document.getElementById('report-form-error');
     const reportSuccess = document.getElementById('report-form-success');
+    const newAssessmentButton = document.getElementById('new-assessment-button');
     const resultScore = document.getElementById('result-score');
     const resultLevel = document.getElementById('result-level');
     const resultCopy = document.getElementById('result-copy');
@@ -643,9 +918,12 @@
       steps.forEach(function (step, stepIndex) { step.classList.toggle('is-active', stepIndex === currentStep); });
       prevButton.disabled = currentStep === 0;
       const isReportStep = currentStep === steps.length - 1;
+      const canRetake = currentStep >= steps.length - 2;
       nextButton.hidden = isReportStep;
+      retakeButton.hidden = !canRetake;
       reportSubmitButton.hidden = !isReportStep;
       nextButton.style.display = isReportStep ? 'none' : '';
+      retakeButton.style.display = canRetake ? '' : 'none';
       reportSubmitButton.style.display = isReportStep ? '' : 'none';
       if (currentStep === 9) {
         nextButton.textContent = 'Show Results \u2192';
@@ -674,8 +952,29 @@
     form.addEventListener('input', function (event) {
       if (event.target.matches('#report-name, #report-email')) updateScores();
     });
+
+    function resetAssessment(shouldScrollTop) {
+      form.reset();
+      form.hidden = false;
+      reportSuccess.hidden = true;
+      reportError.hidden = true;
+      reportError.textContent = '';
+      reportSubmitButton.disabled = false;
+      reportSubmitButton.textContent = 'Get Report \u2192';
+      showStep(0, false);
+      if (shouldScrollTop) window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
     prevButton.addEventListener('click', function () { showStep(currentStep - 1, true); });
     nextButton.addEventListener('click', function () { showStep(currentStep === steps.length - 1 ? 0 : currentStep + 1, true); });
+    retakeButton.addEventListener('click', function () { resetAssessment(true); });
+    resultRetakeButton.addEventListener('click', function () { resetAssessment(true); });
+    resultReportButton.addEventListener('click', function () { showStep(steps.length - 1, true); });
+    if (newAssessmentButton) {
+      newAssessmentButton.addEventListener('click', function () {
+        resetAssessment(true);
+      });
+    }
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       reportError.hidden = true;

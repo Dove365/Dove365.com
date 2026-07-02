@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const nav = document.querySelector('nav');
   const navToggle = document.querySelector('.nav-toggle');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const disableScrollAnimations = document.body.classList.contains('no-scroll-animations');
   const isMobileViewport = window.matchMedia('(max-width: 900px)').matches;
   const isCompactViewport = window.matchMedia('(max-width: 1100px), (pointer: coarse)').matches;
   const canHoverFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -19,24 +20,27 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   if (nav) {
-    const scrollProgress = document.createElement('div');
-    scrollProgress.className = 'scroll-progress';
-    scrollProgress.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(scrollProgress);
+    let scrollProgress = null;
+    if (!disableScrollAnimations) {
+      scrollProgress = document.createElement('div');
+      scrollProgress.className = 'scroll-progress';
+      scrollProgress.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(scrollProgress);
+    }
 
     function updateNavState() {
       const scrollY = window.scrollY;
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const progress = scrollable > 0 ? Math.min(scrollY / scrollable, 1) : 0;
       nav.classList.toggle('nav-scrolled', scrollY > 12);
-      scrollProgress.style.setProperty('--scroll-progress', progress);
+      if (scrollProgress) scrollProgress.style.setProperty('--scroll-progress', progress);
     }
 
     updateNavState();
     window.addEventListener('scroll', updateNavState, { passive: true });
   }
 
-  if (!reduceMotion) {
+  if (!reduceMotion && !disableScrollAnimations) {
     const fadeSelectors = [
       '.page-offset > section',
       '.page-offset > .page-hero',

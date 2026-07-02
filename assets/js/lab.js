@@ -536,11 +536,11 @@
   }
 
   /* ──────────────────────────────────────────────────────────────
-     4. MAGNETIC — primary CTAs lean toward the cursor
+     4. MAGNETIC — opt-in elements lean toward the cursor
   ────────────────────────────────────────────────────────────────── */
   function initMagnetic() {
     if (!finePointer || reduceMotion) return;
-    document.querySelectorAll('[data-magnetic], .btn-primary, .nav-cta').forEach((el) => {
+    document.querySelectorAll('[data-magnetic]').forEach((el) => {
       const strength = el.classList.contains('nav-cta') ? 0.18 : 0.32;
       el.addEventListener('pointermove', (e) => {
         const r = el.getBoundingClientRect();

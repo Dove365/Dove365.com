@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fadeItems.forEach(function (item, index) {
       item.classList.add('scroll-fade');
-      item.style.setProperty('--fade-delay', `${Math.min(index % 6, 5) * 45}ms`);
+      item.style.setProperty('--fade-delay', `${Math.min(index % 5, 4) * 24}ms`);
     });
 
     if (isCompactViewport) {
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: 0.05, rootMargin: '0px 0px 4% 0px' });
 
       fadeItems.forEach(function (item) {
         fadeObserver.observe(item);

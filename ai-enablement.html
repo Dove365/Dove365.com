@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=50">
+  <link rel="stylesheet" href="assets/css/style.css?v=63">
   <link rel="icon" type="image/png" href="assets/images/logo/Logo.png">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="046081a4-efdf-46a8-9738-ccee510ba588" data-blockingmode="auto" type="text/javascript"></script>
 </head>
@@ -30,8 +30,10 @@
       <a href="services.html">Services</a>
       <div class="dropdown">
         <div class="dropdown-label">Services</div>
-        <a href="services.html#custom-solutions">Operational Systems &amp; Custom Solutions</a>
-        <a href="services.html#solution-architecture">Consultancy &amp; Architecture</a>
+        <a href="business-solutions.html">Business Solutions</a>
+        <a href="solution-architecture.html">Solution Architecture &amp; Design</a>
+        <a href="workflow-automation.html">Workflow Automation</a>
+        <a href="managed-support.html">Managed Support</a>
       </div>
     </li>
     <li class="has-dropdown">
@@ -117,13 +119,17 @@
 
   <section class="section ai-intro-section" id="ai-intro">
     <div class="container ai-intro-grid">
-      <div>
+      <div class="sticky-heading">
         <div class="section-tag">Practical AI Enablement</div>
         <h2 class="display">Safe AI adoption,<br><em>built around operations</em></h2>
       </div>
       <div class="case-detail-copy">
         <p>Dove365 helps organisations understand where AI fits, how to manage the risks, and how to implement AI safely across Microsoft 365, Power Platform, Dataverse, and wider operational systems.</p>
         <p>We focus on Microsoft AI consultancy that supports real workflows: CRM, case management, document processing, SOPs, reporting, customer engagement, and internal knowledge. For organisations looking for Copilot Studio consultants, we help shape practical agents and assistants around governed Microsoft data.</p>
+        <div class="ai-inline-media">
+          <img src="assets/images/stock/Workshop.jpg" width="1620" height="1080" loading="lazy" decoding="async" alt="Workshop discussion about safe AI adoption">
+          <div><span>Practical adoption</span><strong>Start with the workflows, data and governance your people already rely on.</strong></div>
+        </div>
       </div>
     </div>
   </section>
@@ -134,38 +140,58 @@
         <div class="section-tag">Start Here</div>
         <h2 class="display">Move from AI interest to <em>clear next steps</em></h2>
         <p class="lead">The AI Enablement offer starts with understanding your current position, then gives your team practical resources to improve prompts, governance conversations and Microsoft AI awareness before you choose what to trial.</p>
+        <div class="ai-inline-media ai-inline-media-sm">
+          <img src="assets/images/stock/Training.jpg" width="1620" height="1080" loading="lazy" decoding="async" alt="Team receiving practical AI training">
+          <div><span>Enablement</span><strong>Give staff clear guidance before they start experimenting.</strong></div>
+        </div>
         <div class="ai-ready-actions">
           <a href="dove365-ai-toolkit.html" class="btn btn-primary">Download the AI Toolkit →</a>
           <a href="resources/dove365-AI-readiness-assessment.html" class="btn btn-outline">Take Assessment Now</a>
         </div>
       </div>
 
-      <div class="ai-maturity-visual" aria-label="AI maturity journey from awareness to optimisation">
-        <div class="maturity-layout">
-          <div class="level-list">
-            <div class="level"><span class="level-number">Level 5</span><span class="level-name">Optimise</span></div>
-            <div class="level"><span class="level-number">Level 4</span><span class="level-name">Scaled &amp; Integrated</span></div>
-            <div class="level"><span class="level-number">Level 3</span><span class="level-name">Pilots &amp; Expansion</span></div>
-            <div class="level"><span class="level-number">Level 2</span><span class="level-name">Preparation</span></div>
-            <div class="level"><span class="level-number">Level 1</span><span class="level-name">Awareness</span></div>
-          </div>
-          <div class="pyramid-wrap">
-            <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI maturity pyramid">
-              <defs>
-                <clipPath id="ai-enablement-maturity-pyramid">
-                  <path d="M130 4 L252 248 Q256 256 246 256 L14 256 Q4 256 8 248 Z" />
-                </clipPath>
-              </defs>
-              <g clip-path="url(#ai-enablement-maturity-pyramid)">
-                <rect x="0" y="210" width="260" height="50" fill="#efcf73" />
-                <rect x="0" y="160" width="260" height="50" fill="#efd994" />
-                <rect x="0" y="110" width="260" height="50" fill="#f2e2ac" />
-                <rect x="0" y="60" width="260" height="50" fill="#f6eac5" />
-                <rect x="0" y="0" width="260" height="60" fill="#fbf2dc" />
-              </g>
-            </svg>
+      <div class="journey-visual-stack">
+
+        <div class="ai-maturity-visual funnel-card" aria-label="AI adoption pipeline from ideas through to rollout">
+          <div class="funnel-wrap">
+            <div class="funnel">
+              <div class="funnel-stage stage-ideas">Ideas</div>
+              <div class="funnel-stage stage-evaluate">Evaluate</div>
+              <div class="funnel-stage stage-pilot">Pilot</div>
+              <div class="funnel-stage stage-measure">Measure</div>
+              <div class="funnel-stage stage-rollout">Rollout</div>
+            </div>
           </div>
         </div>
+
+        <div class="ai-maturity-visual" aria-label="AI maturity journey from awareness to optimisation">
+          <div class="maturity-layout">
+            <div class="level-list">
+              <div class="level"><span class="level-number">Level 5</span><span class="level-name">Optimise</span></div>
+              <div class="level"><span class="level-number">Level 4</span><span class="level-name">Scaled &amp; Integrated</span></div>
+              <div class="level"><span class="level-number">Level 3</span><span class="level-name">Pilots &amp; Expansion</span></div>
+              <div class="level"><span class="level-number">Level 2</span><span class="level-name">Preparation</span></div>
+              <div class="level"><span class="level-number">Level 1</span><span class="level-name">Awareness</span></div>
+            </div>
+            <div class="pyramid-wrap">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI maturity pyramid">
+                <defs>
+                  <clipPath id="ai-enablement-maturity-pyramid">
+                    <path d="M130 4 L252 248 Q256 256 246 256 L14 256 Q4 256 8 248 Z" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#ai-enablement-maturity-pyramid)">
+                  <rect x="0" y="210" width="260" height="50" fill="#efcf73" />
+                  <rect x="0" y="160" width="260" height="50" fill="#efd994" />
+                  <rect x="0" y="110" width="260" height="50" fill="#f2e2ac" />
+                  <rect x="0" y="60" width="260" height="50" fill="#f6eac5" />
+                  <rect x="0" y="0" width="260" height="60" fill="#fbf2dc" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -175,6 +201,11 @@
       <div class="section-tag">What We Help With</div>
       <h2 class="display">AI services that support<br><em>real business processes</em></h2>
       <p class="lead">A focused set of AI enablement consultancy services for small and medium businesses using Microsoft 365, Dynamics 365, Dataverse, and Power Platform.</p>
+      <div class="ai-help-split">
+      <div class="ai-inline-media">
+        <img src="assets/images/stock/Workflow automation.jpg" width="1620" height="1080" loading="lazy" decoding="async" alt="Workflow automation planning with business users">
+        <div><span>Operational AI</span><strong>Connect AI into the processes that slow teams down every week.</strong></div>
+      </div>
       <div class="ai-service-grid">
         <div class="ai-service-card">
           <div class="ai-service-icon"><img src="assets/images/icons/microsoft-365-copilot-badge.svg" width="96" height="96" loading="lazy" decoding="async" alt=""></div>
@@ -202,6 +233,7 @@
           <p>Deliver practical workshops to help leadership and staff understand safe, useful AI adoption across Microsoft-based systems.</p>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
@@ -209,6 +241,10 @@
     <div class="container">
       <div class="section-tag">Productised Offers</div>
       <h2 class="display">Focused ways to<br><em>start safely</em></h2>
+      <div class="ai-wide-media">
+        <img style="object-position:center 14%" src="assets/images/stock/Hands On.png" width="1620" height="1080" loading="lazy" decoding="async" alt="Consultant coaching a colleague through an AI workflow on a laptop">
+        <div><span>Hands-on Enablement</span><strong>Every offer includes practical, hands-on guidance so your team can adopt AI with confidence.</strong></div>
+      </div>
       <div class="ai-offer-stack">
         <div class="ai-offer-card" id="get-ai-ready-workshop">
           <div class="ai-offer-main">
@@ -283,6 +319,10 @@
         <div class="section-tag">Why Dove365</div>
         <h2 class="display">No hype,<br><em>no overengineering</em></h2>
         <p class="lead">Dove365 does not approach AI as a standalone gimmick. We focus on where AI can improve real business operations: CRM, workflows, documents, knowledge, customer engagement, and internal processes.</p>
+        <div class="ai-inline-media ai-inline-media-sm">
+          <img src="assets/images/stock/User Training.jpg" width="1620" height="1080" loading="lazy" decoding="async" alt="Staff learning to use AI-enabled Microsoft tools">
+          <div><span>Business-first</span><strong>AI should support better service, better decisions and safer operations.</strong></div>
+        </div>
       </div>
       <div class="ai-why-list">
         <div class="feature-item"><span class="feature-check">✓</span><div><h4>Microsoft-first consultancy</h4><p>Advice aligned to Microsoft 365, Copilot Studio, Microsoft Foundry, Power Platform, Dataverse, and Dynamics 365.</p></div></div>
@@ -307,16 +347,16 @@
     <div class="footer-top footer-5col">
       <div class="footer-brand">
         <div class="footer-logo"><img src="assets/images/logo/LogoTransparent.svg" width="500" height="500" alt="" aria-hidden="true"><span class="footer-logo-text">Dove365<small>Microsoft Partner</small></span></div>
-        <p>Microsoft-focused consultancy delivering practical CRM and operational systems for small and medium businesses.</p>
+        <p>Microsoft-focused consultancy specialising in and delivering practical Power Platform, Dynamics 365, Dataverse, and AI Enablement.</p>
         <div class="ms-partner-badge"><img src="assets/images/icons/Microsoft Partner Logo.png" width="300" height="70" loading="lazy" decoding="async" alt="Microsoft Partner"></div>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="ai-enablement.html">AI Enablement</a></li>
-          <li><a href="services.html#custom-solutions">Custom Solutions</a></li>
-          <li><a href="services.html#solution-architecture">Solution Architecture</a></li>
-          <li><a href="services.html#support-packages">Support Packages</a></li>
+          <li><a href="business-solutions.html">Business Solutions</a></li>
+          <li><a href="solution-architecture.html">Solution Architecture &amp; Design</a></li>
+          <li><a href="workflow-automation.html">Workflow Automation</a></li>
+          <li><a href="managed-support.html">Managed Support</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -356,7 +396,7 @@
   </footer>
 
 </div>
-<script defer src="assets/js/main.js?v=43"></script>
+<script defer src="assets/js/main.js?v=44"></script>
 <script defer src="assets/js/lab.js?v=2"></script>
 </body>
 </html>

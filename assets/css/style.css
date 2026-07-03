@@ -13,6 +13,12 @@
   --border: #dde6e8;
   --gold: #c9a84c;
   --gold-light: #e8c97a;
+  --dove-pink: #ef529d;
+  --neon-green: #1cbc92;
+  --gradient-navy-gold: linear-gradient(135deg, var(--navy-deep), var(--gold-light));
+  --gradient-navy-teal: linear-gradient(135deg, var(--navy), var(--teal));
+  --gradient-teal-gold: linear-gradient(135deg, var(--teal-light), var(--teal), var(--gold-light));
+  --gradient-teal-green: linear-gradient(135deg, var(--teal-light), var(--neon-green));
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +43,8 @@ footer, .page-offset, .section, .section-sm, .page-hero,
 .container, .footer-top, .hero-left, .hero-right, .contact-info,
 .booking-embed, .service-block, .pricing-card, .support-card,
 .case-card-full, .mini-offer-card, .credential, .value-card,
-.pain-card, .proof-stat, .ms-logo-card { min-width: 0; }
+.pain-card, .proof-stat, .ms-logo-card, .service-media-card,
+.ai-inline-media, .ai-wide-media { min-width: 0; }
 .footer-col a, .contact-method-text, .contact-method-text p,
 .credential-text, .credential-text p, .case-card-body p,
 .pricing-card p, .support-card p, .legal-content {
@@ -135,12 +142,12 @@ h2.display,
 
 .scroll-fade {
   opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  filter: blur(5px);
+  transform: translate3d(0, 12px, 0);
+  filter: blur(3px);
   transition:
-    opacity 0.72s cubic-bezier(0.2, 0.75, 0.18, 1),
-    transform 0.72s cubic-bezier(0.2, 0.75, 0.18, 1),
-    filter 0.72s cubic-bezier(0.2, 0.75, 0.18, 1);
+    opacity 0.42s cubic-bezier(0.2, 0.75, 0.18, 1),
+    transform 0.42s cubic-bezier(0.2, 0.75, 0.18, 1),
+    filter 0.42s cubic-bezier(0.2, 0.75, 0.18, 1);
   transition-delay: var(--fade-delay, 0ms);
 }
 
@@ -290,6 +297,10 @@ nav.nav-scrolled {
   color: var(--teal); font-weight: 600; margin-bottom: 1rem;
 }
 .section-tag::before { content: ''; width: 20px; height: 2px; background: var(--teal); }
+.ai-help-section .section-tag::before,
+.pricing-section .section-tag::before { background: var(--gradient-teal-green); }
+.offer-preview .section-tag::before,
+.ai-offers-section .section-tag::before { background: linear-gradient(90deg, var(--dove-pink), var(--gold-light)); }
 h2.display {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
@@ -350,6 +361,15 @@ h2.display-light em { color: var(--teal-light); }
 }
 .page-hero h1 em { font-style: italic; color: var(--teal-light); }
 .page-hero p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+.service-media-card span {
+  display: block;
+  color: var(--teal-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
 
 .breadcrumb {
   display: flex; align-items: center; gap: 0.5rem;
@@ -617,7 +637,12 @@ footer {
 .strip-item:hover { transform: translateY(-3px); background: white; border-color: var(--teal-light); box-shadow: 0 10px 24px rgba(7,131,150,0.1); }
 
 /* What we build section */
-.start-section { background: var(--off-white); }
+.start-section {
+  background:
+    linear-gradient(135deg, rgba(83,177,205,0.13), transparent 34%),
+    linear-gradient(315deg, rgba(239,82,157,0.08), transparent 42%),
+    var(--off-white);
+}
 .start-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -629,10 +654,91 @@ footer {
   flex-direction: column;
   align-items: flex-start;
 }
+.start-card-media {
+  width: calc(100% + 4rem);
+  margin: -2rem -2rem 1.35rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  background: var(--teal-pale);
+}
+.start-card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.start-card:hover .start-card-media img { transform: scale(1.04); }
+.start-card:nth-child(1)::after { background: linear-gradient(90deg, var(--teal-light), var(--neon-green)); }
+.start-card:nth-child(2)::after { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+.start-card:nth-child(3)::after { background: linear-gradient(90deg, var(--gold-light), var(--dove-pink)); }
 .start-card .btn { margin-top: auto; }
 .start-card p { margin-bottom: 1.5rem; }
-.build-section { background: white; }
+.build-section {
+  background:
+    linear-gradient(180deg, white 0%, rgba(228,242,245,0.58) 100%);
+}
 .build-pills { display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 0.75rem; margin-top: 2rem; }
+.build-visual-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 4rem;
+  align-items: center;
+}
+.build-image-stack {
+  position: relative;
+  min-height: 420px;
+}
+.build-image-main {
+  width: 100%;
+  height: 420px;
+  display: block;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 26px 64px rgba(7,131,150,0.16), 18px 18px 0 rgba(83,177,205,0.12);
+}
+.build-floating-card {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(7,131,150,0.16);
+  box-shadow: 0 16px 38px rgba(15,30,40,0.14);
+  backdrop-filter: blur(12px);
+}
+.build-floating-card span {
+  display: block;
+  color: var(--teal);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.build-floating-card strong {
+  display: block;
+  color: var(--navy);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.approach-photo {
+  margin: 1.5rem 0 1.75rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 42px rgba(7,131,150,0.1);
+}
+.approach-photo img {
+  width: 100%;
+  height: 250px;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
 
 /* AI readiness preview */
 .ai-ready-section {
@@ -702,7 +808,12 @@ footer {
 }
 
 /* Pain section */
-.pain-section { background: var(--off-white); }
+.pain-section {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(232,201,122,0.18), transparent 26%),
+    linear-gradient(135deg, rgba(28,188,146,0.08), transparent 42%),
+    var(--off-white);
+}
 .pain-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
   margin-top: 3rem;
@@ -715,6 +826,7 @@ footer {
   background: white; border-radius: 14px; padding: 2rem;
   border: 1px solid var(--border); transition: all 0.25s;
   position: relative; overflow: hidden;
+  box-shadow: 0 10px 28px rgba(35,54,68,0.04);
 }
 .pain-card::before,
 .pricing-card::before,
@@ -727,7 +839,7 @@ footer {
 }
 .pain-card::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light));
+  height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--neon-green));
   transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
 }
 .pain-card:hover { box-shadow: 0 18px 42px rgba(7,131,150,0.12); transform: translateY(-6px); }
@@ -745,7 +857,11 @@ footer {
 .pain-card p { font-size: 0.85rem; color: var(--mid); line-height: 1.65; }
 
 /* Offer preview */
-.offer-preview { background: white; }
+.offer-preview {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96), rgba(228,242,245,0.72)),
+    radial-gradient(circle at 85% 18%, rgba(83,177,205,0.14), transparent 30%);
+}
 .offer-preview-grid {
   display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center;
 }
@@ -885,7 +1001,12 @@ footer {
 .proof-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
 /* Process */
-.process-section { background: var(--off-white); }
+.process-section {
+  background:
+    linear-gradient(135deg, rgba(35,54,68,0.04), transparent 42%),
+    linear-gradient(315deg, rgba(232,201,122,0.14), transparent 38%),
+    var(--off-white);
+}
 .process-steps {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem;
   margin-top: 3.5rem; position: relative;
@@ -919,13 +1040,31 @@ footer {
    SERVICES PAGE
 ══════════════════════════════════════════ */
 
-.services-detail { background: white; }
+.services-detail {
+  background:
+    linear-gradient(180deg, white 0%, rgba(228,242,245,0.52) 48%, white 100%);
+}
 .services-detail .service-block:first-child { padding-top: 0; }
 .service-block {
   display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem;
-  align-items: start; padding: 4rem 0;
+  align-items: start; padding: 4.5rem 0;
   border-bottom: 1px solid var(--border);
 }
+.service-block:nth-child(even) {
+  position: relative;
+}
+.service-block:nth-child(even)::before {
+  content: '';
+  position: absolute;
+  inset: 2rem -2rem;
+  z-index: 0;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(83,177,205,0.09), transparent 42%),
+    linear-gradient(315deg, rgba(232,201,122,0.12), transparent 38%);
+  pointer-events: none;
+}
+.service-block > * { position: relative; z-index: 1; }
 .service-block:last-child { border-bottom: none; }
 .service-block-left { position: sticky; top: 100px; }
 .service-number {
@@ -946,6 +1085,45 @@ footer {
   font-weight: 600;
 }
 .service-features { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.5rem 0; }
+.service-media-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  min-height: 240px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 42px rgba(7,131,150,0.1);
+}
+.service-media-card img {
+  width: 100%;
+  height: 260px;
+  display: block;
+  object-fit: cover;
+}
+.service-media-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 38%, rgba(15,30,40,0.76));
+}
+.service-media-card > div {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  padding: 0.95rem 1rem;
+  border-radius: 10px;
+  background: rgba(15,30,40,0.78);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+}
+.service-media-card strong {
+  display: block;
+  color: white;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
 .feature-item {
   display: flex; gap: 1rem; align-items: flex-start;
   padding: 1rem 1.25rem; border-radius: 10px;
@@ -978,8 +1156,16 @@ footer {
 .scope-no::before { content: '—'; color: var(--border); }
 
 /* Pricing */
-.pricing-section { background: var(--off-white); }
-.support-section { background: white; }
+.pricing-section {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(239,82,157,0.08), transparent 28%),
+    linear-gradient(135deg, rgba(83,177,205,0.1), transparent 38%),
+    var(--off-white);
+}
+.support-section {
+  background:
+    linear-gradient(180deg, white 0%, rgba(228,242,245,0.5) 100%);
+}
 .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
 .pricing-card {
   background: white; border-radius: 16px; padding: 2rem;
@@ -1064,9 +1250,12 @@ footer {
 ══════════════════════════════════════════ */
 
 .ai-page-hero .case-detail-actions { margin-top: 2rem; }
-.ai-intro-section,
+.ai-intro-section {
+  background:
+    linear-gradient(135deg, rgba(83,177,205,0.1), transparent 36%),
+    white;
+}
 .ai-help-section,
-.ai-journey-section,
 .ai-why-section { background: white; }
 .ai-intro-grid,
 .ai-journey-grid,
@@ -1078,10 +1267,73 @@ footer {
 }
 .ai-journey-section {
   background:
-    linear-gradient(135deg, rgba(83,177,205,0.11), transparent 36%),
+    linear-gradient(135deg, rgba(83,177,205,0.14), transparent 36%),
+    linear-gradient(315deg, rgba(28,188,146,0.08), transparent 44%),
     var(--off-white);
 }
 .ai-journey-grid { align-items: center; }
+.ai-inline-media,
+.ai-wide-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 42px rgba(7,131,150,0.1);
+  background: var(--navy);
+}
+.ai-inline-media {
+  margin-top: 1.5rem;
+  aspect-ratio: 16 / 9;
+}
+.ai-inline-media-sm { margin: 1.5rem 0 1.75rem; }
+.ai-wide-media {
+  margin-top: 2rem;
+  aspect-ratio: 16 / 6;
+}
+.ai-inline-media img,
+.ai-wide-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.ai-inline-media::after,
+.ai-wide-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 34%, rgba(15,30,40,0.78));
+}
+.ai-inline-media > div,
+.ai-wide-media > div {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  padding: 0.95rem 1rem;
+  border-radius: 10px;
+  background: rgba(15,30,40,0.78);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+}
+.ai-inline-media span,
+.ai-wide-media span {
+  display: block;
+  color: var(--teal-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.ai-inline-media strong,
+.ai-wide-media strong {
+  display: block;
+  color: white;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
 .ai-maturity-visual {
   padding: 2rem;
   background: white;
@@ -1127,7 +1379,11 @@ footer {
   height: 100%;
   display: block;
 }
-.ai-help-section { background: var(--off-white); }
+.ai-help-section {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(232,201,122,0.18), transparent 28%),
+    linear-gradient(135deg, rgba(228,242,245,0.92), rgba(244,247,246,0.92));
+}
 .ai-service-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1186,7 +1442,10 @@ footer {
   font-size: 0.82rem;
   line-height: 1.65;
 }
-.ai-offers-section { background: white; }
+.ai-offers-section {
+  background:
+    linear-gradient(180deg, white 0%, rgba(228,242,245,0.52) 100%);
+}
 .ai-offer-stack {
   display: grid;
   gap: 1rem;
@@ -2223,9 +2482,12 @@ footer {
   .services-strip { padding: 1.5rem; }
   .strip-inner { align-items: flex-start; gap: 1rem; }
   .strip-divider { display: none; }
-  .offer-preview-grid, .service-block, .about-grid,
+  .build-visual-grid, .offer-preview-grid, .service-block, .about-grid,
   .contact-grid, .ms-grid, .ai-ready-grid, .ai-intro-grid,
   .ai-journey-grid, .toolkit-assessment-grid, .ai-why-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .build-image-stack { min-height: auto; }
+  .build-image-main { height: 320px; }
+  .service-media-card img { height: 240px; }
   .ai-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
@@ -2309,6 +2571,26 @@ footer {
   .section, .section-sm { padding: 3rem 1rem; }
   .page-offset > .page-hero + .section { padding-top: 2rem; }
   h2.display { font-size: clamp(1.85rem, 10vw, 2.35rem); }
+  .start-card-media {
+    width: calc(100% + 2.7rem);
+    margin: -1.35rem -1.35rem 1.2rem;
+  }
+  .build-image-main { height: 240px; }
+  .build-floating-card {
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.85rem;
+  }
+  .approach-photo img,
+  .service-media-card img { height: 210px; }
+  .ai-wide-media { aspect-ratio: 16 / 9; }
+  .ai-inline-media > div,
+  .ai-wide-media > div {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.8rem 0.85rem;
+  }
   .start-grid, .pain-grid, .proof-grid, .values-grid, .pricing-grid,
   .cases-grid-full, .process-steps, .form-row,
   .credentials, .footer-top { grid-template-columns: 1fr; }
@@ -2398,7 +2680,7 @@ footer {
   }
   .ai-maturity-visual .pyramid-wrap {
     margin: 0 auto;
-    max-width: 230px;
+    max-width: 260px;
   }
   .toolkit-spider-card {
     padding: 1rem;
@@ -3476,6 +3758,7 @@ footer {
   font-family: 'DM Serif Display', serif;
   font-size: 2.05rem; line-height: 1; color: #fff;
   margin-bottom: 0.35rem;
+  white-space: nowrap;
 }
 .neural-metric span {
   font-size: 0.74rem; color: rgba(255,255,255,0.52);
@@ -3632,7 +3915,14 @@ footer {
   .ai-neural-hero { min-height: auto; padding: 4.5rem 1.5rem 5rem; }
   .neural-hero-inner { grid-template-columns: 1fr; gap: 2.6rem; }
   .neural-copy { max-width: 640px; }
-  .ai-console { max-width: 100%; margin-left: 0; }
+  /* Opaque console on mobile: the translucent bg + backdrop-filter let the
+     hero's two-tone wash show through, reading as a grey/blue seam. */
+  .ai-console {
+    max-width: 100%; margin-left: 0;
+    background: linear-gradient(165deg, #182a37, #0b161e);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
   .neural-veil {
     background:
       linear-gradient(180deg, rgba(10,22,30,0.5), rgba(10,22,30,0.2) 40%, transparent 65%),
@@ -3648,8 +3938,9 @@ footer {
   .neural-sub { font-size: 0.96rem; }
   .neural-actions { flex-direction: column; align-items: stretch; }
   .neural-actions .btn { justify-content: center; width: 100%; }
-  .neural-metrics { gap: 1.4rem; }
-  .neural-metric strong { font-size: 1.7rem; }
+  .neural-metrics { gap: 1rem; flex-wrap: nowrap; }
+  .neural-metric { flex: 1 1 0; min-width: 0; }
+  .neural-metric strong { font-size: 1.45rem; white-space: nowrap; }
   .ai-feed { height: 300px; }
   .neural-cue { display: none; }
 }
@@ -3834,4 +4125,330 @@ footer {
     animation: none !important;
   }
   .showcase-progress i { display: none; }
+}
+
+/* ══════════════════════════════════════════
+   TESTIMONIAL (shared, placeholder-ready)
+   Used on cornerstone service pages.
+══════════════════════════════════════════ */
+.testimonial-band {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(83,177,205,0.12), transparent 32%),
+    linear-gradient(135deg, rgba(232,201,122,0.10), transparent 40%),
+    var(--off-white);
+}
+.testimonial {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+.testimonial-quote-mark {
+  display: block;
+  font-family: 'DM Serif Display', serif;
+  font-size: 4.5rem;
+  line-height: 0.3;
+  color: var(--teal-light);
+  margin-bottom: 1.25rem;
+}
+.testimonial blockquote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  line-height: 1.45;
+  color: var(--navy);
+  margin: 0 0 2rem;
+}
+.testimonial blockquote em { color: var(--teal-dark); font-style: italic; }
+.testimonial-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: left;
+}
+.testimonial-avatar {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gradient-navy-teal);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+}
+.testimonial-meta strong { display: block; color: var(--near-black); font-size: 0.95rem; }
+.testimonial-meta span { color: var(--mid); font-size: 0.82rem; }
+@media (max-width: 640px) {
+  .testimonial blockquote { font-size: 1.3rem; }
+  .testimonial-quote-mark { font-size: 3.5rem; }
+}
+
+/* ══════════════════════════════════════════
+   SERVICE-PAGE REFINEMENTS (v51)
+══════════════════════════════════════════ */
+
+/* Sticky section heading — pins the title column while the
+   taller content column scrolls past (as on the AI Enablement page). */
+.sticky-heading {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+@media (max-width: 900px) {
+  .sticky-heading { position: static; top: auto; }
+}
+
+/* Opt-in top-alignment for individual images where a face would otherwise
+   be cropped (applied per image, not globally). */
+.media-top { object-position: center top !important; }
+
+/* Sticky media column — pins an image while the taller column beside it scrolls.
+   On mobile revert to relative (not static) so the media's absolutely-positioned
+   caption stays anchored to it. */
+.sticky-media { position: sticky; top: 96px; align-self: start; }
+@media (max-width: 900px) {
+  .sticky-media { position: relative; top: auto; }
+}
+
+/* Page-hero variant that carries call-to-action buttons (service pages).
+   Matches services.html hero but grows to fit the actions. */
+.page-hero.page-hero-cta {
+  height: auto;
+  min-height: 360px;
+  padding-bottom: 3.75rem;
+}
+.page-hero .hero-actions { margin-top: 1.9rem; }
+.page-hero .page-hero-inner { max-width: 760px; }
+@media (max-width: 640px) {
+  .page-hero.page-hero-cta { padding: 3.5rem 1.5rem 2.75rem; min-height: 0; }
+}
+
+/* AI Enablement — "What We Help With": image left, product icons right. */
+.ai-help-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 3rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+/* Image matches the Start Here card shape (16/9, full content visible) and
+   sticks alongside the taller icon grid. */
+.ai-help-split .ai-inline-media {
+  margin-top: 0;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  position: sticky;
+  top: 96px;
+}
+.ai-help-split .ai-service-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0;
+}
+@media (max-width: 900px) {
+  .ai-help-split { grid-template-columns: 1fr; gap: 2rem; }
+  .ai-help-split .ai-inline-media { position: relative; }
+}
+@media (max-width: 560px) {
+  .ai-help-split .ai-service-grid { grid-template-columns: 1fr; }
+}
+
+/* AI Enablement — Start Here: keep the maturity card compact (natural height)
+   so there is no dead white space around the pyramid. */
+.ai-journey-grid { align-items: stretch; }
+.ai-journey-grid .ai-maturity-visual { padding: 1.5rem; }
+.ai-journey-grid .ai-maturity-visual .level-list { min-height: 200px; }
+
+/* Right column: two matching visual cards (pipeline funnel + maturity pyramid)
+   stacked so they align edge-to-edge and, together, span the height of the
+   section's content on the left. */
+.journey-visual-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-width: 0;
+}
+.journey-visual-stack > .ai-maturity-visual {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 641px) {
+  /* Centre the levels + (slightly wider) pyramid within the full-width card. */
+  .ai-journey-grid .ai-maturity-visual .maturity-layout {
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .ai-journey-grid .ai-maturity-visual .pyramid-wrap {
+    width: min(100%, 300px);
+    margin-left: 0;
+  }
+}
+@media (max-width: 900px) {
+  .ai-journey-grid { align-items: start; }
+}
+
+/* AI adoption pipeline (funnel) — the second visual, above the pyramid. */
+.funnel-card .funnel-wrap { display: flex; justify-content: center; width: 100%; }
+.funnel {
+  width: min(100%, 244px);
+  overflow: hidden;
+  border-radius: 18px 18px 120px 120px;
+}
+.funnel-stage {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.funnel-stage.stage-ideas    { background: #7cc4d8; }
+.funnel-stage.stage-evaluate { background: #57b0ca; }
+.funnel-stage.stage-pilot    { background: #3f9cbb; }
+.funnel-stage.stage-measure  { background: #2b83a6; }
+.funnel-stage.stage-rollout  { background: #1d6b8c; }
+
+/* Wider spacing between Solution Design deliverable rows. */
+.feature-grid-2col.feature-grid-gap {
+  gap: 1.25rem 2.5rem;
+}
+
+/* Reduced top padding for a section that follows straight on
+   from the previous one (tightens image break spacing). */
+.section-flush-top { padding-top: 2rem; }
+
+/* On touch / small screens, reveal all content immediately — the staggered
+   scroll-fade could leave a card (e.g. mid-grid) briefly invisible and open
+   a gap between siblings. */
+@media (hover: none), (max-width: 640px) {
+  .scroll-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  /* iOS Safari can bleed backdrop-filter past a rounded/clipped box, making a
+     media caption appear to spill onto the card below — make it solid instead. */
+  .ai-inline-media > div,
+  .ai-wide-media > div {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(15, 30, 40, 0.92);
+  }
+}
+
+/* Keep the What We Help With image in normal flow (never sticky) on stacked
+   mobile layouts so its caption cannot overlap the cards below. */
+@media (max-width: 900px) {
+  .ai-help-split .ai-inline-media {
+    position: relative !important;
+    top: auto;
+    margin-bottom: 0.5rem;
+  }
+  /* Solid caption (no backdrop-filter, which can bleed past the clip on some
+     mobile browsers) so it cannot visually spill onto the AI Readiness card
+     directly below when the layout stacks. */
+  .ai-help-split .ai-inline-media > div {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(15, 30, 40, 0.92);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Managed Support page — reuses the shared components (page-hero,
+   ai-service-card, ai-flow-panel, feature-item, build/cta/faq).
+   Only additions: a 4-up support grid and in-card bullet lists.
+   ══════════════════════════════════════════════════════════════ */
+.ai-service-grid.ms-support-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.ms-support-list {
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.42rem;
+}
+.ms-support-list li {
+  position: relative;
+  padding-left: 1.05rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--mid);
+}
+.ms-support-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal-light);
+}
+@media (max-width: 980px) {
+  .ai-service-grid.ms-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .ai-service-grid.ms-support-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Services overview (hub) page — reuses ai-service-card, service-tag,
+   ms-support-list, process-steps and buttons. Adds only a 2-up service
+   panel grid and a 6-step "How we work" row.
+   ══════════════════════════════════════════════════════════════ */
+.services-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.services-hub-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.services-hub-card .service-tag { align-self: flex-start; margin-bottom: 1rem; }
+.services-hub-card h3 { font-size: 1.2rem; }
+.services-hub-card > p { margin-bottom: 1.15rem; }
+.services-hub-card .ms-support-list { margin-bottom: 1.75rem; }
+.services-hub-card .services-hub-cta { margin-top: auto; align-self: flex-start; }
+@media (max-width: 780px) {
+  .services-hub-grid { grid-template-columns: 1fr; }
+}
+
+/* Six-step "How we work" process row */
+.process-steps-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  margin-top: 3.5rem;
+}
+@media (max-width: 900px) {
+  .process-steps-6 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 560px) {
+  .process-steps-6 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Site-wide gradient wash on plain content sections.
+   Targets ONLY <section class="section"> (exact class match), so any
+   section carrying its own variant class (cta-section, proof-section,
+   ai-intro-section, build-section, legal-section, etc.) keeps its own
+   background. The report-bug and assessment pages use no plain .section,
+   so they are naturally unaffected.
+   ══════════════════════════════════════════════════════════════ */
+section[class="section"] {
+  background:
+    radial-gradient(circle at 86% 8%, rgba(83,177,205,0.09), transparent 34%),
+    linear-gradient(150deg, rgba(232,201,122,0.06), transparent 48%),
+    var(--off-white);
 }

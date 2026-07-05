@@ -4286,18 +4286,20 @@ footer {
 
 /* AI Enablement — Start Here: keep the maturity card compact (natural height)
    so there is no dead white space around the pyramid. */
-.ai-journey-grid { align-items: stretch; }
-.ai-journey-grid .ai-maturity-visual { padding: 1.5rem; }
-.ai-journey-grid .ai-maturity-visual .level-list { min-height: 200px; }
+.ai-journey-grid {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+.ai-journey-grid .ai-maturity-visual { padding: 1.35rem; }
+.ai-journey-grid .ai-maturity-visual .level-list { min-height: 180px; }
 
-/* Right column: two matching visual cards (pipeline funnel + maturity pyramid)
-   stacked so they align edge-to-edge and, together, span the height of the
-   section's content on the left. */
+/* Start Here visual cards: pipeline funnel + maturity pyramid. */
 .journey-visual-stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1.25rem;
+  margin-top: 2rem;
   min-width: 0;
 }
 .journey-visual-stack > .ai-maturity-visual {
@@ -4305,21 +4307,28 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 300px;
+  width: 100%;
 }
 @media (min-width: 641px) {
   /* Centre the levels + (slightly wider) pyramid within the full-width card. */
   .ai-journey-grid .ai-maturity-visual .maturity-layout {
-    grid-template-columns: max-content max-content;
+    grid-template-columns: minmax(110px, max-content) minmax(140px, 1fr);
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.8rem;
   }
   .ai-journey-grid .ai-maturity-visual .pyramid-wrap {
-    width: min(100%, 300px);
+    width: min(100%, 220px);
     margin-left: 0;
   }
 }
 @media (max-width: 900px) {
-  .ai-journey-grid { align-items: start; }
+  .journey-visual-stack {
+    grid-template-columns: 1fr;
+  }
+  .journey-visual-stack > .ai-maturity-visual {
+    min-height: 0;
+  }
 }
 
 /* AI adoption pipeline (funnel) — the second visual, above the pyramid. */

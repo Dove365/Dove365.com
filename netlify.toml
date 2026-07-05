@@ -10,3 +10,8 @@
   from = "/ai-toolkit"
   to = "/dove365-ai-toolkit.html"
   status = 200
+
+[[redirects]]
+  from = "/resources/dove365-AI-readiness-assessment.html"
+  to = "/resources/AI-readiness-assessment.html"
+  status = 301

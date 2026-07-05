@@ -8,8 +8,13 @@
 
 [[redirects]]
   from = "/ai-toolkit"
-  to = "/dove365-ai-toolkit.html"
+  to = "/ai-toolkit.html"
   status = 200
+
+[[redirects]]
+  from = "/dove365-ai-toolkit.html"
+  to = "/ai-toolkit.html"
+  status = 301
 
 [[redirects]]
   from = "/resources/dove365-AI-readiness-assessment.html"

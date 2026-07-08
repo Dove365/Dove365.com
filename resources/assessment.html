@@ -18,6 +18,7 @@
       padding: 1.25rem;
       background: var(--navy-deep);
       color: var(--near-black);
+      font-size: 1.08rem;
       overflow-x: hidden;
     }
 
@@ -91,7 +92,7 @@
 
     .kiosk-brand span {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.08rem;
+      font-size: 1.2rem;
       color: white;
       white-space: nowrap;
     }
@@ -99,7 +100,7 @@
     .kiosk-card-header p {
       margin: 0;
       color: rgba(255,255,255,0.62);
-      font-size: 0.78rem;
+      font-size: 0.92rem;
       text-align: right;
     }
 
@@ -119,7 +120,7 @@
       margin: 0;
       color: var(--navy);
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-size: clamp(1.9rem, 3.4vw, 2.7rem);
       line-height: 1.03;
     }
 
@@ -131,7 +132,7 @@
     .kiosk-assessment .assessment-intro p {
       margin: 0;
       color: var(--mid);
-      font-size: 0.84rem;
+      font-size: 1rem;
       line-height: 1.55;
     }
 
@@ -147,7 +148,7 @@
     }
 
     .kiosk-assessment .ai-summary .metric-label {
-      font-size: 0.7rem;
+      font-size: 0.82rem;
       line-height: 1.2;
       margin-bottom: 0.25rem;
     }
@@ -168,7 +169,7 @@
     }
 
     .kiosk-assessment .ai-summary .result-label {
-      font-size: 0.7rem;
+      font-size: 0.82rem;
       justify-content: flex-start;
       gap: 0.45rem;
       margin-bottom: 0;
@@ -176,7 +177,7 @@
     }
 
     .kiosk-assessment .ai-summary .spark {
-      font-size: 1rem;
+      font-size: 1.12rem;
     }
 
     .kiosk-assessment .ai-summary .result-card {
@@ -192,14 +193,14 @@
 
     .kiosk-assessment .ai-summary .result-score {
       align-items: center;
-      font-size: 1.35rem;
+      font-size: 1.55rem;
       padding-left: 0.95rem;
     }
 
     .kiosk-assessment .ai-summary .result-status {
       margin-top: 0;
       color: var(--gold-light);
-      font-size: 0.7rem;
+      font-size: 0.82rem;
       letter-spacing: 0.08em;
       white-space: nowrap;
     }
@@ -219,13 +220,13 @@
     }
 
     .kiosk-assessment .assessment-step-heading h3 {
-      font-size: 1.08rem;
+      font-size: 1.35rem;
     }
 
     .kiosk-assessment .assessment-step p,
     .kiosk-assessment .assessment-note,
     .kiosk-assessment .assessment-question legend {
-      font-size: 0.84rem;
+      font-size: 1rem;
       line-height: 1.5;
     }
 
@@ -237,7 +238,30 @@
     .kiosk-assessment .assessment-options span {
       min-height: 40px;
       padding: 0.65rem 0.8rem;
-      font-size: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .kiosk-assessment .assessment-scoring-grid,
+    .kiosk-assessment .assessment-section-score,
+    .kiosk-assessment .score-row,
+    .kiosk-assessment .form-group label,
+    .kiosk-assessment .form-group input,
+    .kiosk-assessment .form-checkbox,
+    .kiosk-assessment .case-point span,
+    .kiosk-assessment .case-point strong {
+      font-size: 1rem;
+    }
+
+    .kiosk-assessment .assessment-result-card span,
+    .kiosk-assessment .assessment-breakdown h4,
+    .kiosk-assessment .graph-title,
+    .kiosk-assessment .distribution-card .status,
+    .kiosk-assessment .distribution-card .score-caption {
+      font-size: 1.05rem;
+    }
+
+    .kiosk-assessment .assessment-result-card h4 {
+      font-size: 1.25rem;
     }
 
     .kiosk-assessment .assessment-result-graphs {
@@ -258,6 +282,14 @@
       background: rgba(255,255,255,0.96);
       border-top: 1px solid var(--border);
       backdrop-filter: blur(10px);
+    }
+
+    .kiosk-assessment .assessment-controls .btn {
+      min-height: 48px;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1.2;
+      padding: 0.9rem 1.4rem;
     }
 
     .kiosk-assessment .case-outcome-box {
@@ -300,6 +332,7 @@
       .kiosk-assessment .ai-summary .result-card {
         height: 38px;
       }
+
     }
   </style>
 </head>
@@ -899,11 +932,14 @@
       currentStep = Math.max(0, Math.min(index, steps.length - 1));
       steps.forEach(function (step, stepIndex) { step.classList.toggle('is-active', stepIndex === currentStep); });
       prevButton.disabled = currentStep === 0;
+      const isResultStep = currentStep === steps.length - 2;
       const isReportStep = currentStep === steps.length - 1;
       const canRetake = currentStep >= steps.length - 2;
+      prevButton.hidden = isResultStep;
       nextButton.hidden = isReportStep;
       retakeButton.hidden = !canRetake;
       reportSubmitButton.hidden = !isReportStep;
+      prevButton.style.display = isResultStep ? 'none' : '';
       nextButton.style.display = isReportStep ? 'none' : '';
       retakeButton.style.display = canRetake ? '' : 'none';
       reportSubmitButton.style.display = isReportStep ? '' : 'none';

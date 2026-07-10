@@ -1,3 +1,39 @@
+// Google Analytics is loaded only after Cookiebot statistics consent.
+(function () {
+  const GA_ID = 'G-4Z29XEN5FL';
+
+  function hasStatisticsConsent() {
+    return Boolean(window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.statistics);
+  }
+
+  function loadGoogleAnalytics() {
+    if (window.__dove365GoogleAnalyticsLoaded || !hasStatisticsConsent()) return;
+    window.__dove365GoogleAnalyticsLoaded = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () {
+      window.dataLayer.push(arguments);
+    };
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+
+  window.addEventListener('CookiebotOnAccept', loadGoogleAnalytics);
+  window.addEventListener('CookiebotOnConsentReady', loadGoogleAnalytics);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadGoogleAnalytics);
+  } else {
+    loadGoogleAnalytics();
+  }
+})();
+
 // Highlight active nav link based on current page
 document.addEventListener('DOMContentLoaded', function () {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';

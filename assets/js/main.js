@@ -1,36 +1,55 @@
-// Google Analytics is loaded only after Cookiebot statistics consent.
+// Google Analytics with Consent Mode: detectable immediately, storage denied until Cookiebot statistics consent.
 (function () {
   const GA_ID = 'G-4Z29XEN5FL';
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () {
+    window.dataLayer.push(arguments);
+  };
+
+  window.gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+
+  window.gtag('js', new Date());
+  window.gtag('config', GA_ID);
 
   function hasStatisticsConsent() {
     return Boolean(window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.statistics);
   }
 
-  function loadGoogleAnalytics() {
-    if (window.__dove365GoogleAnalyticsLoaded || !hasStatisticsConsent()) return;
+  function loadGoogleTag() {
+    if (window.__dove365GoogleAnalyticsLoaded) return;
     window.__dove365GoogleAnalyticsLoaded = true;
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function () {
-      window.dataLayer.push(arguments);
-    };
 
     const script = document.createElement('script');
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
     document.head.appendChild(script);
-
-    window.gtag('js', new Date());
-    window.gtag('config', GA_ID);
   }
 
-  window.addEventListener('CookiebotOnAccept', loadGoogleAnalytics);
-  window.addEventListener('CookiebotOnConsentReady', loadGoogleAnalytics);
+  function updateGoogleConsent() {
+    window.gtag('consent', 'update', {
+      analytics_storage: hasStatisticsConsent() ? 'granted' : 'denied'
+    });
+  }
+
+  window.addEventListener('CookiebotOnAccept', updateGoogleConsent);
+  window.addEventListener('CookiebotOnDecline', updateGoogleConsent);
+  window.addEventListener('CookiebotOnConsentReady', updateGoogleConsent);
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadGoogleAnalytics);
+    document.addEventListener('DOMContentLoaded', function () {
+      loadGoogleTag();
+      updateGoogleConsent();
+    });
   } else {
-    loadGoogleAnalytics();
+    loadGoogleTag();
+    updateGoogleConsent();
   }
 })();
 
